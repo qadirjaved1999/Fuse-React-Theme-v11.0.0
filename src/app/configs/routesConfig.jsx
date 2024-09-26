@@ -6,7 +6,6 @@ import ErrorBoundary from '@fuse/utils/ErrorBoundary';
 import App from '../App';
 import Error404Page from '../main/404/Error404Page';
 import Error401Page from '../main/401/Error401Page';
-import WorkingProject from '../main/workingProject/WorkingProject'
 const configModules = import.meta.glob('/src/app/main/**/*Route.jsx', { eager: true });
 const mainRoutes = Object.keys(configModules)
 	.map((modulePath) => {
