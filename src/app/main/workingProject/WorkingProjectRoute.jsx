@@ -9,9 +9,9 @@ i18next.addResourceBundle('tr', 'workingProjectPage', tr);
 i18next.addResourceBundle('ar', 'workingProjectPage', ar);
 
 const WorkingProject = lazy(() => import('./WorkingProject'));
-const Pql1 = lazy(() => import('./Pql1'));
-const Pql2 = lazy(() => import('./Pql2'));
-const Pql3 = lazy(() => import('./Pql3'));
+const PqlOne = lazy(() => import('./Pql1Config'));
+const PqlTwo = lazy(() => import('./Pql2Config'));
+const PqlThree = lazy(() => import('./Pql3Config'));
 
 const WorkingProjectRoute = [
     {
@@ -19,16 +19,16 @@ const WorkingProjectRoute = [
         element: <WorkingProject />,
         children: [
             {
-                path: 'pql1',
-                element: <Pql1 />
+                path: '/working-project/pql1',
+                element: <PqlOne />
             },
             {
-                path: 'pql2',
-                element: <Pql2 />
+                path: '/working-project/pql2',
+                element: <PqlTwo />
             },
             {
-                path: 'pql3',
-                element: <Pql3 />
+                path: '/working-project/pql3',
+                element: <PqlThree />
             }
         ]
     }

@@ -7,7 +7,7 @@ const Pql1Config = {
   },
   routes: [
     {
-      path: '/pql1',
+      path: '/working-project/pql1',
       element: <PqlOne />,
     },
   ],

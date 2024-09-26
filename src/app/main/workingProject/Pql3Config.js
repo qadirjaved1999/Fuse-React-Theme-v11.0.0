@@ -7,7 +7,7 @@ const Pql3Config = {
   },
   routes: [
     {
-      path: '/pql3',
+      path: '/working-project/pql3',
       element: <PqlThree />,
     },
   ],
