@@ -18,73 +18,32 @@ const navigationConfig = [
     url: '/example',
   },
   {
-    id: 'apps',
-		title: 'Applications',
-		subtitle: 'Qadir Javed here and I have create App.',
-		type: 'group',
-		icon: 'heroicons-outline:cube',
-		// translate: 'APPLICATIONS',
+    id: 'qadir-javed-component',
+    title: 'Qadir Javed Team',
+    type: 'collapse',
+    icon: 'heroicons-outline:star',
     children: [
       {
-				id: 'apps.academy',
-				title: 'Academy',
-				type: 'item',
-				icon: 'heroicons-outline:academic-cap',
-				url: '/apps/academy',
-				// translate: 'ACADEMY'
-			},
+        id: 'salman',
+        title: 'Salman Khan',
+        type: 'item',
+        icon: 'heroicons-outline:star',
+        url: '/salman'
+      },
       {
-				id: 'apps.calendar',
-				title: 'Calendar',
-				subtitle: '3 upcoming events',
-				type: 'item',
-				icon: 'heroicons-outline:calendar',
-				url: '/apps/calendar',
-				// translate: 'CALENDAR'
-			},
+        id: 'syed-shehroz',
+        title: 'Syed Shehroz sohail',
+        type: 'item',
+        icon: 'heroicons-outline:star',
+        url: '/syedshehroz'
+      },
       {
-				id: 'apps.contacts',
-				title: 'Contacts',
-				type: 'item',
-				icon: 'heroicons-outline:user-group',
-				url: '/apps/contacts',
-				// translate: 'CONTACTS'
-			},
-      {
-        id: 'apps.ecommerce',
-				title: 'ECommerce',
-				type: 'collapse',
-				icon: 'heroicons-outline:shopping-cart',
-				// translate: 'ECOMMERCE',
-        children: [
-          {
-						id: 'e-commerce-products',
-						title: 'Products',
-						type: 'item',
-						url: '/apps/e-commerce/products',
-						end: true
-					},
-					{
-						id: 'e-commerce-product-detail',
-						title: 'Product Detail',
-						type: 'item',
-						url: '/apps/e-commerce/products/1/a-walk-amongst-friends-canvas-print'
-					},
-          {
-						id: 'e-commerce-orders',
-						title: 'Orders',
-						type: 'item',
-						url: '/apps/e-commerce/orders',
-						end: true
-					},
-					{
-						id: 'e-commerce-order-detail',
-						title: 'Order Detail',
-						type: 'item',
-						url: '/apps/e-commerce/orders/1'
-					}
-        ]
-      }
+        id: 'mubashir-javed',
+        title: 'Mubashir Javed',
+        type: 'item',
+        icon: 'heroicons-outline:star',
+        url: '/mubashir'
+      },
     ]
   },
   {
