@@ -10,6 +10,30 @@ i18next.addResourceBundle('ar', 'navigation', ar);
 
 const navigationConfig = [
   {
+    id:"dashboards",
+    title:"Dashboards",
+    subtitle:"Qadir Javed Unique dashboard designs",
+    type:"group",
+    icon:"heroicons-outline:home",
+    children: [
+      {
+        id: "salechart",
+        title: "Sales Chart",
+        type: "item",
+        icon: "heroicons-outline:home",
+        url: 'dashboards/sale-chart'
+      },
+      {
+        id: "team",
+        title: "Team",
+        type: "item",
+        icon: "heroicons-outline:home",
+        url: '/team'
+      }
+
+    ]
+  },
+  {
     id: 'example-component', //existing
     title: 'Example',
     translate: 'EXAMPLE',
