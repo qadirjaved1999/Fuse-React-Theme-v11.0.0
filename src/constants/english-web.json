@@ -1,0 +1,31 @@
+
+{
+    "organizationName": "Organization name",
+    "address": "address",
+    "contactPerson": "Contact person",
+    "position": "Position",
+    "telephone": "Telephone",
+    "fax": "Fax",
+    "email": "Email",
+
+    "eastAfrica": "East Africa",
+    "westAfrica": "West Africa",
+    "northAfrica": "North Africa",
+    "centralAfrica": "Central Africa ",
+    "southernAfrica": "Southern Africa ",
+
+    "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",
+    "beneficiaryUpdatedNDC": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has updated its Nationally Determined Contribution (NDC) since 2015",
+    "mainBeneficiaryNDCAligned": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has its NDC aligned with the project sector’s ",
+    "allUpdatedNotAligned": "All the involved countries have joined the Paris Agreement, all have updated its NDC since 2015, but not all have its NDC aligned with the project sector’s",
+    "allUpdatedAllAligned": "All the involved countries have joined the Paris Agreement, all have updated its NDC since 2015, and all have its NDC aligned with the project sector’s",
+
+    "roads": "Roads",
+    "aviation": "Aviation",
+    "maritime_ports": "Maritime/Ports",
+    "railways": "Railways",
+    "multi_modal": "Multi-Modal",
+    "power_generation": "Power Generation",
+    "power_transmission": "Power Transmission",
+    "oil_gas": "Oil & Gas"
+}
