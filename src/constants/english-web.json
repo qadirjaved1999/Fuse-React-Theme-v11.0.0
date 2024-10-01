@@ -23,6 +23,9 @@
     "powerGeneration": "Power Generation",
     "powerTransmission": "Power Transmission",
     "oilGas": "Oil & Gas",
+    "telecommunications": "Telecommunications",
+    "iT": "IT",
+    "resourceManagement" : "Resource Management",
 
     "regionalClimateInterestCommitmentLabel": "Regional climate interest and commitment",
     "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",

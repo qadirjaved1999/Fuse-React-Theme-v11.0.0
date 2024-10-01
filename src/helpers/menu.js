@@ -23,6 +23,15 @@ const menu = {
     {label: labels.powerTransmission, value: "power_transmission"},
     {label: labels.oilGas, value: "oil_gas"},
    ],
+
+   ictActivityCheckBox: [
+    {label: labels.telecommunications, value: "Telecommunications"},
+    {label: labels.iT, value: "IT"}
+   ],
+
+   waterActivityCheckBox: [
+     {label: labels.resourceManagement, value: "Resource Management"}
+   ],
    //Regional climate interest and commitment
    regionalClimateInterest: [
     {label: labels.countriesNotInParis, value: "countries-notinparis" },

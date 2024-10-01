@@ -18,7 +18,7 @@ export default function InternalForm() {
         email: ''
     }
 
-    const label  = "Geographic Area of Proposed Activity";
+    const label = "Geographic Area of Proposed Activity";
 
     // Hold the Form Data
     const [data, setData] = React.useState(initialState)
@@ -43,7 +43,7 @@ export default function InternalForm() {
         power_transmission: false,
         oil_gas: false
     });
-
+     console.log("Checked CheckBox Value => ",checkedState)
     // Get The Labels of Geographic Area Proposed Activity From Menu
     const labels = Menu.geographicAreaProposedActivity;
 
@@ -53,13 +53,18 @@ export default function InternalForm() {
     // Get the labels of Energy Proposed Activity from Menu
     const energyLabels = Menu.energyProposedActivityCheckBox;
 
+    // Get the labels of ICT Proposed Activity from Menu
+    const ictLables = Menu.ictActivityCheckBox;
+
+    // Get the labels of Water Proposed Activity from Menu
+    const waterLabels = Menu.waterActivityCheckBox
+
     // Form Handler Function
     const inputHandler = (e) => {
         const { name, value } = e.target;
         setData({
             ...data, [name]: value
         });
-        console.log("the name is =>", name + " the value of this input => ", value)
     }
 
     // Radio Handler Function
@@ -70,6 +75,7 @@ export default function InternalForm() {
 
     // CheckBox Handler Function
     const handleChange = (event) => {
+        console.log("Checked CheckBox Value => ",event.target.value)
         const { name, checked } = event.target;
         setCheckedState({
             ...checkedState,
@@ -142,9 +148,9 @@ export default function InternalForm() {
                         />
                     </Grid>
                 </Grid>
-                
+
                 {/* Radio Grid */}
-                <Grid container spacing={2} sx={{paddingTop: "30px"}}>
+                <Grid container spacing={2} sx={{ paddingTop: "30px" }}>
                     <Grid item >
                         <CustomRadioButton
                             name="geographicArea"
@@ -161,29 +167,64 @@ export default function InternalForm() {
                     Sectoral Focus of Proposed Activity
                 </StyledHeading>
                 {/* CheckBox Grid */}
-                <Grid container spacing={4} sx={{ padding: '20px' }}>
-                    <Grid item xs={12} md={3} sx={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
-                        <Typography variant="h6">Transport</Typography>
+                <Grid container spacing={20} sx={{ padding: '20px' }}>
+                    <Grid item>
+                        <Grid item>
+                            <Typography variant="h6">Transport</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Grid container>
+                                <CustomCheckBox
+                                    options={transportLabels}
+                                    onChange={handleChange}
+                                    checkState={checkedState}
+                                />
+                            </Grid>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} md={3}>
-                        <Grid container>
-                            <CustomCheckBox
-                              options={transportLabels}
-                              onChange={handleChange}
-                              checkState={checkedState}
-                            />
+                    <Grid item>
+                        <Grid item>
+                            <Typography variant="h6">Energy</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Grid container>
+                                <CustomCheckBox
+                                    options={energyLabels}
+                                    onChange={handleChange}
+                                    checkState={checkedState}
+                                />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <Grid item>
+                            <Typography variant="h6">ICT</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Grid container>
+                                <CustomCheckBox
+                                    options={ictLables}
+                                    onChange={handleChange}
+                                    checkState={checkedState}
+                                />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <Grid item>
+                            <Typography variant="h6">Water</Typography>
+                        </Grid>
+                        <Grid item>
+                            <Grid container>
+                                <CustomCheckBox
+                                    options={waterLabels}
+                                    onChange={handleChange}
+                                    checkState={checkedState}
+                                />
+                            </Grid>
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={12} md={3} sx={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
-                        <Typography variant="h6">Energy</Typography>
-                    </Grid>
-
-                    {/* <Grid item xs={12} md={3} sx={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
-                        <Grid container direction="column">
-                            
-                        </Grid>
-                    </Grid> */}
                 </Grid>
             </Container>
         </>

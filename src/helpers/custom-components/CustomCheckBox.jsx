@@ -1,6 +1,4 @@
 import { Checkbox, FormControlLabel, Grid } from '@mui/material'
-import React from 'react'
-import { column } from 'stylis'
 
 const CustomCheckBox = ({ options, onChange, checkState }) => {
     return (
