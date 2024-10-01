@@ -2,8 +2,9 @@ import * as React from 'react';
 import { FormControlLabel, Grid, Radio, RadioGroup, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import { LABELS } from 'src/constants/Lables';
-import CustomTextInput from './CustomTextInput'
+import languages from 'src/constants';
+// import { labels } from 'src/constants/Lables';
+import CustomTextInput from 'src/helpers/custom-components/CustomTextInput';
 // const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export default function InternalForm() {
     const initialState = {
@@ -16,6 +17,7 @@ export default function InternalForm() {
         fax: '',
         email: ''
     }
+    const labels = languages.en;
     const [data, setData] = React.useState(initialState)
     console.log("Form data => ",data)
     const [checkedState, setCheckedState] = React.useState({
@@ -63,7 +65,7 @@ export default function InternalForm() {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <CustomTextInput
-                            label={LABELS.organizationName}
+                            label={labels.organizationName}
                             value={data.organisation_name}
                             name="organisation_name"
                             onChange={inputHandler}
@@ -71,7 +73,7 @@ export default function InternalForm() {
                     </Grid>
                     <Grid item xs={12}>
                         <CustomTextInput
-                            label={LABELS.address}
+                            label={labels.address}
                             value={data.address}
                             name="address"
                             onChange={inputHandler}
@@ -79,7 +81,7 @@ export default function InternalForm() {
                     </Grid>
                     <Grid item xs={6}>
                         <CustomTextInput
-                            label={LABELS.contactPerson}
+                            label={labels.contactPerson}
                             value={data.contact_person}
                             name="contact_person"
                             onChange={inputHandler}
@@ -87,7 +89,7 @@ export default function InternalForm() {
                     </Grid>
                     <Grid item xs={6}>
                         <CustomTextInput
-                            label={LABELS.position}
+                            label={labels.position}
                             value={data.position}
                             name="position"
                             onChange={inputHandler}
@@ -95,7 +97,7 @@ export default function InternalForm() {
                     </Grid>
                     <Grid item xs={4}>
                         <CustomTextInput
-                            label={LABELS.telephone}
+                            label={labels.telephone}
                             value={data.telephone}
                             name="telephone"
                             onChange={inputHandler}
@@ -103,7 +105,7 @@ export default function InternalForm() {
                     </Grid>
                     <Grid item xs={4}>
                         <CustomTextInput
-                            label={LABELS.fax}
+                            label={labels.fax}
                             value={data.fax}
                             name="fax"
                             onChange={inputHandler}
@@ -111,7 +113,7 @@ export default function InternalForm() {
                     </Grid>
                     <Grid item xs={4}>
                         <CustomTextInput
-                            label={LABELS.email}
+                            label={labels.email}
                             value={data.email}
                             name="email"
                             onChange={inputHandler}
@@ -126,31 +128,31 @@ export default function InternalForm() {
                         <Grid item>
                             <FormControlLabel
                                 control={<Radio value="east_africa" size="small" />}
-                                label={LABELS.eastAfrica}
+                                label={labels.eastAfrica}
                             />
                         </Grid>
                         <Grid item>
                             <FormControlLabel
                                 control={<Radio value="west_africa" size="small" />}
-                                label={LABELS.westAfrica}
+                                label={labels.westAfrica}
                             />
                         </Grid>
                         <Grid item>
                             <FormControlLabel
                                 control={<Radio value="north_africa" size="small" />}
-                                label={LABELS.northAfrica}
+                                label={labels.northAfrica}
                             />
                         </Grid>
                         <Grid item>
                             <FormControlLabel
                                 control={<Radio value="central_africa" size="small" />}
-                                label={LABELS.centralAfrica}
+                                label={labels.centralAfrica}
                             />
                         </Grid>
                         <Grid item>
                             <FormControlLabel
                                 control={<Radio value="southern_africa" size="small" />}
-                                label={LABELS.southernAfrica}
+                                label={labels.southernAfrica}
                             />
                         </Grid>
                     </Grid>
@@ -178,7 +180,7 @@ export default function InternalForm() {
                                                 name={field}
                                             />
                                         }
-                                        label={LABELS[field]}
+                                        label={labels[field]}
                                     />
                                 </Grid>
                             ))}
@@ -202,7 +204,7 @@ export default function InternalForm() {
                                                 name={field}
                                             />
                                         }
-                                        label={LABELS[field]}
+                                        label={labels[field]}
                                     />
                                 </Grid>
                             ))}

@@ -6,11 +6,11 @@ import menu from ''
 const ClimatePoliciesPages = () => {
     const [radioSelectedValue, setRadioSelectedValue] = useState("")
     const values = [
-        "countriesNotInParis",
-        "beneficiaryUpdatedNDC",
-        "mainBeneficiaryNDCAligned",
-        "allUpdatedNotAligned",
-        "allUpdatedAllAligned"
+        // "countriesNotInParis",
+        // "beneficiaryUpdatedNDC",
+        // "mainBeneficiaryNDCAligned",
+        // "allUpdatedNotAligned",
+        // "allUpdatedAllAligned"
     ];
     const handleChange = (event) => {
         setRadioSelectedValue(event.target.value)
