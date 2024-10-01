@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { FormControlLabel, Grid, Radio, RadioGroup, Typography, Container } from '@mui/material';
+import { FormControlLabel, Grid, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import languages from 'src/constants';
-// import { labels } from 'src/constants/Lables';
+import Menu from 'src/helpers/menu';
 import CustomTextInput from 'src/helpers/custom-components/CustomTextInput';
-// const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
+import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 export default function InternalForm() {
-    const initialState = {
-        // use this naming structure for object because in DB use this structure
+    // Form Initial State
+    const initialState = {   // use this naming structure for object because in DB use this structure
         organisation_name: '',
         address: '',
         contact_person: '',
@@ -17,9 +17,17 @@ export default function InternalForm() {
         fax: '',
         email: ''
     }
-    const labels = languages.en;
+
+    const label  = "Geographic Area of Proposed Activity";
+
+    // Hold the Form Data
     const [data, setData] = React.useState(initialState)
-    console.log("Form data => ",data)
+    console.log("Form data => ", data)
+
+    // This State Hold the Selected Radio Valus
+    const [selectedValue, setSelectedValue] = React.useState('');
+
+    // This State Intially All Checkbox set False value
     const [checkedState, setCheckedState] = React.useState({
         east_africa: false,
         west_africa: false,
@@ -35,26 +43,38 @@ export default function InternalForm() {
         power_transmission: false,
         oil_gas: false
     });
-    const [selectedValue, setSelectedValue] = React.useState('');
+
+    // Get The Labels of Geographic Area Proposed Activity From Menu
+    const labels = Menu.geographicAreaProposedActivity;
+
+    //Get the labels of Transport Proposed Activity from Menu
+    const transportLabels = Menu.transportProposedActivityCheckBox;
+
+    // Get the labels of Energy Proposed Activity from Menu
+    const energyLabels = Menu.energyProposedActivityCheckBox;
+
+    // Form Handler Function
     const inputHandler = (e) => {
-       const { name, value} = e.target;
-       setData({
-        ...data, [name]: value
-       });
-       console.log("the name is =>", name + " the value of this input => ", value)
+        const { name, value } = e.target;
+        setData({
+            ...data, [name]: value
+        });
+        console.log("the name is =>", name + " the value of this input => ", value)
     }
+
+    // Radio Handler Function
     const handleRadioChange = (event) => {
         setSelectedValue(event.target.value);
         console.log("Selected Radio Button: ", event.target.value);
     }
 
+    // CheckBox Handler Function
     const handleChange = (event) => {
         const { name, checked } = event.target;
         setCheckedState({
             ...checkedState,
             [name]: checked,
         });
-        console.log("checkbox name is => ", name + " and value is =>", checked)
     };
     return (
         <>
@@ -62,6 +82,8 @@ export default function InternalForm() {
                 <StyledHeading>
                     Giz Users Application Form
                 </StyledHeading>
+
+                {/* Form Grid */}
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <CustomTextInput
@@ -120,70 +142,36 @@ export default function InternalForm() {
                         />
                     </Grid>
                 </Grid>
-                <StyledHeading fontSize="18px" textAlign="left" fontWeight="normal" margin="10px 0px 0px 0px">
-                    Geographic Area of Proposed Activity
-                </StyledHeading>
-                <RadioGroup value={selectedValue} onChange={handleRadioChange}>
-                    <Grid container spacing={5} sx={{ padding: "0px 50px 0px 50px" }}>
-                        <Grid item>
-                            <FormControlLabel
-                                control={<Radio value="east_africa" size="small" />}
-                                label={labels.eastAfrica}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <FormControlLabel
-                                control={<Radio value="west_africa" size="small" />}
-                                label={labels.westAfrica}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <FormControlLabel
-                                control={<Radio value="north_africa" size="small" />}
-                                label={labels.northAfrica}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <FormControlLabel
-                                control={<Radio value="central_africa" size="small" />}
-                                label={labels.centralAfrica}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <FormControlLabel
-                                control={<Radio value="southern_africa" size="small" />}
-                                label={labels.southernAfrica}
-                            />
-                        </Grid>
+                
+                {/* Radio Grid */}
+                <Grid container spacing={2} sx={{paddingTop: "30px"}}>
+                    <Grid item >
+                        <CustomRadioButton
+                            name="geographicArea"
+                            value={selectedValue}
+                            values={labels}
+                            label={label}
+                            onChange={handleRadioChange}
+                            row={true}
+                        />
                     </Grid>
-                </RadioGroup>
+                </Grid>
+
                 <StyledHeading fontSize="18px" textAlign="left" fontWeight="normal" margin="10px 0px 0px 0px">
                     Sectoral Focus of Proposed Activity
                 </StyledHeading>
-                {/* Parent Grid */}
+                {/* CheckBox Grid */}
                 <Grid container spacing={4} sx={{ padding: '20px' }}>
-                    {/* Heading */}
                     <Grid item xs={12} md={3} sx={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
                         <Typography variant="h6">Transport</Typography>
                     </Grid>
-
                     <Grid item xs={12} md={3}>
-                        <Grid container direction="column">
-                            {['roads', 'aviation', 'maritime_ports', 'railways', 'multi_modal'].map((field, index) => (
-                                <Grid item key={index}>
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                size="small"
-                                                checked={checkedState[field]}
-                                                onChange={handleChange}
-                                                name={field}
-                                            />
-                                        }
-                                        label={labels[field]}
-                                    />
-                                </Grid>
-                            ))}
+                        <Grid container>
+                            <CustomCheckBox
+                              options={transportLabels}
+                              onChange={handleChange}
+                              checkState={checkedState}
+                            />
                         </Grid>
                     </Grid>
 
@@ -191,25 +179,11 @@ export default function InternalForm() {
                         <Typography variant="h6">Energy</Typography>
                     </Grid>
 
-                    <Grid item xs={12} md={3} sx={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
+                    {/* <Grid item xs={12} md={3} sx={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
                         <Grid container direction="column">
-                            {['power_generation', 'power_transmission', 'oil_gas'].map((field, index) => (
-                                <Grid item key={index}>
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                size="small"
-                                                checked={checkedState[field]}
-                                                onChange={handleChange}
-                                                name={field}
-                                            />
-                                        }
-                                        label={labels[field]}
-                                    />
-                                </Grid>
-                            ))}
+                            
                         </Grid>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </Container>
         </>

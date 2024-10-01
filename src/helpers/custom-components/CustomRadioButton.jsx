@@ -1,22 +1,22 @@
 import { FormControl } from '@mui/base'
 import { FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 
-const CustomRadioButton = ({name, value, selectedValue, label, onChange}) => {
+const CustomRadioButton = ({name, value, values, label, onChange, row}) => {
   return (
     <FormControl component="fieldset">
-      <FormLabel>Giz</FormLabel>
+      <FormLabel>{label}</FormLabel>
       <RadioGroup
         name={name}
         value={value}
         onChange={onChange}
+        row={row}
       >
-        {values.map((val, index) => (
+        {values.map((option, index) => (
           <FormControlLabel
             key={index}
-            value={val}
-            control={<Radio />} // MUI Radio component
-            label={labels[index]} // The label text for each radio button
-            disabled={disabled} // Disable the radio button if needed
+            value={option.value}
+            control={<Radio />} 
+            label={option.label} 
           />
         ))}
       </RadioGroup>

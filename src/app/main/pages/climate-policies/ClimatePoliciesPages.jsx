@@ -1,35 +1,30 @@
-import { Typography } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton'
-import menu from ''
+import Menu from 'src/helpers/menu'
 
 const ClimatePoliciesPages = () => {
-    const [radioSelectedValue, setRadioSelectedValue] = useState("")
-    const values = [
-        // "countriesNotInParis",
-        // "beneficiaryUpdatedNDC",
-        // "mainBeneficiaryNDCAligned",
-        // "allUpdatedNotAligned",
-        // "allUpdatedAllAligned"
-    ];
+    const label =  "Regional climate interest and commitment";
+    const [data, setData] = useState("")
+    const options = Menu.regionalClimateInterest;
     const handleChange = (event) => {
-        setRadioSelectedValue(event.target.value)
+        setData(event.target.value)
     }
+    console.log("======>>>>>>>>", data)
     return (
         <>
-            <div>
-                <Typography>
-                    Regional climate interest and commitment
-                </Typography>
-            </div>
-            <div className="checkbox">
-                <CustomRadioButton
-                    name="projectViability"
-                    value={radioSelectedValue}
-                    onchange={handleChange}
-                    label={}
-                />
-            </div>
+            <Grid sx={{padding: "50px"}}>
+                <div className="checkbox">
+                    <CustomRadioButton
+                        name="projectViability"
+                        value={data}
+                        values={options}
+                        label={label}
+                        onChange={handleChange}
+                    />
+                </div>
+            </Grid>
+
         </>
 
     )
