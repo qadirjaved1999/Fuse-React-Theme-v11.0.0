@@ -32,5 +32,11 @@
     "beneficiaryUpdatedNDC": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has updated its Nationally Determined Contribution (NDC) since 2015",
     "mainBeneficiaryNDCAligned": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has its NDC aligned with the project sector’s ",
     "allUpdatedNotAligned": "All the involved countries have joined the Paris Agreement, all have updated its NDC since 2015, but not all have its NDC aligned with the project sector’s",
-    "allUpdatedAllAligned": "All the involved countries have joined the Paris Agreement, all have updated its NDC since 2015, and all have its NDC aligned with the project sector’s"
+    "allUpdatedAllAligned": "All the involved countries have joined the Paris Agreement, all have updated its NDC since 2015, and all have its NDC aligned with the project sector’s",
+
+    "someCountriesNotAdoptingPolicy": "Some of the involved countries have not adopted a national climate change policy nor are working on its development.",
+    "allCountriesAdoptingPolicyDevelopment": "All of the countries involved have either adopted a national climate change policy/regulatory framework or are working on its development.",
+    "allCountriesAdoptingPolicyFramework": "All of the countries involved have adopted a national climate change policy/regulatory framework.",
+    "allCountriesAdoptingPolicyPlanning ": "All of the countries involved have adopted a national climate change policy/regulatory framework, together with adaptation planning processes.",
+    "allCountriesAdoptingPolicyFinance": "All of the countries involved have adopted a national climate change policy/regulatory framework, together with adaptation planning processes, where climate finance is consistent with national policies."
 }

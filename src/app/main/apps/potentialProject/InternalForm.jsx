@@ -2,11 +2,14 @@ import * as React from 'react';
 import { FormControlLabel, Grid, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import Menu from 'src/helpers/menu';
+import menu from 'src/helpers/menu';
 import CustomTextInput from 'src/helpers/custom-components/CustomTextInput';
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
+import languages from 'src/constants/index';
+import { useState } from 'react';
 export default function InternalForm() {
+    const label = languages.en;
     // Form Initial State
     const initialState = {   // use this naming structure for object because in DB use this structure
         organisation_name: '',
@@ -15,25 +18,13 @@ export default function InternalForm() {
         position: '',
         telephone: '',
         fax: '',
-        email: ''
-    }
+        email: '',
 
-    const label = "Geographic Area of Proposed Activity";
-
-    // Hold the Form Data
-    const [data, setData] = React.useState(initialState)
-    console.log("Form data => ", data)
-
-    // This State Hold the Selected Radio Valus
-    const [selectedValue, setSelectedValue] = React.useState('');
-
-    // This State Intially All Checkbox set False value
-    const [checkedState, setCheckedState] = React.useState({
-        east_africa: false,
-        west_africa: false,
-        north_africa: false,
-        central_africa: false,
-        southern_africa: false,
+        east_africa: '',
+        west_africa: '',
+        north_africa: '',
+        central_africa: '',
+        southern_africa: '',
         roads: false,
         aviation: false,
         maritime_ports: false,
@@ -41,47 +32,31 @@ export default function InternalForm() {
         multi_modal: false,
         power_generation: false,
         power_transmission: false,
-        oil_gas: false
-    });
-     console.log("Checked CheckBox Value => ",checkedState)
-    // Get The Labels of Geographic Area Proposed Activity From Menu
-    const labels = Menu.geographicAreaProposedActivity;
-
-    //Get the labels of Transport Proposed Activity from Menu
-    const transportLabels = Menu.transportProposedActivityCheckBox;
-
-    // Get the labels of Energy Proposed Activity from Menu
-    const energyLabels = Menu.energyProposedActivityCheckBox;
-
-    // Get the labels of ICT Proposed Activity from Menu
-    const ictLables = Menu.ictActivityCheckBox;
-
-    // Get the labels of Water Proposed Activity from Menu
-    const waterLabels = Menu.waterActivityCheckBox
-
-    // Form Handler Function
-    const inputHandler = (e) => {
-        const { name, value } = e.target;
-        setData({
-            ...data, [name]: value
-        });
+        oil_gas: false,
+        telecommunications: false,
+        it: false,
+        resource_management: false
     }
 
-    // Radio Handler Function
-    const handleRadioChange = (event) => {
-        setSelectedValue(event.target.value);
-        console.log("Selected Radio Button: ", event.target.value);
-    }
+    // Hold the Data
+    const [data, setData] = useState(initialState);
+    console.log("Form data => ", data)
 
-    // CheckBox Handler Function
-    const handleChange = (event) => {
-        console.log("Checked CheckBox Value => ",event.target.value)
-        const { name, checked } = event.target;
-        setCheckedState({
-            ...checkedState,
-            [name]: checked,
-        });
-    };
+    // Form Handler Function handleInput
+    const handleInput = e => {
+        const { name, value, type, checked } = e.target;
+        if (type === 'checkbox') {
+            setData({
+                ...data,
+                [name]: checked
+            });
+        } else {
+            setData({
+                ...data,
+                [name]: value
+            });
+        }
+    }
     return (
         <>
             <Container maxWidth="1340px">
@@ -93,58 +68,65 @@ export default function InternalForm() {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <CustomTextInput
-                            label={labels.organizationName}
+                            label={label.organizationName}
                             value={data.organisation_name}
                             name="organisation_name"
-                            onChange={inputHandler}
+                            type="text"
+                            onChange={handleInput}
                         />
                     </Grid>
                     <Grid item xs={12}>
                         <CustomTextInput
-                            label={labels.address}
+                            label={label.address}
                             value={data.address}
                             name="address"
-                            onChange={inputHandler}
+                            type="text"
+                            onChange={handleInput}
                         />
                     </Grid>
                     <Grid item xs={6}>
                         <CustomTextInput
-                            label={labels.contactPerson}
+                            label={label.contactPerson}
                             value={data.contact_person}
                             name="contact_person"
-                            onChange={inputHandler}
+                            type="number"
+                            onChange={handleInput}
                         />
                     </Grid>
                     <Grid item xs={6}>
                         <CustomTextInput
-                            label={labels.position}
+                            label={label.position}
                             value={data.position}
                             name="position"
-                            onChange={inputHandler}
+                            type="text"
+                            onChange={handleInput}
                         />
                     </Grid>
                     <Grid item xs={4}>
                         <CustomTextInput
-                            label={labels.telephone}
+                            label={label.telephone}
                             value={data.telephone}
                             name="telephone"
-                            onChange={inputHandler}
+                            type="number"
+                            onChange={handleInput}
                         />
                     </Grid>
                     <Grid item xs={4}>
                         <CustomTextInput
-                            label={labels.fax}
+                            label={label.fax}
                             value={data.fax}
                             name="fax"
-                            onChange={inputHandler}
+                            type="text"
+                            onChange={handleInput}
                         />
                     </Grid>
                     <Grid item xs={4}>
                         <CustomTextInput
-                            label={labels.email}
+                            label={label.email}
                             value={data.email}
                             name="email"
-                            onChange={inputHandler}
+                            type="text"
+                            onChange={handleInput}
                         />
                     </Grid>
                 </Grid>
@@ -153,11 +135,51 @@ export default function InternalForm() {
                 <Grid container spacing={2} sx={{ paddingTop: "30px" }}>
                     <Grid item >
                         <CustomRadioButton
-                            name="geographicArea"
-                            value={selectedValue}
-                            values={labels}
-                            label={label}
-                            onChange={handleRadioChange}
+                            name="east_africa"
+                            value={data.east_africa}
+                            options={menu.geographicAreaProposedActivity}
+                            label={menu.geographicAreaProposedActivity}
+                            onChange={handleInput}
+                            row={true}
+                        />
+                    </Grid>
+                    <Grid item >
+                        <CustomRadioButton
+                            name="west_africa"
+                            value={data.west_africa}
+                            options={menu.geographicAreaProposedActivity}
+                            label={menu.geographicAreaProposedActivity}
+                            onChange={handleInput}
+                            row={true}
+                        />
+                    </Grid>
+                    <Grid item >
+                        <CustomRadioButton
+                            name="north_africa"
+                            value={data.north_africa}
+                            options={menu.geographicAreaProposedActivity}
+                            label={menu.geographicAreaProposedActivity}
+                            onChange={handleInput}
+                            row={true}
+                        />
+                    </Grid>
+                    <Grid item >
+                        <CustomRadioButton
+                            value={data.central_africa}
+                            options={menu.geographicAreaProposedActivity}
+                            label={menu.geographicAreaProposedActivity}
+                            onChange={handleInput}
+                            name="central_africa"
+                            row={true}
+                        />
+                    </Grid>
+                    <Grid item >
+                        <CustomRadioButton
+                            value={data.southern_africa}
+                            options={menu.geographicAreaProposedActivity}
+                            label={menu.geographicAreaProposedActivity}
+                            onChange={handleInput}
+                            name="southern_africa"
                             row={true}
                         />
                     </Grid>
@@ -167,18 +189,53 @@ export default function InternalForm() {
                     Sectoral Focus of Proposed Activity
                 </StyledHeading>
                 {/* CheckBox Grid */}
-                <Grid container spacing={20} sx={{ padding: '20px' }}>
+                <Grid container spacing={15} sx={{ padding: '20px' }}>
                     <Grid item>
                         <Grid item>
                             <Typography variant="h6">Transport</Typography>
                         </Grid>
                         <Grid item>
                             <Grid container>
-                                <CustomCheckBox
-                                    options={transportLabels}
-                                    onChange={handleChange}
-                                    checkState={checkedState}
-                                />
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.transportProposedActivityCheckBox}
+                                        checked={data.roads}
+                                        name="roads"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.transportProposedActivityCheckBox}
+                                        checked={data.aviation}
+                                        name="aviation"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.transportProposedActivityCheckBox}
+                                        checked={data.maritime_ports}
+                                        name="maritime_ports"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.transportProposedActivityCheckBox}
+                                        checked={data.railways}
+                                        name="railways"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.transportProposedActivityCheckBox}
+                                        checked={data.multi_modal}
+                                        name="multi_modal"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -188,11 +245,30 @@ export default function InternalForm() {
                         </Grid>
                         <Grid item>
                             <Grid container>
-                                <CustomCheckBox
-                                    options={energyLabels}
-                                    onChange={handleChange}
-                                    checkState={checkedState}
-                                />
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.energyProposedActivityCheckBox}
+                                        checkState={data.power_generation}
+                                        name="power_generation"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.energyProposedActivityCheckBox}
+                                        checkState={data.power_transmission}
+                                        name="power_transmission"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.energyProposedActivityCheckBox}
+                                        checkState={data.oil_gas}
+                                        name="oil_gas"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -202,11 +278,22 @@ export default function InternalForm() {
                         </Grid>
                         <Grid item>
                             <Grid container>
-                                <CustomCheckBox
-                                    options={ictLables}
-                                    onChange={handleChange}
-                                    checkState={checkedState}
-                                />
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.ictActivityCheckBox}
+                                        checkState={data.telecommunications}
+                                        name="telecommunications"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.ictActivityCheckBox}
+                                        checkState={data.it}
+                                        name="it"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -216,11 +303,14 @@ export default function InternalForm() {
                         </Grid>
                         <Grid item>
                             <Grid container>
-                                <CustomCheckBox
-                                    options={waterLabels}
-                                    onChange={handleChange}
-                                    checkState={checkedState}
-                                />
+                                <Grid item>
+                                    <CustomCheckBox
+                                        options={menu.waterActivityCheckBox}
+                                        checkState={data.resource_management}
+                                        name="resource_management"
+                                        onChange={handleInput}
+                                    />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>

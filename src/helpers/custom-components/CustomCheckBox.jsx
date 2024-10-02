@@ -1,6 +1,7 @@
 import { Checkbox, FormControlLabel, Grid } from '@mui/material'
 
-const CustomCheckBox = ({ options, onChange, checkState }) => {
+const CustomCheckBox = ({ options, onChange, checked }) => {
+    // console.log("options => " + options + "checkState" + checkState)
     return (
         <Grid container direction="column">
             {options.map((option, index) => (
@@ -10,7 +11,7 @@ const CustomCheckBox = ({ options, onChange, checkState }) => {
                             <Checkbox
                                 name={option.value}
                                 onChange={onChange}
-                                checked={checkState[option.value]}
+                                checked={checked}
                                 size='small'
                             />
                         }
