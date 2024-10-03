@@ -1,45 +1,62 @@
 import { Grid, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton'
-import Menu from 'src/helpers/menu'
+import menu from 'src/helpers/menu'
 import styled from 'styled-components'
+import languages from 'src/constants/index'
 
 const ClimatePoliciesPages = () => {
-    const climateLabel = "Regional climate interest and commitment";
-    const governanceLabel = "Governance framework for climate change";
-    const initialState = {
+    console.log("------------------------------------",menu.countryOwnershipClimate)
+    const label = languages.en
 
+    const initialState = {
+        regional_climate: "",
+        governance_climate: "",
+        ownership_climate: ""
     };
+
     const [data, setData] = useState(initialState);
-    const climateOptions = Menu.regionalClimateInterest;
-    const governanceOption = Menu.governanceFrameworkClimate;
-    const handleChange = event => {
-        const {name, value} = event.target;
-        setData(event.target.value)// wrong
-    }
     console.log("======>>>>>>>>", data)
+
+    const handleChange = event => {
+        const { name, value } = event.target;
+        setData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+        console.log("Name => ", name + "Value => ", value)
+    }
     return (
-            <Grid container spacing={2} justifyContent="center">
-                {/* <StyledHeading fontSize="18px" textAlign="center" fontWeight="normal" margin="30px 0px 0px 0px">CLIMATE POLICIES MAINSTREAMING</StyledHeading> */}
-                <Grid item lg={12} md={12}>
-                    <CustomRadioButton
-                        name="project_viability"
-                        value={data.project_viability}
-                        values={Menu.regionalClimateInterest}
-                        label={climateLabel}
-                        onChange={handleChange}
-                    />
-                </Grid>
-                <Grid item lg={12} md={12}>
-                    <CustomRadioButton
-                        name="projectManagment"
-                        value={data}
-                        values={governanceOption}
-                        label={governanceLabel}
-                        onChange={handleChange}
-                    />
-                </Grid>
+        <Grid container spacing={2} justifyContent="center" padding="50px">
+            <StyledHeading fontSize="18px" textAlign="center" fontWeight="normal" margin="30px 0px 0px 0px">CLIMATE POLICIES MAINSTREAMING</StyledHeading>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="regional_climate"
+                    value={data.regional_climate}
+                    options={menu.regionalClimateInterest}
+                    label={label.regionalClimateInterestCommitment}
+                    onChange={handleChange}
+                />
             </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="governance_climate"
+                    value={data.governance_climate}
+                    options={menu.governanceFrameworkClimate}
+                    label={label.governanceFrameworkClimateChange}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="ownership_climate"
+                    value={data.ownership_climate}
+                    options={menu.countryOwnershipClimate}
+                    label={label.countryOwnershipClimateNarrative}
+                    onChange={handleChange}
+                />
+            </Grid>
+        </Grid>
     )
 }
 

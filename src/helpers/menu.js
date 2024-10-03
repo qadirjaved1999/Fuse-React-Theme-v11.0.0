@@ -10,7 +10,7 @@ const menu = {
     {label: labels.southernAfrica, value: "southern-africa"}
   ],
   //Sectoral Focus of Proposed Activity
-  transportProposedActivityCheckBox: [
+  transportProposedActivity: [
    {label: labels.roads, value: "roads"},
    {label: labels.aviation, value: "aviation"},
    {label: labels.maritimePorts, value: "maritime-ports"},
@@ -18,18 +18,18 @@ const menu = {
    {label: labels.multiModal, value: "multi-modal"},
   ],
 
-  energyProposedActivityCheckBox: [
+  energyProposedActivity: [
     {label: labels.powerGeneration, value: "power-generation"},
     {label: labels.powerTransmission, value: "power-transmission"},
     {label: labels.oilGas, value: "oil-gas"},
    ],
 
-   ictActivityCheckBox: [
+   ictActivity: [
     {label: labels.telecommunications, value: "telecommunications"},
     {label: labels.iT, value: "it"}
    ],
 
-   waterActivityCheckBox: [
+   waterActivity: [
      {label: labels.resourceManagement, value: "Resource-management"}
    ],
    //Regional climate interest and commitment
@@ -48,6 +48,22 @@ const menu = {
     {label: labels.allCountriesAdoptingPolicyFramework, value: "all-countries-adopting-policy-framework"},
     {label: labels.allCountriesAdoptingPolicyPlanning, value: "all-countries-adopting-policy-planning"},
     {label: labels.allCountriesAdoptingPolicyFinance, value: "all-countries-adopting-policy-finance"},
+    ],
+
+    countryOwnershipClimate: [
+      {label: labels.someCountriesNoNDE, value: "some-countries-no-nde"},
+      {label: labels.allCountriesEstablishedNDE, value: "all-countries-established-nde"},
+      {label: labels.coordinatedNDEWithProcesses, value: "coordinated-nde-with-processes"},
+      {label: labels.coordinatedNDEWithExperience, value: "coordinated-nde-with-experience"},
+      {label: labels.experiencedTechnicalAssistance, value: "experienced-technical-assistance"}
+    ],
+
+    climateInvestment: [
+      {label: labels.noPlansToEstablishNCCF, value: "no-plans-to-establish-nccf"},
+      {label: labels.planningToEstablishNCCF, value: "planning-to-establish-nccf"},
+      {label: labels.establishingNCCFWithGovernmentSupport, value: "establishing-nccf-with-government-support"},
+      {label: labels.establishedNCCFNotOperative, value: "established-nccf-not-operative"},
+      {label: labels.operativeNCCF, value: "operative-nccf"},
     ]
 }
 

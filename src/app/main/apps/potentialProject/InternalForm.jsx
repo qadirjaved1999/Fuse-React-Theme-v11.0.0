@@ -9,8 +9,9 @@ import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 import languages from 'src/constants/index';
 import { useState } from 'react';
 export default function InternalForm() {
+
+    // All Labls
     const label = languages.en;
-    console.log("****************************************>>>>>>>>>>>>>>>>>>",menu.geographicAreaProposedActivity)
     // Form Initial State
     const initialState = {   // use this naming structure for object because in DB use this structure
         organisation_name: '',
@@ -20,44 +21,41 @@ export default function InternalForm() {
         telephone: '',
         fax: '',
         email: '',
-
-        east_africa: '',
-        west_africa: '',
-        north_africa: '',
-        central_africa: '',
-        southern_africa: '',
-        roads: false,
-        aviation: false,
-        maritime_ports: false,
-        railways: false,
-        multi_modal: false,
-        power_generation: false,
-        power_transmission: false,
-        oil_gas: false,
-        telecommunications: false,
-        it: false,
-        resource_management: false
+        geographic_area: '',
+        sectoral_transport: [],
+        sectoral_energy: [],
+        sectoral_ict: [],
+        sectoral_water: []
     }
 
-    // Hold the Data
+    // Main State Hold the data from Radios CheckBoxs
     const [data, setData] = useState(initialState);
     console.log("Form data => ", data)
 
     // Form Handler Function handleInput
     const handleInput = e => {
         const { name, value, type, checked } = e.target;
+        console.log("1)name => ", name);
+        console.log("2)value => ", value);
+        console.log("3)type => ", type);
+        console.log("3)Checked => ", checked)
+
         if (type === 'checkbox') {
+            const updatedValues = checked
+                ? [...data[name], value]  // Add the checked value to the array
+                : data[name].filter((v) => v !== value);
+
             setData({
                 ...data,
-                [name]: checked
+                [name]: updatedValues
             });
-            console.log("Checkboxes Values => ",checked)
+            console.log("Checkboxes Values => ", checked)
         } else {
             setData({
                 ...data,
                 [name]: value
             });
-            console.log("input and radio values => " + name + " " + value)
+            console.log("input and radio values => " + "Name = " + name + ", " + "value = " + value)
         }
     }
     return (
@@ -87,7 +85,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6} lg={6}>
                         <CustomTextInput
                             label={label.contactPerson}
                             value={data.contact_person}
@@ -96,7 +94,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6} lg={6}>
                         <CustomTextInput
                             label={label.position}
                             value={data.position}
@@ -105,7 +103,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4} lg={4}>
                         <CustomTextInput
                             label={label.telephone}
                             value={data.telephone}
@@ -114,7 +112,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4} lg={4}>
                         <CustomTextInput
                             label={label.fax}
                             value={data.fax}
@@ -123,7 +121,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4} lg={4}>
                         <CustomTextInput
                             label={label.email}
                             value={data.email}
@@ -136,164 +134,68 @@ export default function InternalForm() {
 
                 {/* Radio Grid */}
                 <Grid container spacing={2} sx={{ paddingTop: "30px" }}>
-                    <Grid item >
+                    <Grid item xs={12}>
                         <CustomRadioButton
-                            name="east_africa"
-                            value={data.east_africa}
-                            label={label.geographicAreaProposedActivityLabel}
+                            name="geographic_area"
+                            value={data.geographic_area}
+                            label={label.geographicAreaProposedActivity}
                             options={menu.geographicAreaProposedActivity}
                             onChange={handleInput}
                             row={true}
                         />
                     </Grid>
-                    {/* <Grid item >
-                        <CustomRadioButton
-                            name="west_africa"
-                            value={data.west_africa}
-                            label={label.geographicAreaProposedActivityLabel}
-                            options={menu.geographicAreaProposedActivity}
-                            onChange={handleInput}
-                            row={true}
-                        />
-                    </Grid> */}
-                    {/* <Grid item >
-                        <CustomRadioButton
-                            name="north_africa"
-                            value={data.north_africa}
-                            label={label.geographicAreaProposedActivityLabel}
-                            options={menu.geographicAreaProposedActivity}
-                            onChange={handleInput}
-                            row={true}
-                        />
-                    </Grid> */}
-                    {/* <Grid item >
-                        <CustomRadioButton
-                            value={data.central_africa}
-                            label={label.geographicAreaProposedActivityLabel}
-                            options={menu.geographicAreaProposedActivity}
-                            onChange={handleInput}
-                            name="central_africa"
-                            row={true}
-                        />
-                    </Grid> */}
-                    {/* <Grid item >
-                        <CustomRadioButton
-                            value={data.southern_africa}
-                            label={label.geographicAreaProposedActivityLabel}
-                            options={menu.geographicAreaProposedActivity}
-                            onChange={handleInput}
-                            name="southern_africa"
-                            row={true}
-                        />
-                    </Grid> */}
                 </Grid>
 
                 <StyledHeading fontSize="18px" textAlign="left" fontWeight="normal" margin="10px 0px 0px 0px">
                     Sectoral Focus of Proposed Activity
                 </StyledHeading>
                 {/* CheckBox Grid */}
-                <Grid container spacing={15} sx={{ padding: '20px' }}>
-                    <Grid item>
-                        <Grid item>
+                <Grid container spacing={2} sx={{ padding: '20px' }}>
+                    <Grid item xs={12} md={3}>
+                        <Grid xs={12} md={3}>
                             <Typography variant="h6">Transport</Typography>
                         </Grid>
-                        <Grid item>
+                        <Grid xs={12} md={3}>
                             <Grid container>
-                                <Grid item>
+                                <Grid xs={12} md={3}>
                                     <CustomCheckBox
-                                        options={menu.transportProposedActivityCheckBox}
-                                        checked={data.roads}
-                                        name="roads"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.transportProposedActivityCheckBox}
-                                        checked={data.aviation}
-                                        name="aviation"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.transportProposedActivityCheckBox}
-                                        checked={data.maritime_ports}
-                                        name="maritime_ports"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.transportProposedActivityCheckBox}
-                                        checked={data.railways}
-                                        name="railways"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.transportProposedActivityCheckBox}
-                                        checked={data.multi_modal}
-                                        name="multi_modal"
+                                        options={menu.transportProposedActivity}
+                                        value={data.sectoral_transport}
+                                        name="sectoral_transport"
                                         onChange={handleInput}
                                     />
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item>
-                        <Grid item>
+                    <Grid item xs={12} md={3}>
+                        <Grid item xs={12} md={3}>
                             <Typography variant="h6">Energy</Typography>
                         </Grid>
-                        <Grid item>
+                        <Grid item xs={12} md={3}>
                             <Grid container>
-                                <Grid item>
+                                <Grid item xs={12} md={3}>
                                     <CustomCheckBox
-                                        options={menu.energyProposedActivityCheckBox}
-                                        checkState={data.power_generation}
-                                        name="power_generation"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.energyProposedActivityCheckBox}
-                                        checkState={data.power_transmission}
-                                        name="power_transmission"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.energyProposedActivityCheckBox}
-                                        checkState={data.oil_gas}
-                                        name="oil_gas"
+                                        options={menu.energyProposedActivity}
+                                        value={data.sectoral_energy}
+                                        name="sectoral_energy"
                                         onChange={handleInput}
                                     />
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item>
-                        <Grid item>
+                    <Grid item xs={12} md={3}>
+                        <Grid item xs={12} md={3}>
                             <Typography variant="h6">ICT</Typography>
                         </Grid>
-                        <Grid item>
+                        <Grid item xs={12} md={3}>
                             <Grid container>
-                                <Grid item>
+                                <Grid item xs={12} md={3}>
                                     <CustomCheckBox
-                                        options={menu.ictActivityCheckBox}
-                                        checkState={data.telecommunications}
-                                        name="telecommunications"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.ictActivityCheckBox}
-                                        checkState={data.it}
-                                        name="it"
+                                        options={menu.ictActivity}
+                                        value={data.sectoral_ict}
+                                        name="sectoral_ict"
                                         onChange={handleInput}
                                     />
                                 </Grid>
@@ -308,9 +210,9 @@ export default function InternalForm() {
                             <Grid container>
                                 <Grid item>
                                     <CustomCheckBox
-                                        options={menu.waterActivityCheckBox}
-                                        checkState={data.resource_management}
-                                        name="resource_management"
+                                        options={menu.waterActivity}
+                                        value={data.sectoral_water}
+                                        name="sectoral_water"
                                         onChange={handleInput}
                                     />
                                 </Grid>

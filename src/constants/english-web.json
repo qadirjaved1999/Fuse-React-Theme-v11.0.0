@@ -8,7 +8,7 @@
     "fax": "Fax",
     "email": "Email",
 
-    "geographicAreaProposedActivityLabel": "Geographic Area of Proposed Activity",
+    "geographicAreaProposedActivity": "Geographic Area of Proposed Activity",
     "eastAfrica": "East Africa",
     "westAfrica": "West Africa",
     "northAfrica": "North Africa",
@@ -27,16 +27,34 @@
     "iT": "IT",
     "resourceManagement" : "Resource Management",
 
-    "regionalClimateInterestCommitmentLabel": "Regional climate interest and commitment",
+    "regionalClimateInterestCommitment": "Regional climate interest and commitment",
     "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",
     "beneficiaryUpdatedNDC": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has updated its Nationally Determined Contribution (NDC) since 2015",
     "mainBeneficiaryNDCAligned": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has its NDC aligned with the project sector’s ",
     "allUpdatedNotAligned": "All the involved countries have joined the Paris Agreement, all have updated its NDC since 2015, but not all have its NDC aligned with the project sector’s",
     "allUpdatedAllAligned": "All the involved countries have joined the Paris Agreement, all have updated its NDC since 2015, and all have its NDC aligned with the project sector’s",
 
+
+    "governanceFrameworkClimateChange": "Governance framework for climate change",
     "someCountriesNotAdoptingPolicy": "Some of the involved countries have not adopted a national climate change policy nor are working on its development.",
     "allCountriesAdoptingPolicyDevelopment": "All of the countries involved have either adopted a national climate change policy/regulatory framework or are working on its development.",
     "allCountriesAdoptingPolicyFramework": "All of the countries involved have adopted a national climate change policy/regulatory framework.",
-    "allCountriesAdoptingPolicyPlanning ": "All of the countries involved have adopted a national climate change policy/regulatory framework, together with adaptation planning processes.",
-    "allCountriesAdoptingPolicyFinance": "All of the countries involved have adopted a national climate change policy/regulatory framework, together with adaptation planning processes, where climate finance is consistent with national policies."
+    "allCountriesAdoptingPolicyPlanning": "All of the countries involved have adopted a national climate change policy/regulatory framework, together with adaptation planning processes.",
+    "allCountriesAdoptingPolicyFinance": "All of the countries involved have adopted a national climate change policy/regulatory framework, together with adaptation planning processes, where climate finance is consistent with national policies.",
+
+    "countryOwnershipClimateNarrative":"Country ownership climate narrative",
+    "someCountriesNoNDE":"Some of the involved countries have not established an operative National Designated Entity (NDE)",
+    "allCountriesEstablishedNDE":"All the involved countries have established an operative National Designated Entity (NDE)",
+    "coordinatedNDEWithProcesses":"All the involved countries have established an operative National Designated Entity (NDE), which is coordinated at the national level with other processes that address climate change",
+    "coordinatedNDEWithExperience":"All the involved countries have established an operative National Designated Entity (NDE), which is coordinated at the national level with other processes that address climate change; and with experience in articulating climate change requests and proposals",
+    "experiencedTechnicalAssistance":"All the involved countries have established an operative National Designated Entity (NDE), which is coordinated at the national level with other processes that address climate change; and with experience in articulating climate change requests and proposals; and with experience in managing technical assistance requests",
+
+    "climateInvestmentHarmonization": "Climate investment landscape harmonization",
+    "noPlansToEstablishNCCF":"The main beneficiary country has no plans on establishing its own National Climate Change Fund (NCCF)",
+    "planningToEstablishNCCF":"The main beneficiary country is planning on establishing its own National Climate Change Fund (NCCF), supported by government commitment ",
+    "establishingNCCFWithGovernmentSupport":"The main beneficiary country has its own National Climate Change Fund (NCCF) currently being established, supported by government commitment",
+    "establishedNCCFNotOperative":"The main beneficiary country has its own National Climate Change Fund (NCCF) already established, but not yet operative",
+    "operativeNCCF":"The main beneficiary country has its own National Climate Change Fund (NCCF) already operative "
+        
+
 }
