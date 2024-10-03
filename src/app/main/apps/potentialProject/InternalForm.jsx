@@ -10,6 +10,7 @@ import languages from 'src/constants/index';
 import { useState } from 'react';
 export default function InternalForm() {
     const label = languages.en;
+    console.log("****************************************>>>>>>>>>>>>>>>>>>",menu.geographicAreaProposedActivity)
     // Form Initial State
     const initialState = {   // use this naming structure for object because in DB use this structure
         organisation_name: '',
@@ -50,11 +51,13 @@ export default function InternalForm() {
                 ...data,
                 [name]: checked
             });
+            console.log("Checkboxes Values => ",checked)
         } else {
             setData({
                 ...data,
                 [name]: value
             });
+            console.log("input and radio values => " + name + " " + value)
         }
     }
     return (
@@ -137,52 +140,52 @@ export default function InternalForm() {
                         <CustomRadioButton
                             name="east_africa"
                             value={data.east_africa}
+                            label={label.geographicAreaProposedActivityLabel}
                             options={menu.geographicAreaProposedActivity}
-                            label={menu.geographicAreaProposedActivity}
                             onChange={handleInput}
                             row={true}
                         />
                     </Grid>
-                    <Grid item >
+                    {/* <Grid item >
                         <CustomRadioButton
                             name="west_africa"
                             value={data.west_africa}
+                            label={label.geographicAreaProposedActivityLabel}
                             options={menu.geographicAreaProposedActivity}
-                            label={menu.geographicAreaProposedActivity}
                             onChange={handleInput}
                             row={true}
                         />
-                    </Grid>
-                    <Grid item >
+                    </Grid> */}
+                    {/* <Grid item >
                         <CustomRadioButton
                             name="north_africa"
                             value={data.north_africa}
+                            label={label.geographicAreaProposedActivityLabel}
                             options={menu.geographicAreaProposedActivity}
-                            label={menu.geographicAreaProposedActivity}
                             onChange={handleInput}
                             row={true}
                         />
-                    </Grid>
-                    <Grid item >
+                    </Grid> */}
+                    {/* <Grid item >
                         <CustomRadioButton
                             value={data.central_africa}
+                            label={label.geographicAreaProposedActivityLabel}
                             options={menu.geographicAreaProposedActivity}
-                            label={menu.geographicAreaProposedActivity}
                             onChange={handleInput}
                             name="central_africa"
                             row={true}
                         />
-                    </Grid>
-                    <Grid item >
+                    </Grid> */}
+                    {/* <Grid item >
                         <CustomRadioButton
                             value={data.southern_africa}
+                            label={label.geographicAreaProposedActivityLabel}
                             options={menu.geographicAreaProposedActivity}
-                            label={menu.geographicAreaProposedActivity}
                             onChange={handleInput}
                             name="southern_africa"
                             row={true}
                         />
-                    </Grid>
+                    </Grid> */}
                 </Grid>
 
                 <StyledHeading fontSize="18px" textAlign="left" fontWeight="normal" margin="10px 0px 0px 0px">

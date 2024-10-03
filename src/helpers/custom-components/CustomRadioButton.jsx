@@ -1,7 +1,8 @@
 import { FormControl } from '@mui/base'
 import { FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 
-const CustomRadioButton = ({name, value, options, label, onChange, row}) => {
+const CustomRadioButton = ({name, value, label, options, onChange, row}) => {
+  console.log("-----------------------------options",options)
   return (
     <FormControl component="fieldset">
       <FormLabel>{label}</FormLabel>
@@ -14,13 +15,14 @@ const CustomRadioButton = ({name, value, options, label, onChange, row}) => {
         {options.map((option, index) => (
           <FormControlLabel
             key={index}
+            control={<Radio />}
             value={option.value}
-            control={<Radio />} 
-            label={option.label} 
+            label={option.label}
           />
         ))}
       </RadioGroup>
     </FormControl>
+    
   )
 }
 
