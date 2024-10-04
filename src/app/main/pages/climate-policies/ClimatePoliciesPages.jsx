@@ -6,13 +6,18 @@ import styled from 'styled-components'
 import languages from 'src/constants/index'
 
 const ClimatePoliciesPages = () => {
-    console.log("------------------------------------",menu.countryOwnershipClimate)
-    const label = languages.en
 
+    const label = languages.en;
     const initialState = {
         regional_climate: "",
         governance_climate: "",
-        ownership_climate: ""
+        ownership_climate: "",
+        finance_climate: "",
+        hosting_Countries: "",
+        national_sustainability: "",
+        green_energy: "",
+        absolute_footprint: "",
+        relative_footprint: "" 
     };
 
     const [data, setData] = useState(initialState);
@@ -33,8 +38,8 @@ const ClimatePoliciesPages = () => {
                 <CustomRadioButton
                     name="regional_climate"
                     value={data.regional_climate}
-                    options={menu.regionalClimateInterest}
-                    label={label.regionalClimateInterestCommitment}
+                    options={menu.regionalClimate}
+                    label={label.regionalClimate}
                     onChange={handleChange}
                 />
             </Grid>
@@ -42,8 +47,8 @@ const ClimatePoliciesPages = () => {
                 <CustomRadioButton
                     name="governance_climate"
                     value={data.governance_climate}
-                    options={menu.governanceFrameworkClimate}
-                    label={label.governanceFrameworkClimateChange}
+                    options={menu.governanceClimate}
+                    label={label.governanceClimate}
                     onChange={handleChange}
                 />
             </Grid>
@@ -51,8 +56,62 @@ const ClimatePoliciesPages = () => {
                 <CustomRadioButton
                     name="ownership_climate"
                     value={data.ownership_climate}
-                    options={menu.countryOwnershipClimate}
-                    label={label.countryOwnershipClimateNarrative}
+                    options={menu.ownershipClimate}
+                    label={label.ownershipClimate}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="ownership_climate"
+                    value={data.finance_climate}
+                    options={menu.financeClimate}
+                    label={label.financeClimate}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="hosting_Countries"
+                    value={data.hosting_Countries}
+                    options={menu.hostingCountries}
+                    label={label.hostingCountries}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="national_sustainability"
+                    value={data.national_sustainability}
+                    options={menu.nationalSustainability}
+                    label={label.nationalSustainability}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="green_energy"
+                    value={data.green_energy}
+                    options={menu.greenEnergy}
+                    label={label.greenEnergy}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="absolute_footprint"
+                    value={data.absolute_footprint}
+                    options={menu.absoluteFootprint}
+                    label={label.absoluteFootprint}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="relative_footprint"
+                    value={data.relative_footprint}
+                    options={menu.relativeFootprint}
+                    label={label.relativeFootprint}
                     onChange={handleChange}
                 />
             </Grid>
@@ -61,7 +120,6 @@ const ClimatePoliciesPages = () => {
 }
 
 export default ClimatePoliciesPages;
-
 
 // HEADINGS STYLE
 const StyledHeading = styled(Typography)(({ fontSize, padding, textAlign, margin }) => ({

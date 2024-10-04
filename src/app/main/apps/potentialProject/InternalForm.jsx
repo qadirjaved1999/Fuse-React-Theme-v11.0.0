@@ -138,8 +138,8 @@ export default function InternalForm() {
                         <CustomRadioButton
                             name="geographic_area"
                             value={data.geographic_area}
-                            label={label.geographicAreaProposedActivity}
-                            options={menu.geographicAreaProposedActivity}
+                            label={label.geographicArea}
+                            options={menu.geographicArea}
                             onChange={handleInput}
                             row={true}
                         />
@@ -159,7 +159,7 @@ export default function InternalForm() {
                             <Grid container>
                                 <Grid xs={12} md={3}>
                                     <CustomCheckBox
-                                        options={menu.transportProposedActivity}
+                                        options={menu.transportActivity}
                                         value={data.sectoral_transport}
                                         name="sectoral_transport"
                                         onChange={handleInput}
@@ -176,7 +176,7 @@ export default function InternalForm() {
                             <Grid container>
                                 <Grid item xs={12} md={3}>
                                     <CustomCheckBox
-                                        options={menu.energyProposedActivity}
+                                        options={menu.energyActivity}
                                         value={data.sectoral_energy}
                                         name="sectoral_energy"
                                         onChange={handleInput}
