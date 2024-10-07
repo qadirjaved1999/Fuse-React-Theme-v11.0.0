@@ -113,6 +113,62 @@ const menu = {
       {label: labels.relativeFootprint20kTo60k, value: "relative-footprint-20k-to-60k"},
       {label: labels.relativeFootprintBelow20k, value: "relative-footprint-below-20k"},
       {label: labels.relativeNoFootprintAssessment, value: "relative-no-footprint-assessment"},
+    ],
+    // Sustainable infrastructure operation potential
+    sustainablePotential: [
+     {label: labels.noClimatePositive, value: "no-climate-positive"},
+     {label: labels.climatePositive, value: "climate-positive"},
+     {label: labels.noFullyBasedRenewable, value: "no-fully-based-renewable"},
+     {label: labels.supplied50Renewable, value: "supplied-50-renewable"},
+     {label: labels.supplied75Renewable, value: "supplied-75-renewable"},
+    ],
+    // vulnerability Assessment
+    vulnerabilityAssessment: [
+     {label: labels.noInitialScreening, value: "no-initial-screening"},
+     {label: labels.initialScreening, value: "initial-screening"},
+     {label: labels.bothProjectType, value: "both-project-type"},
+     {label: labels.oneAnalysisCategorized, value: "one-analysis-categorized"},
+     {label: labels.bothAnalysisCategorized, value: "both-analysis-categorized"},
+    ],
+    // Climate risk assessment
+    riskClimate: [
+     {label: labels.noLikelihoodAnalysis, value: "no-like-lihood-analysis"},
+     {label: labels.likeLihoodAnalysis, value: "like-lihood-analysis"},
+     {label: labels.includedAppraising, value: "included-appraising"},
+     {label: labels.identifiedRespondingRisk, value: "identified-responding-risk"},
+     {label: labels.integratedAdaptationPlan, value: "integrated-adaptation-plan"},
+    ],
+    // Alignment with climate international goals and principles
+    internationalGoalsClimate: [
+     {label: labels.descriptionNotAligned, value: "description-not-aligned"},
+     {label: labels.descriptionAligned, value: "description-aligned"},
+     {label: labels.addressClimateChange, value: "address-climate-change"},
+     {label: labels.eitherMitigationMeasures, value: "either-mitigation-measures"},
+     {label: labels.bothMitigationMeasures, value: "both-mitigation-measures"}
+    ],
+    // Main issues to be addressed in the environmental assessment according to the Equator Principles
+    equatorPrinciples: [
+     {label: labels.below4Favorable, value: "below-4-favorable"},
+     {label: labels.btw4And5Favorable, value: "btw-4-And-5-favorable"},
+     {label: labels.btw6And7Favorable, value: "btw-6-And-7-favorable"},
+     {label: labels.btw8And9Favorable, value: "btw-8-And-9-favorable"},
+     {label: labels.btw10And11Favorable, value: "btw-10-And-11-favorable"}
+    ],
+    // Employment creation.
+    employmentCreation: [
+     {label: labels.notEstimated, value: "not-estimated"},
+     {label: labels.initialEstimation, value: "initial-estimation"},
+     {label: labels.directIndirect, value: "direct-indirect"},
+     {label: labels.eitherWomenYouth, value: "either-women-youth"},
+     {label: labels.bothWomenYouth, value: "both-women-youth"}
+    ], 
+    // Intra African trade and industrialization impact
+    africanTrade: [
+     {label: labels.descriptionNotInclude, value: "description-not-include"},
+     {label: labels.descriptionInclude, value: "description-include"},
+     {label: labels.bothIntraAfricanTrade, value: "both-intra-african-trade"},
+     {label: labels.ocioEconomicEitherAfricanTrade, value: "ocio-economic-either-african-trade"},
+     {label: labels.ocioEconomicBothAfricanTrade, value: "ocio-economic-both-african-trade"}
     ]
 }
 

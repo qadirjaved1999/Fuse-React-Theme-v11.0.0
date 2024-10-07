@@ -12,12 +12,20 @@ const ClimatePoliciesPages = () => {
         regional_climate: "",
         governance_climate: "",
         ownership_climate: "",
+        harmonization_climate: "",
         finance_climate: "",
         hosting_Countries: "",
         national_sustainability: "",
         green_energy: "",
         absolute_footprint: "",
-        relative_footprint: "" 
+        relative_footprint: "",
+        sustainable_potential: "",
+        vulnerability_assessment: "",
+        risk_climate: "",
+        international_goals_climate: "",
+        equator_principles: "",
+        employment_creation: "",
+        african_trade: "",
     };
 
     const [data, setData] = useState(initialState);
@@ -63,7 +71,16 @@ const ClimatePoliciesPages = () => {
             </Grid>
             <Grid item lg={12}>
                 <CustomRadioButton
-                    name="ownership_climate"
+                    name="harmonization_climate"
+                    value={data.harmonization_climate}
+                    options={menu.harmonizationClimate}
+                    label={label.harmonizationClimate}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="finance_climate"
                     value={data.finance_climate}
                     options={menu.financeClimate}
                     label={label.financeClimate}
@@ -112,6 +129,69 @@ const ClimatePoliciesPages = () => {
                     value={data.relative_footprint}
                     options={menu.relativeFootprint}
                     label={label.relativeFootprint}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="sustainable_potential"
+                    value={data.sustainable_potential}
+                    options={menu.sustainablePotential}
+                    label={label.sustainablePotential}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="vulnerability_assessment"
+                    value={data.vulnerability_assessment}
+                    options={menu.vulnerabilityAssessment}
+                    label={label.vulnerabilityAssessment}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="risk_climate"
+                    value={data.risk_climate}
+                    options={menu.riskClimate}
+                    label={label.riskClimate}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="international_goals_climate"
+                    value={data.international_goals_climate}
+                    options={menu.internationalGoalsClimate}
+                    label={label.internationalGoalsClimate}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="equator_principles"
+                    value={data.equator_principles}
+                    options={menu.equatorPrinciples}
+                    label={label.equatorPrinciples}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="employment_creation"
+                    value={data.employment_creation}
+                    options={menu.employmentCreation}
+                    label={label.employmentCreation}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item lg={12}>
+                <CustomRadioButton
+                    name="african_trade"
+                    value={data.african_trade}
+                    options={menu.africanTrade}
+                    label={label.africanTrade}
                     onChange={handleChange}
                 />
             </Grid>
