@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormControlLabel, Grid, Typography, Container } from '@mui/material';
+import { FormControlLabel, Grid, Typography, Container, Divider } from '@mui/material';
 import { styled } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import menu from 'src/helpers/menu';
@@ -8,6 +8,7 @@ import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 import languages from 'src/constants/index';
 import { useState } from 'react';
+import { Box } from '@mui/system';
 export default function InternalForm() {
 
     // All Labls
@@ -60,14 +61,15 @@ export default function InternalForm() {
     }
     return (
         <>
-            <Container maxWidth="1340px">
-                <StyledHeading>
-                    Giz Users Application Form
-                </StyledHeading>
+            <Container maxWidth="1240px">
+                <Box sx={{paddingBottom: "20px"}}>
+                    <Typography>Application Form</Typography>
+                    <Divider />
+                </Box>
 
                 {/* Form Grid */}
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
+                <Grid container spacing={2}>
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
                         <CustomTextInput
                             label={label.organizationName}
                             value={data.organisation_name}
@@ -76,16 +78,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={12}>
-                        <CustomTextInput
-                            label={label.address}
-                            value={data.address}
-                            name="address"
-                            type="text"
-                            onChange={handleInput}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={6}>
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
                         <CustomTextInput
                             label={label.contactPerson}
                             value={data.contact_person}
@@ -94,7 +87,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={12} md={6} lg={6}>
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
                         <CustomTextInput
                             label={label.position}
                             value={data.position}
@@ -103,7 +96,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4}>
+                    <Grid item lg={3} md={3} sm={3} xs={3}>
                         <CustomTextInput
                             label={label.telephone}
                             value={data.telephone}
@@ -112,7 +105,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4}>
+                    <Grid item xs={4} md={4} lg={4}>
                         <CustomTextInput
                             label={label.fax}
                             value={data.fax}
@@ -121,11 +114,20 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={12} md={4} lg={4}>
+                    <Grid item xs={4} md={4} lg={4}>
                         <CustomTextInput
                             label={label.email}
                             value={data.email}
                             name="email"
+                            type="text"
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    <Grid item xs={4} md={4} lg={4}>
+                        <CustomTextInput
+                            label={label.address}
+                            value={data.address}
+                            name="address"
                             type="text"
                             onChange={handleInput}
                         />

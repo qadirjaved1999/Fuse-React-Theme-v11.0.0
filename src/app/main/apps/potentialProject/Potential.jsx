@@ -1,31 +1,31 @@
 import InternalForm from './InternalForm';
-import FusePageSimple from '@fuse/core/FusePageSimple';
-import { useTranslation } from 'react-i18next';
+import FusePageCarded from '@fuse/core/FusePageCarded';
+import { Typography } from '@mui/material';
+// import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 
-const Root = styled(FusePageSimple)(({ theme }) => ({
-	'& .FusePageSimple-header': {
-		backgroundColor: theme.palette.background.paper,
-		borderBottomWidth: 1,
-		borderStyle: 'solid',
-		borderColor: theme.palette.divider
+const Root = styled(FusePageCarded)({
+	"& .FusePageCarded-contentCard": { marginTop: "185px" },
+	"& .FusePageCarded-contentWrapper": { padding: "0px" },
+	"& .FusePageCarded-topBg + div.flex.container": {
+		maxWidth: "100% !important;",
 	},
-	'& .FusePageSimple-content': {
-		maxWidth: '90%', // Increase this value to change width
-        margin: '0 auto', // Center the content horizontally
-	},
-	'& .FusePageSimple-sidebarHeader': {},
-	'& .FusePageSimple-sidebarContent': {}
-}));
+});
 
 function Potential() {
-	const { t } = useTranslation('potentialPage');
+	// const { t } = useTranslation('potentialPage');
 	return (
 		<Root
 			header={
 				<div className="p-24">
-					<h4>{t('TITLE')}</h4>
+					<h4>GIZ SDM Project</h4>
 				</div>
+			}
+			contentToolbar={
+				<>
+					<Typography>Hellow World</Typography>
+				</>
+
 			}
 			content={
 				<div className="p-24">
