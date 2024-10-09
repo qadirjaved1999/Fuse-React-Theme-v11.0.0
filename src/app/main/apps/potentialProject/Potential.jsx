@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 
 const Root = styled(FusePageCarded)({
 	"& .FusePageCarded-contentCard": { marginTop: "185px" },
-	"& .FusePageCarded-contentWrapper": { padding: "0px" },
+	"& .FusePageCarded-contentWrapper": { padding: "10px" },
 	"& .FusePageCarded-topBg + div.flex.container": {
 		maxWidth: "100% !important;",
 	},
@@ -15,15 +15,15 @@ const Root = styled(FusePageCarded)({
 function Potential() {
 	// const { t } = useTranslation('potentialPage');
 	return (
-		<Root
-			header={
-				<div className="p-24">
-					<h4>GIZ SDM Project</h4>
-				</div>
-			}
+		<Root sx={{marginTop: "50px"}}
+			// header={
+			// 	<div className="p-24">
+			// 		<h4>GIZ SDM Project</h4>
+			// 	</div>
+			// }
 			contentToolbar={
 				<>
-					<Typography>Hellow World</Typography>
+					<Typography>Application Form</Typography>
 				</>
 
 			}

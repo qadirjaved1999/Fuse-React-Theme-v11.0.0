@@ -62,11 +62,7 @@ export default function InternalForm() {
     return (
         <>
             <Container maxWidth="1240px">
-                <Box sx={{paddingBottom: "20px"}}>
-                    <Typography>Application Form</Typography>
-                    <Divider />
-                </Box>
-
+                <Typography sx={{paddingBottom: "30px", fontWeight: "bold", fontSize: "15px"}}>Application Form</Typography>
                 {/* Form Grid */}
                 <Grid container spacing={2}>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -83,7 +79,6 @@ export default function InternalForm() {
                             label={label.contactPerson}
                             value={data.contact_person}
                             name="contact_person"
-                            type="number"
                             onChange={handleInput}
                         />
                     </Grid>
@@ -92,7 +87,6 @@ export default function InternalForm() {
                             label={label.position}
                             value={data.position}
                             name="position"
-                            type="text"
                             onChange={handleInput}
                         />
                     </Grid>
@@ -101,7 +95,7 @@ export default function InternalForm() {
                             label={label.telephone}
                             value={data.telephone}
                             name="telephone"
-                            type="number"
+                            type="tel"
                             onChange={handleInput}
                         />
                     </Grid>
@@ -110,7 +104,7 @@ export default function InternalForm() {
                             label={label.fax}
                             value={data.fax}
                             name="fax"
-                            type="text"
+                            type="number"
                             onChange={handleInput}
                         />
                     </Grid>
@@ -119,7 +113,7 @@ export default function InternalForm() {
                             label={label.email}
                             value={data.email}
                             name="email"
-                            type="text"
+                            type="email"
                             onChange={handleInput}
                         />
                     </Grid>
@@ -128,7 +122,6 @@ export default function InternalForm() {
                             label={label.address}
                             value={data.address}
                             name="address"
-                            type="text"
                             onChange={handleInput}
                         />
                     </Grid>

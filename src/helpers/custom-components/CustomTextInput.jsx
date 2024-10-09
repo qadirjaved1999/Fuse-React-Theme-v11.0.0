@@ -10,7 +10,7 @@ const CustomTextInput = ({label, value, name, type, onChange }) => {
       onChange={onChange}
       required
       fullWidth
-      type={type}
+      type={type ? type : "text"}
       variant="outlined"
       size="small"
       minRows={3}
