@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormControlLabel, Grid, Typography, Container, Divider } from '@mui/material';
+import { FormControlLabel, Grid, Typography, Container, Divider, TextField } from '@mui/material';
 import { styled } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import menu from 'src/helpers/menu';
@@ -8,7 +8,7 @@ import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 import languages from 'src/constants/index';
 import { useState } from 'react';
-import { Box } from '@mui/system';
+import { Box, fontSize, fontWeight } from '@mui/system';
 export default function InternalForm() {
 
     // All Labls
@@ -26,21 +26,26 @@ export default function InternalForm() {
         sectoral_transport: [],
         sectoral_energy: [],
         sectoral_ict: [],
-        sectoral_water: []
+        sectoral_water: [],
+        project_eligibility: '',
+        infrastructure_project: '',
+        priority_action_project: '',
+        proposed_activity: [],
+        other_advisory_services: [],
+        project_description: '',
+        key_objectives_desc: '',
+        previous_request_sdm: []
     }
-
+    // previousRequestSDM
     // Main State Hold the data from Radios CheckBoxs
     const [data, setData] = useState(initialState);
-    console.log("Form data => ", data)
+    const [selectedPriorityAction, setSelectedPriorityAction] = useState(data.infrastructure_project);
+    const [previousRequestSDM, setPreviousRequestSDM] = useState(data.previous_request_sdm);
+
 
     // Form Handler Function handleInput
     const handleInput = e => {
         const { name, value, type, checked } = e.target;
-        console.log("1)name => ", name);
-        console.log("2)value => ", value);
-        console.log("3)type => ", type);
-        console.log("3)Checked => ", checked)
-
         if (type === 'checkbox') {
             const updatedValues = checked
                 ? [...data[name], value]  // Add the checked value to the array
@@ -58,12 +63,18 @@ export default function InternalForm() {
             });
             console.log("input and radio values => " + "Name = " + name + ", " + "value = " + value)
         }
+        if (name === 'infrastructure_project') {
+            setSelectedPriorityAction(value);
+        }
+        if (name === 'previous_request_sdm') {
+            setPreviousRequestSDM(value);
+        }
     }
     return (
         <>
             <Container maxWidth="1240px">
-                <Typography sx={{paddingBottom: "30px", fontWeight: "bold", fontSize: "15px"}}>Application Form</Typography>
-                {/* Form Grid */}
+                <Typography sx={{ paddingBottom: "30px", fontWeight: "bold", fontSize: "15px" }}>{label.annexForm}</Typography>
+                {/* Form */}
                 <Grid container spacing={2}>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
                         <CustomTextInput
@@ -99,7 +110,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={4} md={4} lg={4}>
+                    <Grid item xs={3} md={3} lg={3}>
                         <CustomTextInput
                             label={label.fax}
                             value={data.fax}
@@ -108,7 +119,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={4} md={4} lg={4}>
+                    <Grid item xs={3} md={3} lg={3}>
                         <CustomTextInput
                             label={label.email}
                             value={data.email}
@@ -117,7 +128,7 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                    <Grid item xs={4} md={4} lg={4}>
+                    <Grid item xs={6} md={6} lg={6}>
                         <CustomTextInput
                             label={label.address}
                             value={data.address}
@@ -125,10 +136,8 @@ export default function InternalForm() {
                             onChange={handleInput}
                         />
                     </Grid>
-                </Grid>
 
-                {/* Radio Grid */}
-                <Grid container spacing={2} sx={{ paddingTop: "30px" }}>
+                    {/* Radio */}
                     <Grid item xs={12}>
                         <CustomRadioButton
                             name="geographic_area"
@@ -137,84 +146,195 @@ export default function InternalForm() {
                             options={menu.geographicArea}
                             onChange={handleInput}
                             row={true}
+                            labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
                         />
                     </Grid>
-                </Grid>
-
-                <StyledHeading fontSize="18px" textAlign="left" fontWeight="normal" margin="10px 0px 0px 0px">
-                    Sectoral Focus of Proposed Activity
-                </StyledHeading>
-                {/* CheckBox Grid */}
-                <Grid container spacing={2} sx={{ padding: '20px' }}>
-                    <Grid item xs={12} md={3}>
-                        <Grid xs={12} md={3}>
-                            <Typography variant="h6">Transport</Typography>
-                        </Grid>
-                        <Grid xs={12} md={3}>
-                            <Grid container>
-                                <Grid xs={12} md={3}>
-                                    <CustomCheckBox
-                                        options={menu.transportActivity}
-                                        value={data.sectoral_transport}
-                                        name="sectoral_transport"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                    <br />
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <StyledHeading fontSize="18px" textAlign="left" fontWeight="normal" margin="10px 0px 0px 0px">
+                            {label.sectoralFocus}
+                        </StyledHeading>
                     </Grid>
-                    <Grid item xs={12} md={3}>
-                        <Grid item xs={12} md={3}>
-                            <Typography variant="h6">Energy</Typography>
-                        </Grid>
-                        <Grid item xs={12} md={3}>
-                            <Grid container>
-                                <Grid item xs={12} md={3}>
-                                    <CustomCheckBox
-                                        options={menu.energyActivity}
-                                        value={data.sectoral_energy}
-                                        name="sectoral_energy"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                    {/* CheckBox */}
+                    <Grid item xs={6} sm={6} md={3} lg={3}>
+                        <Typography variant="h6">{label.transport}</Typography>
+                        <CustomCheckBox
+                            options={menu.transportActivity}
+                            value={data.sectoral_transport}
+                            name="sectoral_transport"
+                            onChange={handleInput}
+                        />
                     </Grid>
-                    <Grid item xs={12} md={3}>
-                        <Grid item xs={12} md={3}>
-                            <Typography variant="h6">ICT</Typography>
-                        </Grid>
-                        <Grid item xs={12} md={3}>
-                            <Grid container>
-                                <Grid item xs={12} md={3}>
-                                    <CustomCheckBox
-                                        options={menu.ictActivity}
-                                        value={data.sectoral_ict}
-                                        name="sectoral_ict"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                    {/* Energy */}
+                    <Grid item xs={6} sm={6} md={3} lg={3}>
+                        <Typography variant="h6">{label.energy}</Typography>
+                        <CustomCheckBox
+                            options={menu.energyActivity}
+                            value={data.sectoral_energy}
+                            name="sectoral_energy"
+                            onChange={handleInput}
+                        />
                     </Grid>
-                    <Grid item>
-                        <Grid item>
-                            <Typography variant="h6">Water</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Grid container>
-                                <Grid item>
-                                    <CustomCheckBox
-                                        options={menu.waterActivity}
-                                        value={data.sectoral_water}
-                                        name="sectoral_water"
-                                        onChange={handleInput}
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                    {/* ICT */}
+                    <Grid item xs={6} sm={6} md={3} lg={3}>
+                        <Typography variant="h6">{label.ict}</Typography>
+                        <CustomCheckBox
+                            options={menu.ictActivity}
+                            value={data.sectoral_ict}
+                            name="sectoral_ict"
+                            onChange={handleInput}
+                        />
                     </Grid>
-
+                    {/* Water */}
+                    <Grid item xs={6} sm={6} md={3} lg={3}>
+                        <Typography variant="h6">{label.water}</Typography>
+                        <CustomCheckBox
+                            options={menu.waterActivity}
+                            value={data.sectoral_water}
+                            name="sectoral_water"
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    {/* Project Eligibility */}
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="h6" sx={{ paddingBottom: "20px" }}>{label.projectEligibility}</Typography>
+                        <CustomRadioButton
+                            name="project_eligibility"
+                            value={data.project_eligibility}
+                            label={label.specifyRequest}
+                            options={menu.projectEligibility}
+                            onChange={handleInput}
+                            row={false}
+                            labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <CustomRadioButton
+                            name="infrastructure_project"
+                            value={data.infrastructure_project}
+                            label={label.infrastructureProject}
+                            options={menu.infrastructureProject}
+                            onChange={handleInput}
+                            row={true}
+                            labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                        />
+                    </Grid>
+                    {selectedPriorityAction === 'yes' && (
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <CustomTextInput
+                                name="priority_action_project"
+                                value={data.priority_action_project}
+                                label={label.priorityActionProjectNo}
+                                type="text"
+                                onChange={handleInput}
+                            />
+                        </Grid>
+                    )}
+                    {selectedPriorityAction === 'yes' && (
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <CustomTextInput
+                                name="priority_action_project"
+                                value={data.priority_action_project}
+                                label={label.priorityActionProjectName}
+                                type="text"
+                                onChange={handleInput}
+                            />
+                        </Grid>
+                    )}
+                    {selectedPriorityAction === 'no' && (
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <CustomRadioButton
+                                name="infrastructure_project"
+                                value={data.infrastructure_project}
+                                label={label.regionalPriorityInf}
+                                options={menu.infrastructureProject}
+                                onChange={handleInput}
+                                row={true}
+                                labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                            />
+                        </Grid>
+                    )}
+                    <br />
+                    {selectedPriorityAction === 'no' && (
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <CustomRadioButton
+                                name="infrastructure_project"
+                                value={data.infrastructure_project}
+                                label={label.priorityRegionalimpact}
+                                options={menu.infrastructureProject}
+                                onChange={handleInput}
+                                row={true}
+                                labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                            />
+                        </Grid>
+                    )}
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="h6">{label.proposedActivity}</Typography>
+                        <CustomCheckBox
+                            name="proposed_activity"
+                            value={data.proposed_activity}
+                            options={menu.proposedActivity}
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        {data.proposed_activity.includes("other-advisory-services") && (
+                            <CustomCheckBox
+                                name="other_advisory_services"
+                                value={data.other_advisory_services}
+                                options={menu.otherAdvisoryServices}
+                                onChange={handleInput}
+                            />
+                        )}
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="h6" sx={{ paddingBottom: "10px" }}>{label.detailsProposedActivity}</Typography>
+                        <TextField
+                            name="project_description"
+                            value={data.project_description}
+                            label={label.projectDescription}
+                            onChange={handleInput}
+                            multiline
+                            rows={2}
+                            variant="outlined"
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="h6" sx={{ paddingBottom: "10px" }}>{label.keyObjectives}</Typography>
+                        <TextField
+                            name="key_objectives_desc"
+                            value={data.key_objectives_desc}
+                            label={label.currentStatus}
+                            onChange={handleInput}
+                            multiline
+                            rows={4}
+                            variant="outlined"
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="h6">{label.previousRequestSDM}</Typography>
+                        <CustomRadioButton
+                            name="previous_request_sdm"
+                            value={data.previous_request_sdm}
+                            label={label.previousRequestSDM}
+                            options={menu.previousRequestSDM}
+                            onChange={handleInput}
+                            row={true}
+                            labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                        />
+                    </Grid>
+                    {previousRequestSDM === 'no' && (
+                        <Grid item xs={12} md={12} lg={12}>
+                            <CustomTextInput
+                                label={label.address}
+                                value={data.address}
+                                name="address"
+                                onChange={handleInput}
+                            />
+                        </Grid>
+                    )}
                 </Grid>
             </Container>
         </>
@@ -228,6 +348,6 @@ const StyledHeading = styled(Typography)(({ fontSize, padding, textAlign, margin
     fontWeight: '700',
     fontFamily: 'Roboto, Arial, sans-serif',
     margin: margin || '20px 0 0 0',
-    padding: padding || '10px',
+    padding: padding || '0px',
     textAlign: textAlign || 'center',
 }));

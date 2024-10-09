@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 
 
-const CustomTextInput = ({label, value, name, type, onChange }) => {
+const CustomTextInput = ({ label, value, name, type, onChange }) => {
   return (
     <TextField
       label={label}
@@ -10,12 +10,12 @@ const CustomTextInput = ({label, value, name, type, onChange }) => {
       onChange={onChange}
       required
       fullWidth
-      type={type ? type : "text"}
+      type={type || "text"}
       variant="outlined"
       size="small"
       minRows={3}
       maxRows={1000}
-      // disabled={props.disabled || props.disabled == "true"}
+    // disabled={props.disabled || props.disabled == "true"}
     />
   );
 };

@@ -1,4 +1,5 @@
 {
+  "annexForm":"Application Form",
   "organizationName": "Organization name",
   "address": "Address",
   "contactPerson": "Contact person",
@@ -12,21 +13,66 @@
   "northAfrica": "North Africa",
   "centralAfrica": "Central Africa ",
   "southernAfrica": "Southern Africa ",
+
+  "sectoralFocus":"Sectoral Focus of Proposed Activity",
+
   "transport": "Transport",
   "roads": "Roads",
   "aviation": "Aviation",
   "maritimePorts": "Maritime/Ports",
   "railways": "Railways",
   "multiModal": "Multi-Modal",
+
   "energy": "Energy",
   "powerGeneration": "Power Generation",
   "powerTransmission": "Power Transmission",
   "oilGas": "Oil & Gas",
+
   "ict": "ICT",
   "telecommunications": "Telecommunications",
   "iT": "IT",
+
   "water": "Water",
   "resourceManagement": "Resource Management",
+  
+  "projectEligibility":"Project Eligibility",
+  "specifyRequest":"Specify origin of the request",
+  "regionalEconomic":"Regional Economic Community (REC) ",
+  "specializedRegional":"Specialized Regional Infrastructure Development Institution (SRIDI)",
+  "memberState":"Member State",
+  "specifyOther":"Other, if so specify",
+
+  "infrastructureProject":"Is the Infrastructure Project within the PIDA Priority Action Plan",
+  "yes":"Yes",
+  "no":"No",
+
+  "regionalPriorityInf":"If so, is the project a Regional Priority Infrastructure Project?",
+
+  "priorityRegionalimpact":"Is the project a Country Priority Infrastructure Project with regional impact?",
+
+  "priorityActionProjectNo":"Project No./ID",
+  "priorityActionProjectName":"Project name",
+
+  "proposedActivity":"Proposed Activity",
+  "supportPreparationFacility":"Support to application to Project Preparation Facility",
+  "otherAdvisoryServices":"Other Advisory Services",
+
+  "projectInvestAbility":"Project Invest ability Assessment and Advisory to ensure that project design is acceptable to targeted providers of public and/or private capital",
+  "developmentImpact":"Development Impact, Stakeholder Mapping, Job Creation Toolkit, and Advisory to maximize development impact and estimate the total job creation (direct, indirect, induced, secondary) resulting from infrastructure projects, including the testing of alternative project designs to maximize African employment and local content",
+  "crossBorderHarmonization":"Cross-Border Harmonization Support to enable viable project operation across two or more countries by aligning regulatory, legal, procurement, and institutional framework",
+  "ongoingProjectManagement":"Ongoing Project Management and Tracking to accelerate the project development project against a concrete project development timeline and benchmarks to enable dynamic reporting to project sponsors, host government senior leadership, and stakeholders",
+  "projectDiagnostics":"PIDA Project Diagnostics and Solutions to assess PIDA Projects that have stalled, identifying bottlenecks and possible solutions for consideration of the project sponsors, with implementation of remedial actions as appropriate",
+
+  "detailsProposedActivity":"DETAILS OF THE PROPOSED ACTIVITY",
+  "projectDescription":"Description of the project",
+  "keyObjectives":"Key Objectives of Activity",
+  "currentStatus":"Current status of the project, main bottlenecks if any and key objectives of the proposed advisory services.",
+
+
+  "previousRequestSDM":"Previous request to SDM",
+  "requestingAdvisoryServices":"Is it the first time that you are requesting advisory services from SDM for this project?",
+
+
   "regionalClimate": "Regional climate interest and commitment",
   "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",
   "beneficiaryNDC": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has updated its Nationally Determined Contribution (NDC) since 2015",
