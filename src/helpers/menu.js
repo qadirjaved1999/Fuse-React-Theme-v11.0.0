@@ -63,11 +63,18 @@ const menu = {
     {label: labels.ongoingProjectManagement, value: "ongoing-project-management"},
     {label: labels.projectDiagnostics, value: "project-diagnostics"}
   ],
+  
   // Previous request to SDM
   previousRequestSDM: [
     {label: labels.yes, value: "yes"},
     {label: labels.no, value: "no"}
   ],
+
+  additionalInformation: [
+   {label: labels.evidencePrioritization, value: "evidence-prioritization"},
+   {label: labels.mandateApproval, value: "mandate-approval"}
+  ],
+
   //Regional climate interest and commitment
   regionalClimate: [
     { label: labels.countriesNotInParis, value: "countries-not-in-paris" },

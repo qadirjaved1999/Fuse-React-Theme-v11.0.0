@@ -79,11 +79,11 @@ const navigationConfig = [
 		translate: 'APPLICATIONS',
 		children: [
       {
-        id: 'Potential-Projects', // new
-        title: 'Potential Projects',
+        id: 'application-form',
+        title: 'Application Form',
         type: 'item',
         icon: 'heroicons-outline:briefcase',
-        url: '/potential',
+        url: '/application-form',
       },
       {
         id: 'working-project',
@@ -146,11 +146,11 @@ const navigationConfig = [
 		icon: 'heroicons-outline:document',
 		children: [
       {
-        id: 'climate-policies',
-            title: 'Climate Policies',
+        id: 'green-data-sheet',
+            title: 'GDS',
             type: 'item',
             icon: 'heroicons-outline:document',
-            url: '/giz/climate-policies',
+            url: '/gds',
       }
     ]
   }

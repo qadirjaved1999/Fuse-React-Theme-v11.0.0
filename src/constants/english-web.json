@@ -72,6 +72,19 @@
   "previousRequestSDM":"Previous request to SDM",
   "requestingAdvisoryServices":"Is it the first time that you are requesting advisory services from SDM for this project?",
 
+  "referenceCode:":"Reference Code",
+  "authorityAgency":"Details of the Authority/Agency/Institution in charge of the coordination and implementation of the assistance provided by SDM",
+  "responsibleOfficial":"Name of responsible official",
+  "OrganizationAgency":"Organization/Agency/Institution:",
+
+  "implementationSchedule":"Implementation Schedule",
+  "anticipatedDuration":"Indicate the anticipated duration and main activity milestones of the project",
+
+  "additionalInformation":"ADDITIONAL INFORMATION",
+  "finalAttachedDocuments":"Final check of attached documents",
+  "evidencePrioritization":"Evidence of prioritization of project within REC",
+  "mandateApproval":"Evidence of prioritization of project within Country level with REC level mandate/approval",
+
 
   "regionalClimate": "Regional climate interest and commitment",
   "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",

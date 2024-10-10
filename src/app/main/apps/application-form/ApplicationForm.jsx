@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { FormControlLabel, Grid, Typography, Container, Divider, TextField } from '@mui/material';
+import { Grid, Typography, Container, TextField } from '@mui/material';
 import { styled } from '@mui/material';
-import Checkbox from '@mui/material/Checkbox';
 import menu from 'src/helpers/menu';
 import CustomTextInput from 'src/helpers/custom-components/CustomTextInput';
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 import languages from 'src/constants/index';
 import { useState } from 'react';
-import { Box, fontSize, fontWeight } from '@mui/system';
-export default function InternalForm() {
+export default function ApplicationForm() {
 
     // All Labls
     const label = languages.en;
@@ -23,6 +21,7 @@ export default function InternalForm() {
         fax: '',
         email: '',
         geographic_area: '',
+        reference_code: '',
         sectoral_transport: [],
         sectoral_energy: [],
         sectoral_ict: [],
@@ -34,9 +33,12 @@ export default function InternalForm() {
         other_advisory_services: [],
         project_description: '',
         key_objectives_desc: '',
-        previous_request_sdm: []
+        previous_request_sdm: [],
+        responsible_official: '',
+        organization_agency: '',
+        implementation_schedule: '',
+        additional_information: []
     }
-    // previousRequestSDM
     // Main State Hold the data from Radios CheckBoxs
     const [data, setData] = useState(initialState);
     const [selectedPriorityAction, setSelectedPriorityAction] = useState(data.infrastructure_project);
@@ -328,13 +330,83 @@ export default function InternalForm() {
                     {previousRequestSDM === 'no' && (
                         <Grid item xs={12} md={12} lg={12}>
                             <CustomTextInput
-                                label={label.address}
-                                value={data.address}
-                                name="address"
+                                label={label['referenceCode:']}
+                                value={data.reference_code}
+                                name="reference_code"
                                 onChange={handleInput}
                             />
                         </Grid>
                     )}
+                    <Grid item xs={12} md={12} lg={12}>
+                        <Typography variant="h6">{label.authorityAgency}</Typography>
+                    </Grid>
+                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                        <CustomTextInput
+                            label={label.responsibleOfficial}
+                            value={data.responsible_official}
+                            name="responsible_official"
+                            type="text"
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                        <CustomTextInput
+                            label={label.OrganizationAgency}
+                            value={data.organization_agency}
+                            name="organization_agency"
+                            type="text"
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                        <CustomTextInput
+                            label={label.position}
+                            value={data.position}
+                            name="position"
+                            type="text"
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                        <CustomTextInput
+                            label={label.telephone}
+                            value={data.telephone}
+                            name="telephone"
+                            type="tel"
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    <Grid item lg={4} md={4} sm={4} xs={4}>
+                        <CustomTextInput
+                            label={label.email}
+                            value={data.email}
+                            name="email"
+                            type="email"
+                            onChange={handleInput}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="h6" sx={{ paddingBottom: "10px" }}>{label.implementationSchedule}</Typography>
+                        <TextField
+                            name="implementation_schedule"
+                            value={data.implementation_schedule}
+                            label={label.anticipatedDuration}
+                            onChange={handleInput}
+                            multiline
+                            rows={4}
+                            variant="outlined"
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <Typography variant="h6">{label.additionalInformation}</Typography>
+                        <CustomCheckBox
+                            options={menu.additionalInformation}
+                            value={data.additional_information}
+                            name="additional_information"
+                            onChange={handleInput}
+                        />
+                    </Grid>
                 </Grid>
             </Container>
         </>
