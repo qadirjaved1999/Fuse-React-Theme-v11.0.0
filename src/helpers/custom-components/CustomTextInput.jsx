@@ -1,14 +1,15 @@
 import { TextField } from "@mui/material";
 
 
-const CustomTextInput = ({ label, value, name, type, onChange }) => {
+const CustomTextInput = ({ label, value, name, type, onChange, error, required }) => {
   return (
     <TextField
+      error={error}
       label={label}
       name={name}
       value={value}
       onChange={onChange}
-      required
+      required={required}
       fullWidth
       type={type || "text"}
       variant="outlined"
