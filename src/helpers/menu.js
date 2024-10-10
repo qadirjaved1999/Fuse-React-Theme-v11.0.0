@@ -74,7 +74,10 @@ const menu = {
    {label: labels.evidencePrioritization, value: "evidence-prioritization"},
    {label: labels.mandateApproval, value: "mandate-approval"}
   ],
-
+  // Internal Evaluation Form
+  internalEvaluation: [
+   {label: labels.internalReferenceCode, value: "internal-reference-code"}
+  ],
   //Regional climate interest and commitment
   regionalClimate: [
     { label: labels.countriesNotInParis, value: "countries-not-in-paris" },

@@ -85,6 +85,9 @@
   "evidencePrioritization":"Evidence of prioritization of project within REC",
   "mandateApproval":"Evidence of prioritization of project within Country level with REC level mandate/approval",
 
+  "internalEvaluation":"FOR INTERNAL EVALUATION USE ONLY",
+  "internalReferenceCode":"Reference Code",
+
 
   "regionalClimate": "Regional climate interest and commitment",
   "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",

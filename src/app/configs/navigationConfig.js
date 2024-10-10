@@ -151,6 +151,13 @@ const navigationConfig = [
             type: 'item',
             icon: 'heroicons-outline:document',
             url: '/gds',
+      },
+      {
+        id: 'internal-evaluation-form',
+            title: 'Internal Evaluation Form',
+            type: 'item',
+            icon: 'heroicons-outline:star',
+            url: '/internal-evaluation-form',
       }
     ]
   }
