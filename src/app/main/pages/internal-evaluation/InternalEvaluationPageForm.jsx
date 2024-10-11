@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material';
 import React, { useState } from 'react'
-import CustomTextInput from 'src/helpers/custom-components/CustomTextInput';
-import languages from 'src/constants/index';
+import CustomInput from 'src/helpers/custom-components/CustomInput';
+import languages from 'src/labels/index';
 import menu from 'src/helpers/menu';
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 
@@ -33,7 +33,7 @@ const InternalEvaluationPageForm = () => {
                 <Typography sx={{ padding: "10px 0px", fontWeight: "bold", fontSize: "15px" }}>{label.internalEvaluation}</Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomTextInput
+                <CustomIn
                     name="internal_reference_code"
                     value={data.internal_reference_code}
                     label={label.internalReferenceCode}
@@ -56,7 +56,7 @@ const InternalEvaluationPageForm = () => {
             </Grid>
             {otherSpecify === 'no' && (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <CustomTextInput
+                    <CustomInput
                         name="other_specify"
                         value={data.other_specify}
                         label={label.otherSpecify}

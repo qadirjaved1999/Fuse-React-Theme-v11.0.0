@@ -1,8 +1,9 @@
 import React from 'react'
 import FusePageCarded from '@fuse/core/FusePageCarded';
-import InternalEvaluationPageForm from './InternalEvaluationPageForm';
+import { Typography } from '@mui/material'
+import ProjectDataSheetAppForm from './ProjectDataSheetAppForm'
 import styled from 'styled-components';
-import { Typography } from '@mui/material';
+
 const Root = styled(FusePageCarded)({
     "& .FusePageCarded-contentCard": { marginTop: "185px" },
     "& .FusePageCarded-contentWrapper": { padding: "10px" },
@@ -10,20 +11,20 @@ const Root = styled(FusePageCarded)({
         maxWidth: "100% !important;",
     },
 });
-const InternalEvaluationPage = () => {
+const ProjectDataSheetApp = () => {
     return (
         <Root
             header={
-                <Typography style={{ padding: "20px 0px", fontWeight: "bold", fontSize: "15px" }}>Internal Evaluation Form</Typography>
+                <Typography style={{ padding: "20px 0px", fontWeight: "bold", fontSize: "15px" }}>Project Data Sheet</Typography>
             }
             contentToolbar={
-                <Typography>Internal Evaluation Form</Typography>
+                <Typography>Project Data Sheet</Typography>
             }
             content={
-                <InternalEvaluationPageForm />
+                <ProjectDataSheetAppForm />
             }
         />
     )
 }
 
-export default InternalEvaluationPage
+export default ProjectDataSheetApp

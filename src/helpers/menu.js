@@ -1,4 +1,4 @@
-import languages from '../constants/index'
+import languages from '../labels/index'
 const labels = languages.en
 const menu = {
   //Geographic Area of Proposed Activity
@@ -216,6 +216,18 @@ const menu = {
     { label: labels.bothIntraAfricanTrade, value: "both-intra-african-trade" },
     { label: labels.ocioEconomicEitherAfricanTrade, value: "ocio-economic-either-african-trade" },
     { label: labels.ocioEconomicBothAfricanTrade, value: "ocio-economic-both-african-trade" }
+  ],
+
+  // Project Data Sheet Form
+  pdsForm: [
+    {label: labels.projectName, value: "project_name"},
+    {label: labels.organizationName, value: "organization_name"},
+    {label: labels.address, value: "address"},
+    {label: labels.contactPerson, value: "contact-person"},
+    {label: labels.position, value: "position"},
+    {label: labels.telephone, value: "telephone"},
+    {label: labels.fax, value: "fax"},
+    {label: labels.email, value: "email"}
   ]
 }
 

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Grid, Typography, Container, TextField } from '@mui/material';
 import { styled } from '@mui/material';
 import menu from 'src/helpers/menu';
-import CustomTextInput from 'src/helpers/custom-components/CustomTextInput';
+import CustomInput from 'src/helpers/custom-components/CustomInput';
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
-import languages from 'src/constants/index';
+import languages from 'src/labels/index';
 import { useState } from 'react';
 export default function ApplicationForm() {
 
@@ -79,7 +79,7 @@ export default function ApplicationForm() {
                 {/* Form */}
                 <Grid container spacing={2}>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.organizationName}
                             value={data.organisation_name}
                             name="organisation_name"
@@ -88,7 +88,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.contactPerson}
                             value={data.contact_person}
                             name="contact_person"
@@ -96,7 +96,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.position}
                             value={data.position}
                             name="position"
@@ -104,7 +104,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.telephone}
                             value={data.telephone}
                             name="telephone"
@@ -113,7 +113,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item xs={3} md={3} lg={3}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.fax}
                             value={data.fax}
                             name="fax"
@@ -122,7 +122,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item xs={3} md={3} lg={3}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.email}
                             value={data.email}
                             name="email"
@@ -131,7 +131,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item xs={6} md={6} lg={6}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.address}
                             value={data.address}
                             name="address"
@@ -223,7 +223,7 @@ export default function ApplicationForm() {
                     </Grid>
                     {selectedPriorityAction === 'yes' && (
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <CustomTextInput
+                            <CustomInput
                                 name="priority_action_project"
                                 value={data.priority_action_project}
                                 label={label.priorityActionProjectNo}
@@ -234,7 +234,7 @@ export default function ApplicationForm() {
                     )}
                     {selectedPriorityAction === 'yes' && (
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <CustomTextInput
+                            <CustomInput
                                 name="priority_action_project"
                                 value={data.priority_action_project}
                                 label={label.priorityActionProjectName}
@@ -329,7 +329,7 @@ export default function ApplicationForm() {
                     </Grid>
                     {previousRequestSDM === 'no' && (
                         <Grid item xs={12} md={12} lg={12}>
-                            <CustomTextInput
+                            <CustomInput
                                 label={label['referenceCode:']}
                                 value={data.reference_code}
                                 name="reference_code"
@@ -341,7 +341,7 @@ export default function ApplicationForm() {
                         <Typography variant="h6">{label.authorityAgency}</Typography>
                     </Grid>
                     <Grid item lg={6} md={6} sm={6} xs={6}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.responsibleOfficial}
                             value={data.responsible_official}
                             name="responsible_official"
@@ -350,7 +350,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item lg={6} md={6} sm={6} xs={6}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.OrganizationAgency}
                             value={data.organization_agency}
                             name="organization_agency"
@@ -359,7 +359,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item lg={4} md={4} sm={4} xs={4}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.position}
                             value={data.position}
                             name="position"
@@ -368,7 +368,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item lg={4} md={4} sm={4} xs={4}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.telephone}
                             value={data.telephone}
                             name="telephone"
@@ -377,7 +377,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item lg={4} md={4} sm={4} xs={4}>
-                        <CustomTextInput
+                        <CustomInput
                             label={label.email}
                             value={data.email}
                             name="email"

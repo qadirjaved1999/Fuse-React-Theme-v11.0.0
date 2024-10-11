@@ -3,7 +3,7 @@ import { useState } from 'react'
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton'
 import menu from 'src/helpers/menu'
 import styled from 'styled-components'
-import languages from 'src/constants/index'
+import languages from 'src/labels/index'
 
 const ClimatePoliceGds = () => {
 

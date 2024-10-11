@@ -86,6 +86,13 @@ const navigationConfig = [
         url: '/application-form',
       },
       {
+        id: 'pds',
+        title: 'Project Data Sheet',
+        type: 'item',
+        icon: 'heroicons-outline:chart-pie',
+        url: '/project-data-sheet',
+      },
+      {
         id: 'working-project',
         title: 'Working Project Tabs',
         type: 'collapse',

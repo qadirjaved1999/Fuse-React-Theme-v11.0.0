@@ -6,7 +6,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import menu from 'src/helpers/menu';
-import CustomTextInput from 'src/helpers/custom-components/CustomTextInput';
+import CustomInput from 'src/helpers/custom-components/CustomInput';
 
 const PqlThree = () => {
   const initialState = {
@@ -32,7 +32,7 @@ const PqlThree = () => {
 
   return (
     <Box>
-      <CustomTextInput
+      <CustomInput
         required
         label="First name"
         name="first_name"

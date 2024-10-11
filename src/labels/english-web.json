@@ -1,12 +1,13 @@
 {
   "annexForm":"Application Form",
-  "organizationName": "Organization name",
+  "organizationName": "Organization",
   "address": "Address",
   "contactPerson": "Contact person",
   "position": "Position",
   "telephone": "Telephone",
   "fax": "Fax",
   "email": "Email",
+  "projectName":"Project name",
   "geographicArea": "Geographic Area of Proposed Activity",
   "eastAfrica": "East Africa",
   "westAfrica": "West Africa",
@@ -202,5 +203,7 @@
   "descriptionInclude": "The project description does include improvements in either intra African trade or industrialization, in the main beneficiary country",
   "bothIntraAfricanTrade": "The project description does include improvements in both intra African trade and industrialization, in the main beneficiary country",
   "ocioEconomicEitherAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in either intra African trade or industrialization, in the main beneficiary country",
-  "ocioEconomicBothAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in both intra African trade and industrialization, in the main beneficiary country"
+  "ocioEconomicBothAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in both intra African trade and industrialization, in the main beneficiary country",
+
+  "applicantInformation":"APPLICANT INFORMATION"
 }
