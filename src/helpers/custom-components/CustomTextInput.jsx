@@ -1,11 +1,13 @@
 import { TextField } from "@mui/material";
 
 
-const CustomTextInput = ({ label, value, name, type, onChange, error, required }) => {
+const CustomTextInput = ({ label, value, name, type, onChange, error, required, disabled, placeholder, helperText, multiline }) => {
   return (
     <TextField
-      error={error}
       label={label}
+      placeholder={placeholder} // Placeholder text for the input field
+      error={error}
+      helperText={helperText}
       name={name}
       value={value}
       onChange={onChange}
@@ -16,7 +18,8 @@ const CustomTextInput = ({ label, value, name, type, onChange, error, required }
       size="small"
       minRows={3}
       maxRows={1000}
-    // disabled={props.disabled || props.disabled == "true"}
+      disabled={disabled || "true"}
+      multiline={multiline || "true"}
     />
   );
 };

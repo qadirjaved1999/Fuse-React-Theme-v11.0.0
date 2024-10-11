@@ -88,6 +88,15 @@
   "internalEvaluation":"FOR INTERNAL EVALUATION USE ONLY",
   "internalReferenceCode":"Reference Code",
 
+  "internalEligibility":"ELIGIBILITY",
+  "recForm":"Origin of the request from a REC, SRIDI, MS?",
+  "pidaProject":"PIDA PAP Project? ",
+  "noPIDAProject":"If it is not a PIDAD PAP project, has it been properly justified that it has a regional development impact?",
+  "sponsorProject":"Is the project sponsor and the project coordinator clearly identified? ",
+  "otherSpecify":"Other Specify",
+  "qualityInformation":"QUALITY OF INFORMATION",
+  "annexedQuestionnaire":"Has the annexed questionnaire been fulfilled?",
+
 
   "regionalClimate": "Regional climate interest and commitment",
   "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",
