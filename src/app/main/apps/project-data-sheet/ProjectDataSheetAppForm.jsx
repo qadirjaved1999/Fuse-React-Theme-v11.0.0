@@ -4,16 +4,15 @@ import {
     AccordionDetails,
     AccordionSummary,
     Grid,
-    ListItemText,
     Typography,
 } from "@mui/material";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CustomInput from "src/helpers/custom-components/CustomInput";
 import languages from "src/labels/index";
-// import { List } from "immutable";
 import Glossary from "src/helpers/glossary-accordian/Grossary";
+import CustomRadioButton from "src/helpers/custom-components/CustomRadioButton";
+import menu from "src/helpers/menu";
+import CustomButton from "src/helpers/custom-components/CustomButton";
 
 const ProjectDataSheetAppForm = () => {
     // All Labls
@@ -29,17 +28,24 @@ const ProjectDataSheetAppForm = () => {
         telephone: "",
         fax: "",
         email: "",
+        political_commitment: "",
+        intra_regional_trade: "",
     };
     // Main State Hold the data from Radios CheckBoxs
     const [data, setData] = useState(initialState);
+    const [politicalCommitmentEvidence, setPoliticalCommitmentEvidence] = useState(data.political_commitment)
 
     const handleInput = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
-        // console.log("Name is => ", name + "And the Value is => ", value);
+        console.log("Name is => ", name + "And the Value is => ", value);
+
+        if (name === 'political_commitment') {
+            setPoliticalCommitmentEvidence(value);
+        }
     };
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} justifyContent="center" padding="50px">
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Typography
                     fontSize="18px"
@@ -129,6 +135,87 @@ const ProjectDataSheetAppForm = () => {
                         </Grid>
                     </AccordionDetails>
                 </Accordion>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Typography style={{ fontSize: "16px", fontWeight: "bold" }}>{label.regionalPriority}</Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomRadioButton
+                    name="political_commitment"
+                    value={data.political_commitment}
+                    label={label.politicalCommitment}
+                    options={menu.politicalCommitment}
+                    onChange={handleInput}
+                    row={true}
+                    labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                />
+
+            </Grid>
+            {
+                politicalCommitmentEvidence === 'national-level-commitment' && (
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <CustomButton
+                            variant="contained"
+                            btnText="Upload evidance"
+                            textColor="white"
+                            bgColor="black"
+                            padding='8px 16px'
+                            fontSize='16px'
+                            minWidth='120px'
+                            height='40px'
+                            borderRadius='20px'
+                            onClick={() => alert('Button Clicked!')}
+                        />
+                    </Grid>
+                )
+            }
+            {
+                politicalCommitmentEvidence === 'not-included-pida-programme' && (
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <CustomButton
+                            variant="contained"
+                            btnText="Upload evidance"
+                            textColor="white"
+                            bgColor="black"
+                            padding='8px 16px'
+                            fontSize='16px'
+                            minWidth='120px'
+                            height='40px'
+                            borderRadius='20px'
+                            onClick={() => alert('Button Clicked!')}
+                        />
+                    </Grid>
+                )
+            }
+            {
+                politicalCommitmentEvidence === 'included-pida-programme' && (
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <CustomButton
+                            variant="contained"
+                            btnText="Upload evidance"
+                            textColor="white"
+                            bgColor="black"
+                            padding='8px 16px'
+                            fontSize='16px'
+                            minWidth='120px'
+                            height='40px'
+                            borderRadius='20px'
+                            onClick={() => alert('Button Clicked!')}
+                        />
+                    </Grid>
+                )
+            }
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomRadioButton
+                    name="intra_regional_trade"
+                    value={data.intra_regional_trade}
+                    label={label.intraRegionalTrade}
+                    options={menu.intraRegionalTrade}
+                    onChange={handleInput}
+                    row={true}
+                    labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                />
+
             </Grid>
         </Grid>
     );

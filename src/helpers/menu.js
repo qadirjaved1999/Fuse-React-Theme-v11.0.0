@@ -34,50 +34,50 @@ const menu = {
   ],
   // Project Eligibility
   projectEligibility: [
-    {label: labels.regionalEconomic, value: "regional-economic"},
-    {label: labels.specializedRegional, value: "specialized-regional"},
-    {label: labels.memberState, value: "member-state"},
-    {label: labels.specifyOther, value: "specify-other"}
+    { label: labels.regionalEconomic, value: "regional-economic" },
+    { label: labels.specializedRegional, value: "specialized-regional" },
+    { label: labels.memberState, value: "member-state" },
+    { label: labels.specifyOther, value: "specify-other" }
   ],
 
   infrastructureProject: [
-   {label: labels.yes, value: "yes"},
-   {label: labels.no, value: "no"},
+    { label: labels.yes, value: "yes" },
+    { label: labels.no, value: "no" },
   ],
 
   priorityActionProject: [
-    {label: labels.priorityActionProjectNo, value: "priority-action-project-no"},
-    {label: labels.priorityActionProjectName, value: "priority-action-project-name"}
+    { label: labels.priorityActionProjectNo, value: "priority-action-project-no" },
+    { label: labels.priorityActionProjectName, value: "priority-action-project-name" }
   ],
 
   //Proposed Activity
   proposedActivity: [
-    {label: labels.supportPreparationFacility, value: "support-preparation-facility"},
-   {label: labels.otherAdvisoryServices, value: "other-advisory-services"}
+    { label: labels.supportPreparationFacility, value: "support-preparation-facility" },
+    { label: labels.otherAdvisoryServices, value: "other-advisory-services" }
   ],
 
   otherAdvisoryServices: [
-    {label: labels.projectInvestAbility, value: "project-invest-ability"},
-    {label: labels.developmentImpact, value: "development-impact"},
-    {label: labels.crossBorderHarmonization, value: "cross-border-harmonization"},
-    {label: labels.ongoingProjectManagement, value: "ongoing-project-management"},
-    {label: labels.projectDiagnostics, value: "project-diagnostics"}
+    { label: labels.projectInvestAbility, value: "project-invest-ability" },
+    { label: labels.developmentImpact, value: "development-impact" },
+    { label: labels.crossBorderHarmonization, value: "cross-border-harmonization" },
+    { label: labels.ongoingProjectManagement, value: "ongoing-project-management" },
+    { label: labels.projectDiagnostics, value: "project-diagnostics" }
   ],
-  
+
   // Previous request to SDM
   previousRequestSDM: [
-    {label: labels.yes, value: "yes"},
-    {label: labels.no, value: "no"}
+    { label: labels.yes, value: "yes" },
+    { label: labels.no, value: "no" }
   ],
 
   additionalInformation: [
-   {label: labels.evidencePrioritization, value: "evidence-prioritization"},
-   {label: labels.mandateApproval, value: "mandate-approval"}
+    { label: labels.evidencePrioritization, value: "evidence-prioritization" },
+    { label: labels.mandateApproval, value: "mandate-approval" }
   ],
   // Internal Eligibility
   internalEligibility: [
-    {label: labels.yes, value: "yes"},
-    {label: labels.no, value: "no"}
+    { label: labels.yes, value: "yes" },
+    { label: labels.no, value: "no" }
   ],
   //Regional climate interest and commitment
   regionalClimate: [
@@ -220,14 +220,55 @@ const menu = {
 
   // Project Data Sheet Form
   pdsForm: [
-    {label: labels.projectName, value: "project_name"},
-    {label: labels.organizationName, value: "organization_name"},
-    {label: labels.address, value: "address"},
-    {label: labels.contactPerson, value: "contact-person"},
-    {label: labels.position, value: "position"},
-    {label: labels.telephone, value: "telephone"},
-    {label: labels.fax, value: "fax"},
-    {label: labels.email, value: "email"}
+    { label: labels.projectName, value: "project-name" },
+    { label: labels.organizationName, value: "organization-name" },
+    { label: labels.address, value: "address" },
+    { label: labels.contactPerson, value: "contact-person" },
+    { label: labels.position, value: "position" },
+    { label: labels.telephone, value: "telephone" },
+    { label: labels.fax, value: "fax" },
+    { label: labels.email, value: "email" }
+  ],
+  // Level of regional interest and political commitment
+  politicalCommitment: [
+    { label: labels.noRegionalImpact, score: 0, value: "no-regional-impact" },
+    { label: labels.noNationalLevelCommitment, score: 2.5, value: "no-national-level-commitment" },
+    { label: labels.nationalLevelCommitment, score: 5, value: "national-level-commitment" },
+    { label: labels.notIncludedPIDAProgramme, score: 7.5, value: "not-included-pida-programme" },
+    { label: labels.includedPIDAProgramme, score: 10, value: "included-pida-programme" }
+  ],
+  // Promotion of intra-regional trade and investment
+  intraRegionalTrade: [
+    { label: labels.notAddressImprovements, score: 0, value: "not-address-improvements" },
+    { label: labels.addressImprovements, score: 2.5, value: "address-improvements" },
+    { label: labels.landLocked, score: 5, value: "land-locked" },
+    { label: labels.socioEconomicImpact, score: 7.5, value: "socio-economic-impact" },
+    { label: labels.oneLandLockedSocioEconomic, score: 10, value: "one-land-locked-socio-economic" }
+  ],
+  // Poverty reduction
+  povertyReduction: [
+    { label: labels.lowRange, score: 0, value: "low-range" },
+    { label: labels.mediumRange, score: 2.5, value: "medium-range" },
+    { label: labels.highRange, score: 5, value: "high-range" },
+    { label: labels.oneCountryVeryHighRange, score: 7.5, value: "one-country-very-high-range" },
+    { label: labels.OneAboveCountryVeryHighRange, score: 10, value: "one-above-country-very-high-range" },
+  ],
+  // Alignment with the socioeconomic and environmental sustainability goals for Africa
+  sustainabilityGoals: [
+    { label: labels.notAddressAfrican, score: 0, value: "not-address-african" },
+    { label: labels.twoGoalsAgenda, score: 2.5, value: "two-goals-agenda" },
+    { label: labels.fourGoalsAgenda, score: 5, value: "four-goals-agenda" },
+    { label: labels.sixGoalsAgenda, score: 7.5, value: "six-goals-agenda" },
+    { label: labels.aboveSixGoalsAgenda, score: 10, value: "above-six-goals-agenda" }
+  ],
+  // Legal and regulatory framework of the sector
+  regulatoryFramework: [
+    {label: labels.noLegalFramework, score: 0, value: "no-legal-framework"},
+    {label: labels.someLegalFramework, score: 2.5, value: "some-legal-framework"},
+    {label: labels.allDraftLegalFramework, score: 5, value: "all-draft-legal-framework"},
+    {label: labels.allLegalFramework, score: 7.5, value: "all-legal-framework"},
+    {label: labels.regionalHarmonizationProgram, score: 10, value: "regional-harmonization-program"}
+
   ]
 }
 
