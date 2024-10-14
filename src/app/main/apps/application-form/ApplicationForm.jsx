@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Typography, Container, TextField } from '@mui/material';
+import { Grid, Typography, Container, TextField, FormLabel } from '@mui/material';
 import { styled } from '@mui/material';
 import menu from 'src/helpers/menu';
 import CustomInput from 'src/helpers/custom-components/CustomInput';
@@ -7,6 +7,7 @@ import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 import languages from 'src/labels/index';
 import { useState } from 'react';
+import { FormControl } from '@mui/base';
 export default function ApplicationForm() {
 
     // All Labls
@@ -39,6 +40,9 @@ export default function ApplicationForm() {
         implementation_schedule: '',
         additional_information: []
     }
+    const initialError = {
+        first_name: false,
+      }
     // Main State Hold the data from Radios CheckBoxs
     const [data, setData] = useState(initialState);
     const [selectedPriorityAction, setSelectedPriorityAction] = useState(data.infrastructure_project);
@@ -159,43 +163,51 @@ export default function ApplicationForm() {
                     </Grid>
                     {/* CheckBox */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <Typography variant="h6">{label.transport}</Typography>
-                        <CustomCheckBox
-                            options={menu.transportActivity}
-                            value={data.sectoral_transport}
-                            name="sectoral_transport"
-                            onChange={handleInput}
-                        />
+                        <FormControl component="fieldset" variant="standard">
+                            <FormLabel>{label.transport}</FormLabel>
+                            <CustomCheckBox
+                                options={menu.transportActivity}
+                                value={data.sectoral_transport}
+                                name="sectoral_transport"
+                                onChange={handleInput}
+                            />
+                        </FormControl>
                     </Grid>
                     {/* Energy */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <Typography variant="h6">{label.energy}</Typography>
-                        <CustomCheckBox
-                            options={menu.energyActivity}
-                            value={data.sectoral_energy}
-                            name="sectoral_energy"
-                            onChange={handleInput}
-                        />
+                        <FormControl component="fieldset" variant="standard">
+                            <FormLabel>{label.energy}</FormLabel>
+                            <CustomCheckBox
+                                options={menu.energyActivity}
+                                value={data.sectoral_energy}
+                                name="sectoral_energy"
+                                onChange={handleInput}
+                            />
+                        </FormControl>
                     </Grid>
                     {/* ICT */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <Typography variant="h6">{label.ict}</Typography>
-                        <CustomCheckBox
-                            options={menu.ictActivity}
-                            value={data.sectoral_ict}
-                            name="sectoral_ict"
-                            onChange={handleInput}
-                        />
+                        <FormControl component="fieldset" variant="standard">
+                            <FormLabel>{label.ict}</FormLabel>
+                            <CustomCheckBox
+                                options={menu.ictActivity}
+                                value={data.sectoral_ict}
+                                name="sectoral_ict"
+                                onChange={handleInput}
+                            />
+                        </FormControl>
                     </Grid>
                     {/* Water */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <Typography variant="h6">{label.water}</Typography>
-                        <CustomCheckBox
-                            options={menu.waterActivity}
-                            value={data.sectoral_water}
-                            name="sectoral_water"
-                            onChange={handleInput}
-                        />
+                        <FormControl component="fieldset" variant="standard">
+                            <FormLabel>{label.water}</FormLabel>
+                            <CustomCheckBox
+                                options={menu.waterActivity}
+                                value={data.sectoral_water}
+                                name="sectoral_water"
+                                onChange={handleInput}
+                            />
+                        </FormControl>
                     </Grid>
                     {/* Project Eligibility */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -271,13 +283,15 @@ export default function ApplicationForm() {
                         </Grid>
                     )}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Typography variant="h6">{label.proposedActivity}</Typography>
-                        <CustomCheckBox
-                            name="proposed_activity"
-                            value={data.proposed_activity}
-                            options={menu.proposedActivity}
-                            onChange={handleInput}
-                        />
+                        <FormControl component="fieldset" variant="standard">
+                            <FormLabel>{label.proposedActivity}</FormLabel>
+                            <CustomCheckBox
+                                name="proposed_activity"
+                                value={data.proposed_activity}
+                                options={menu.proposedActivity}
+                                onChange={handleInput}
+                            />
+                        </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         {data.proposed_activity.includes("other-advisory-services") && (
@@ -399,13 +413,15 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Typography variant="h6">{label.additionalInformation}</Typography>
-                        <CustomCheckBox
-                            options={menu.additionalInformation}
-                            value={data.additional_information}
-                            name="additional_information"
-                            onChange={handleInput}
-                        />
+                        <FormControl component="fieldset" variant="standard">
+                            <FormLabel>{label.additionalInformation}</FormLabel>
+                            <CustomCheckBox
+                                options={menu.additionalInformation}
+                                value={data.additional_information}
+                                name="additional_information"
+                                onChange={handleInput}
+                            />
+                        </FormControl>
                     </Grid>
                 </Grid>
             </Container>

@@ -13,6 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CustomInput from "src/helpers/custom-components/CustomInput";
 import languages from "src/labels/index";
 // import { List } from "immutable";
+import Glossary from "src/helpers/glossary-accordian/Grossary";
 
 const ProjectDataSheetAppForm = () => {
     // All Labls
@@ -35,7 +36,7 @@ const ProjectDataSheetAppForm = () => {
     const handleInput = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
-        console.log("Name is => ", name + "And the Value is => ", value);
+        // console.log("Name is => ", name + "And the Value is => ", value);
     };
     return (
         <Grid container spacing={2}>
@@ -120,16 +121,11 @@ const ProjectDataSheetAppForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Accordion>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography variant="h6">Glossary</Typography>
+                        <Typography variant="h6">{label.pdsInstructions}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Grid item xs={12}>
-                            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                                <ListItem>
-                                    <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-                                </ListItem>
-
-                            </List>
+                            <Glossary />
                         </Grid>
                     </AccordionDetails>
                 </Accordion>

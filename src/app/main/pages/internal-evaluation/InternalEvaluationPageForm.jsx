@@ -33,7 +33,7 @@ const InternalEvaluationPageForm = () => {
                 <Typography sx={{ padding: "10px 0px", fontWeight: "bold", fontSize: "15px" }}>{label.internalEvaluation}</Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomIn
+                <CustomInput
                     name="internal_reference_code"
                     value={data.internal_reference_code}
                     label={label.internalReferenceCode}

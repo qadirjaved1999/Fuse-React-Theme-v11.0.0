@@ -205,5 +205,21 @@
   "ocioEconomicEitherAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in either intra African trade or industrialization, in the main beneficiary country",
   "ocioEconomicBothAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in both intra African trade and industrialization, in the main beneficiary country",
 
-  "applicantInformation":"APPLICANT INFORMATION"
+  "applicantInformation":"APPLICANT INFORMATION",
+
+  "pdsInstructions":"INSTRUCTIONS",
+  "projectEligibleAnalysis":"Applicants must fill in the PDS and submit it, along with the application form, to make the project eligible for further analysis.",
+  "documentaryEvidence":"Documentary evidence indicates that the applicant must attach to the PDS official or third-party documents that supports the selected answer.",
+  "writtenEvidence":"Written evidence indicates that the applicant must include written detail or elaboration of the selected answer.",
+  "evidenceNotProvided":"If evidence is not provided where required, SDM will be eligible to request further information, downgrade the project score or reject the application.",
+  "pdsRespectingGuidelines":"The applicant must answer the PDS respecting the following guidelines:",
+  "eachCriterion":"Each criterion offers five mutually exclusive alternatives. Only one option must be selected by checking the “Selected option” box. The choice must accurately capture reality to the best of the applicant’s knowledge. ",
+  "allCriteria":"All criteria must be answered. SDM will be entitled to return or reject any incomplete applications.",
+  "selectedOption":"In case the selected option requires supporting documentary or written evidence, the applicant must:",
+  "attachDocumentaryEvidence":"If required, attach the documentary evidence to the PDS;",
+  "includeWrittenEvidence":"If required, include the written evidence;",
+  "spaceDesignated":"Indicate the title and number of the attached document in the space designated to that purpose below the criterion’s options;",
+  "checkEvidence":"Check the “Evidence” box.",
+  "correctAnswerCriteria":"Criteria 3.2 and 4.2 contain links to information sources that must be used to assess the correct answer to those criteria. The said criteria do not require any further evidence."
+
 }
