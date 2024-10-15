@@ -42,7 +42,7 @@ export default function ApplicationForm() {
     }
     const initialError = {
         first_name: false,
-      }
+    }
     // Main State Hold the data from Radios CheckBoxs
     const [data, setData] = useState(initialState);
     const [selectedPriorityAction, setSelectedPriorityAction] = useState(data.infrastructure_project);
@@ -80,7 +80,8 @@ export default function ApplicationForm() {
         <>
             <Container maxWidth="1240px">
                 <Typography sx={{ paddingBottom: "30px", fontWeight: "bold", fontSize: "15px" }}>{label.annexForm}</Typography>
-                {/* Form */}
+
+                {/* Application Form */}
                 <Grid container spacing={2}>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
                         <CustomInput

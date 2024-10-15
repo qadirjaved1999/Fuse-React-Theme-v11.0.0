@@ -244,10 +244,10 @@
 
   "sustainabilityGoals":"Alignment with the socioeconomic and environmental sustainability goals for Africa",
   "notAddressAfrican":"The project definition does not address African Union (Agenda 2063) goals and priorities.",
-  "twoGoalsAgenda":"The project definition addresses 1 to 2 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence).",
-  "fourGoalsAgenda":"The project definition addresses 2 to 4 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence).",
-  "sixGoalsAgenda":"The project definition addresses 4 to 6 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence).",
-  "aboveSixGoalsAgenda":"The project definition addresses more than 6 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence)",
+  "twoGoals":"The project definition addresses 1 to 2 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence).",
+  "fourGoals":"The project definition addresses 2 to 4 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence).",
+  "sixGoals":"The project definition addresses 4 to 6 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence).",
+  "aboveSixGoals":"The project definition addresses more than 6 goals of Agenda 2063 indicating the concerned priority areas. (Please, include written evidence)",
 
   "sectorReadiness":"SECTOR READINESS",
   "regulatoryFramework":"Legal and regulatory framework of the sector",

@@ -256,10 +256,10 @@ const menu = {
   // Alignment with the socioeconomic and environmental sustainability goals for Africa
   sustainabilityGoals: [
     { label: labels.notAddressAfrican, score: 0, value: "not-address-african" },
-    { label: labels.twoGoalsAgenda, score: 2.5, value: "two-goals-agenda" },
-    { label: labels.fourGoalsAgenda, score: 5, value: "four-goals-agenda" },
-    { label: labels.sixGoalsAgenda, score: 7.5, value: "six-goals-agenda" },
-    { label: labels.aboveSixGoalsAgenda, score: 10, value: "above-six-goals-agenda" }
+    { label: labels.twoGoals, score: 2.5, value: "two-goals" },
+    { label: labels.fourGoals, score: 5, value: "four-goals" },
+    { label: labels.sixGoals, score: 7.5, value: "six-goals" },
+    { label: labels.aboveSixGoals, score: 10, value: "above-six-goals" }
   ],
   // Legal and regulatory framework of the sector
   regulatoryFramework: [
