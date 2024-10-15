@@ -268,7 +268,22 @@ const menu = {
     {label: labels.allDraftLegalFramework, score: 5, value: "all-draft-legal-framework"},
     {label: labels.allLegalFramework, score: 7.5, value: "all-legal-framework"},
     {label: labels.regionalHarmonizationProgram, score: 10, value: "regional-harmonization-program"}
-
+  ],
+  // Sector organization 
+  sectorOrganization: [
+   {label: labels.notAllCountriesRegulating, score: 0, value: "not-all-countries-regulating"},
+   {label: labels.allCountriesRegulating, score: 2.5, value: "all-countries-regulating"},
+   {label: labels.responsibilitiesAgencies, score: 5, value: "responsibilities-agencies"},
+   {label: labels.credibleRegulatory, score: 7.5, value: "credible-regulatory"},
+   {label: labels.alignedRegionalPolicies, score: 10, value: "aligned-regional-policies"},
+  ],
+  // Sector maturity 
+  sectorMaturity: [
+    {label: labels.noSimilarProjects, score: 0, value: "no-similar-projects"},
+    {label: labels.infrastructureDevelopments, score: 2.5, value: "infrastructure-developments"},
+    {label: labels.degreeOfImplication, score: 5, value: "degree-of-implication"},
+    {label: labels.originOfMainMaterials, score: 7.5, value: "origin-of-main-materials"},
+    {label: labels.nameOfLocalCompanies, score: 10, value: "name-of-local-companies"},
   ]
 }
 

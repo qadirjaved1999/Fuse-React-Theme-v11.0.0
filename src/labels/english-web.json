@@ -222,7 +222,6 @@
  
   "regionalPriority":"REGIONAL PRIORITY",
   "politicalCommitment":"Level of regional interest and political commitment",
-
   "noRegionalImpact":"The project enjoys political commitment at national level, but there is no evidence of its regional impact. ",
   "noNationalLevelCommitment":"The project is included in the PIDA PAP programme, but there is no evidence of national-level commitment. ",
   "nationalLevelCommitment":"The project is included in the PIDA PAP programme, and there is a national-level commitment. (Please, attach documentary evidence).",
@@ -263,7 +262,15 @@
   "allCountriesRegulating":"All the countries involved have an administrative / regulatory body that controls the market, with policies in force. (Please, attach documentary evidence).",
   "responsibilitiesAgencies":"All the countries involved have an administrative / regulatory body that controls the market, with policies in force and where the responsibilities of agencies in the sector are defined. (Please, attach documentary evidence).",
   "credibleRegulatory":"All the countries involved have an administrative / regulatory body that controls the market, with policies in force; responsibilities of agencies in the sector are defined and there is a credible and independent regulatory mechanism on tariff/price setting. (Please, attach documentary evidence).",
-  "alignedRegionalPolicies":"All the countries involved have an administrative / regulatory body that controls the market, with policies in force; responsibilities of agencies in the sector are defined and there is a credible and independent regulatory mechanism on tariff/price setting, aligned with regional policies already in place. (Please, attach documentary evidence)."
+  "alignedRegionalPolicies":"All the countries involved have an administrative / regulatory body that controls the market, with policies in force; responsibilities of agencies in the sector are defined and there is a credible and independent regulatory mechanism on tariff/price setting, aligned with regional policies already in place. (Please, attach documentary evidence).",
+
+  "sectorMaturity":"Sector maturity",
+  "noSimilarProjects":"No similar projects have been implemented in the countries involved.",
+  "infrastructureDevelopments":"There is evidence of infrastructure developments such as the ones proposed in the countries involved (please, write down the three last similar experiences). (Please, include written evidence).",
+  "degreeOfImplication":"There is evidence of infrastructure developments such as the ones proposed in the countries involved, and local companies have delivered similar infrastructure projects successfully (please, detail the degree of implication of the local companies in the three last similar experiences). (Please, include written evidence)",
+  "originOfMainMaterials":"There is evidence of infrastructure developments such as the ones proposed in the participating countries. Local companies have delivered similar infrastructure projects successfully, and the supplying of material is local or regional (please, provide details of the degree of implication of the local companies in the three last similar experiences, as well as the origin of their main materials). (Please, include written evidence)",
+  "nameOfLocalCompanies":"There is evidence of infrastructure developments such as the ones proposed in the participating countries. Local companies have delivered similar infrastructure projects successfully, and the supplying of material is local or regional (please, detail the degree of implication of the local companies in the last three similar experiences, as well as the origin of their main materials and the name of the local companies that provide their services). (Please, include written evidence)."
+
 
 
 
