@@ -144,7 +144,7 @@ export default function ApplicationForm() {
                         />
                     </Grid>
 
-                    {/* Radio */}
+                    {/* Radio Buttons */}
                     <Grid item xs={12}>
                         <CustomRadioButton
                             name="geographic_area"
