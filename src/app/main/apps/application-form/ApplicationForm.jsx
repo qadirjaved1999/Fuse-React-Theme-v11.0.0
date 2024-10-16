@@ -8,6 +8,7 @@ import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 import languages from 'src/labels/index';
 import { useState } from 'react';
 import { FormControl } from '@mui/base';
+import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 export default function ApplicationForm() {
 
     // All Labls
@@ -41,10 +42,12 @@ export default function ApplicationForm() {
         additional_information: []
     }
     const initialError = {
-        first_name: false,
+        organisation_name: false,
     }
     // Main State Hold the data from Radios CheckBoxs
     const [data, setData] = useState(initialState);
+    const [error, setError] = useState(initialError);
+
     const [selectedPriorityAction, setSelectedPriorityAction] = useState(data.infrastructure_project);
     const [previousRequestSDM, setPreviousRequestSDM] = useState(data.previous_request_sdm);
 
@@ -63,10 +66,8 @@ export default function ApplicationForm() {
             });
             console.log("Checkboxes Values => ", checked)
         } else {
-            setData({
-                ...data,
-                [name]: value
-            });
+            setData({ ...data, [name]: value });
+            setError({ ...error, [name]: !value });
             console.log("input and radio values => " + "Name = " + name + ", " + "value = " + value)
         }
         if (name === 'infrastructure_project') {
@@ -79,10 +80,30 @@ export default function ApplicationForm() {
     return (
         <>
             <Container maxWidth="1240px">
-                <Typography sx={{ paddingBottom: "30px", fontWeight: "bold", fontSize: "15px" }}>{label.annexForm}</Typography>
-
+                <CustomTypography
+                    text={label.annexForm}
+                    variant="h3"
+                    display="block"
+                    textAlign="center"
+                    width="auto"
+                    margin="20px 0"
+                    padding="0px 0px 30px 0px"
+                    fontWeight="bold"
+                    fontSize="18px"
+                    color="primary"
+                />
+                
                 {/* Application Form */}
                 <Grid container spacing={2}>
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <CustomTypography
+                            text={label.applicationForm}
+                            variant="h2"
+                            display="block"
+                            width="auto"
+                            fontWeight="bold" 
+                        />
+                    </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
                         <CustomInput
                             label={label.organizationName}
