@@ -1,24 +1,24 @@
-import { Button } from '@mui/base'
-import React from 'react'
+import { Button } from "@mui/material";
 
-const CustomButton = ({ btnText, textColor, bgColor, variant, padding, fontSize, minWidth, height, borderRadius, onClick }) => {
-    return (
-        <Button
-            variant={variant}
-            onClick={onClick}
-            style={{
-                color: textColor,
-                backgroundColor: bgColor,
-                padding: padding,
-                fontSize: fontSize,
-                minWidth: minWidth,
-                height: height,
-                borderRadius: borderRadius
-            }}
-        >
-            {btnText}
-        </Button>
-    )
-}
+const CustomButton = ({ color, customColor, backgroundColor, onClick,  disabled, buttonImage, text, variant, minWidth, maxHeight, padding }) => {
+  return (
+    <Button
+      disabled={disabled ? disabled : false}
+      variant={variant ? variant : "contained"}
+      color={color} 
+      onClick={onClick}
+      startIcon={buttonImage}
+      style={{
+        color: customColor,
+        minWidth: minWidth ? minWidth : "100px", 
+        maxHeight: maxHeight ? maxHeight : "48px",
+        padding: padding,
+        backgroundColor: backgroundColor,
+      }}
+    >
+      {text}
+    </Button>
+  );
+};
 
-export default CustomButton
+export default CustomButton;

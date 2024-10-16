@@ -28,7 +28,7 @@ function AnnexApplicationFormApp() {
 
 			}
 			content={
-				<div className="p-24">
+				<div className="p-10">
 					<ApplicationForm />
 				</div>
 			}
