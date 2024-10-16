@@ -1,19 +1,19 @@
 import { Button } from "@mui/material";
 
-const CustomButton = ({ color, customColor, backgroundColor, onClick,  disabled, buttonImage, text, variant, minWidth, maxHeight, padding }) => {
+const CustomButton = ({ textColor, bgColor, onClick, disabled, btnIcon, text, variant, minWidth, maxHeight, padding, iconPosition = "start" }) => {
   return (
     <Button
       disabled={disabled ? disabled : false}
       variant={variant ? variant : "contained"}
-      color={color} 
       onClick={onClick}
-      startIcon={buttonImage}
+      startIcon={iconPosition === "start" ? btnIcon : null}
+      endIcon={iconPosition === "end" ? btnIcon : null}
       style={{
-        color: customColor,
-        minWidth: minWidth ? minWidth : "100px", 
+        color: textColor,
+        minWidth: minWidth || "100px",
         maxHeight: maxHeight ? maxHeight : "48px",
         padding: padding,
-        backgroundColor: backgroundColor,
+        backgroundColor: bgColor,
       }}
     >
       {text}

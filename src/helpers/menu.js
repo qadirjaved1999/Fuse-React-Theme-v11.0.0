@@ -37,26 +37,20 @@ const menu = {
     { label: labels.regionalEconomic, value: "regional-economic" },
     { label: labels.specializedRegional, value: "specialized-regional" },
     { label: labels.memberState, value: "member-state" },
-    // { label: labels.specifyOther, value: "specify-other" }
   ],
 
-  infrastructureProject: [
+  pidaPlan : [
     { label: labels.yes, value: "yes" },
     { label: labels.no, value: "no" },
-  ],
-
-  priorityActionProject: [
-    { label: labels.priorityActionProjectNo, value: "priority-action-project-no" },
-    { label: labels.priorityActionProjectName, value: "priority-action-project-name" }
   ],
 
   //Proposed Activity
   proposedActivity: [
     { label: labels.supportPreparationFacility, value: "support-preparation-facility" },
-    { label: labels.otherAdvisoryServices, value: "other-advisory-services" }
+    { label: labels.proposedOtherActivity, value: "proposed-other-activity" }
   ],
-
-  otherAdvisoryServices: [
+  // Other Proposed Activity
+  proposedOtherActivity: [
     { label: labels.projectInvestAbility, value: "project-invest-ability" },
     { label: labels.developmentImpact, value: "development-impact" },
     { label: labels.crossBorderHarmonization, value: "cross-border-harmonization" },
@@ -65,7 +59,7 @@ const menu = {
   ],
 
   // Previous request to SDM
-  previousRequestSDM: [
+  sdmRequest: [
     { label: labels.yes, value: "yes" },
     { label: labels.no, value: "no" }
   ],
