@@ -33,11 +33,11 @@ const menu = {
     { label: labels.resourceManagement, value: "resource-management" }
   ],
   // Project Eligibility
-  projectEligibility: [
+  requestOrigin : [
     { label: labels.regionalEconomic, value: "regional-economic" },
     { label: labels.specializedRegional, value: "specialized-regional" },
     { label: labels.memberState, value: "member-state" },
-    { label: labels.specifyOther, value: "specify-other" }
+    // { label: labels.specifyOther, value: "specify-other" }
   ],
 
   infrastructureProject: [

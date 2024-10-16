@@ -23,12 +23,13 @@ export default function ApplicationForm() {
         fax: '',
         email: '',
         geographic_area: '',
-        reference_code: '',
         sectoral_transport: [],
         sectoral_energy: [],
         sectoral_ict: [],
         sectoral_water: [],
-        project_eligibility: '',
+        request_origin: [],
+        other_request: "", // input
+        reference_code: '',
         infrastructure_project: '',
         priority_action_project: '',
         proposed_activity: [],
@@ -87,21 +88,24 @@ export default function ApplicationForm() {
                     textAlign="center"
                     width="auto"
                     margin="20px 0"
-                    padding="0px 0px 30px 0px"
+                    padding="0px 0px 20px 0px"
                     fontWeight="bold"
                     fontSize="18px"
                     color="primary"
                 />
-                
+
                 {/* Application Form */}
                 <Grid container spacing={2}>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <CustomTypography
                             text={label.applicationForm}
-                            variant="h2"
                             display="block"
                             width="auto"
-                            fontWeight="bold" 
+                            fontSize="1.3rem"
+                            fontFamily="Arial, sans-serif"
+                            fontWeight="700"
+                            color="black"
+                            lineHeight="1.4375em"
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -164,6 +168,9 @@ export default function ApplicationForm() {
                             onChange={handleInput}
                         />
                     </Grid>
+                    <br />
+                    <br />
+                    <br />
 
                     {/* Radio Buttons */}
                     <Grid item xs={12}>
@@ -174,75 +181,91 @@ export default function ApplicationForm() {
                             options={menu.geographicArea}
                             onChange={handleInput}
                             row={true}
-                            labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                            labelStyle={{ fontWeight: "bold", color: "black" }}
                         />
                     </Grid>
                     <br />
+                    <br />
+
+                    {/* CheckBoxes */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <StyledHeading fontSize="18px" textAlign="left" fontWeight="normal" margin="10px 0px 0px 0px">
-                            {label.sectoralFocus}
-                        </StyledHeading>
+                        <CustomTypography
+                            text={label.sectoralFocus}
+                            display="block"
+                            width="auto"
+                            fontSize="1.3rem"
+                            fontFamily="Arial, sans-serif"
+                            fontWeight="700"
+                            color="black"
+                            lineHeight="1.4375em"
+                        />
                     </Grid>
-                    {/* CheckBox */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <FormControl component="fieldset" variant="standard">
-                            <FormLabel>{label.transport}</FormLabel>
-                            <CustomCheckBox
-                                options={menu.transportActivity}
-                                value={data.sectoral_transport}
-                                name="sectoral_transport"
-                                onChange={handleInput}
-                            />
-                        </FormControl>
+                        <CustomCheckBox
+                            name="sectoral_transport"
+                            value={data.sectoral_transport}
+                            options={menu.transportActivity}
+                            label={label.transport}
+                            onChange={handleInput}
+                        />
                     </Grid>
+
                     {/* Energy */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <FormControl component="fieldset" variant="standard">
-                            <FormLabel>{label.energy}</FormLabel>
-                            <CustomCheckBox
-                                options={menu.energyActivity}
-                                value={data.sectoral_energy}
-                                name="sectoral_energy"
-                                onChange={handleInput}
-                            />
-                        </FormControl>
+                        <CustomCheckBox
+                            name="sectoral_energy"
+                            value={data.sectoral_energy}
+                            options={menu.energyActivity}
+                            label={label.energy}
+                            onChange={handleInput}
+                        />
                     </Grid>
+
                     {/* ICT */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <FormControl component="fieldset" variant="standard">
-                            <FormLabel>{label.ict}</FormLabel>
-                            <CustomCheckBox
-                                options={menu.ictActivity}
-                                value={data.sectoral_ict}
-                                name="sectoral_ict"
-                                onChange={handleInput}
-                            />
-                        </FormControl>
+                        <CustomCheckBox
+                            name="sectoral_ict"
+                            value={data.sectoral_ict}
+                            options={menu.ictActivity}
+                            label={label.ict}
+                            onChange={handleInput}
+                        />
                     </Grid>
+
                     {/* Water */}
                     <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <FormControl component="fieldset" variant="standard">
-                            <FormLabel>{label.water}</FormLabel>
-                            <CustomCheckBox
-                                options={menu.waterActivity}
-                                value={data.sectoral_water}
-                                name="sectoral_water"
-                                onChange={handleInput}
-                            />
-                        </FormControl>
-                    </Grid>
-                    {/* Project Eligibility */}
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Typography variant="h6" sx={{ paddingBottom: "20px" }}>{label.projectEligibility}</Typography>
-                        <CustomRadioButton
-                            name="project_eligibility"
-                            value={data.project_eligibility}
-                            label={label.specifyRequest}
-                            options={menu.projectEligibility}
+                        <CustomCheckBox
+                            name="sectoral_water"
+                            value={data.sectoral_water}
+                            options={menu.waterActivity}
+                            label={label.water}
                             onChange={handleInput}
-                            row={false}
-                            labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
                         />
+                    </Grid>
+
+                    {/* Project Eligibility */}
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <CustomTypography
+                            text={label.projectEligibility}
+                            display="block"
+                            width="auto"
+                            fontSize="1.3rem"
+                            fontFamily="Arial, sans-serif"
+                            fontWeight="700"
+                            color="black"
+                            lineHeight="1.4375em"
+                        />
+                    </Grid>
+                    <Grid item xs={6} sm={6} md={6} lg={6}>
+                        <CustomCheckBox
+                            name="request_origin"
+                            value={data.request_origin}
+                            options={menu.requestOrigin}
+                            label={label.specifyRequest}
+                            onChange={handleInput}
+                            row={true}
+                        />
+                        <CustomInput />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomRadioButton
@@ -252,7 +275,7 @@ export default function ApplicationForm() {
                             options={menu.infrastructureProject}
                             onChange={handleInput}
                             row={true}
-                            labelStyle={{ fontWeight: "bold", fontSize: "12px" }}
+                            labelStyle={{ fontWeight: "700", color: "#3D3935", fontSize: "12px" }}
                         />
                     </Grid>
                     {selectedPriorityAction === 'yes' && (
@@ -306,7 +329,7 @@ export default function ApplicationForm() {
                     )}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <FormControl component="fieldset" variant="standard">
-                            <FormLabel>{label.proposedActivity}</FormLabel>
+                            <FormLabel sx={{ fontWeight: "700", color: "#3D3935", fontSize: "12px" }}>{label.proposedActivity}</FormLabel>
                             <CustomCheckBox
                                 name="proposed_activity"
                                 value={data.proposed_activity}

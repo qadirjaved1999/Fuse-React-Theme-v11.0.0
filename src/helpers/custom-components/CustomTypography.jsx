@@ -1,10 +1,10 @@
 
 import { Typography } from "@mui/material";
 
-const CustomTypography = ({ text, variant, display, textAlign, width, margin,  padding, fontWeight, fontSize, color, textTransform }) => {
+const CustomTypography = ({ text, variant, display, textAlign, width, margin, padding, fontWeight, fontSize, color, textTransform, lineHeight }) => {
   return (
     <Typography
-      variant={variant ? variant : "subtitle1"} 
+      variant={variant ? variant : "subtitle1"}
       display={display ? display : "block"}
       style={{
         textAlign: textAlign ? textAlign : "left",
@@ -14,6 +14,7 @@ const CustomTypography = ({ text, variant, display, textAlign, width, margin,  p
         fontWeight: fontWeight ? fontWeight : "normal",
         fontSize: fontSize ? fontSize : "14px",
         color: color ? color : "inherit",
+        lineHeight: lineHeight,
         textTransform: textTransform ? textTransform : "none",
       }}
     >
