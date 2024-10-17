@@ -44,13 +44,13 @@
   "memberState": "Member State (MS)",
   "specifyOther": "Specify other",
 
-  "pidaPlan": "Is the Infrastructure Project within the PIDA Priority Action Plan",
+  "pidaPapProject": "Is the Infrastructure Project within the PIDA Priority Action Plan",
   "yes": "Yes",
   "no": "No",
 
-  "pidaRegional": "If so, is the project a Regional Priority Infrastructure Project?",
+  "regionalnfrastructure": "If so, is the project a Regional Priority Infrastructure Project?",
 
-  "pidaCountry": "Is the project a Country Priority Infrastructure Project with regional impact?",
+  "countryInfrastructure": "Is the project a Country Priority Infrastructure Project with regional impact?",
 
   "pidaProjectId": "Project No./ID",
   "pidaProjectName": "Project name",
@@ -69,12 +69,12 @@
   "keyObjectives": "Key Objectives of Activity",
   "describeKeyObjective": "Describe Key Objectives",
 
-  "sdmRequest": "Previous request to SDM",
+  "previousSdmRSequest": "Previous request to SDM",
   "requestingAdvisoryServices": "Is it the first time that you are requesting advisory services from SDM for this project?",
 
-  "sdmReference": "Reference Code",
+  "previousSdmCode": "Reference Code",
   "authorityAgency": "Details of the Authority in charge of the coordination and implementation of the assistance provided by SDM",
-  "sdmResponsible": "Name of responsible official",
+  "sdmResponsiblePerson": "Name of responsible official",
   "sdmOrganization": "Organization/Agency/Institution:",
   "sdmPosition":"Position",
   "sdmTelephone":"Telephone",
@@ -87,18 +87,20 @@
   "evidencePrioritization": "Evidence of prioritization of project within REC",
   "mandateApproval": "Evidence of prioritization of project within Country level with REC level mandate/approval",
 
-  "internalEvaluation": "FOR INTERNAL EVALUATION USE ONLY",
-  "internalReferenceCode": "Reference Code",
+  "internalEvaluation": "For internal evaluation use only",
+  "referenceCode": "Reference Code",
 
-  "internalEligibility": "ELIGIBILITY",
-  "recForm": "Origin of the request from a REC, SRIDI, MS?",
-  "pidaProject": "PIDA PAP Project? ",
+  "internalEligibility": "Eligibility",
+  "requestOrigin": "Origin of the request from a REC, SRIDI, MS?",
+  "internalPidaPapProject": "PIDA PAP Project? ",
   "noPIDAProject": "If it is not a PIDAD PAP project, has it been properly justified that it has a regional development impact?",
   "sponsorProject": "Is the project sponsor and the project coordinator clearly identified? ",
-  "otherSpecify": "Other Specify",
-  "qualityInformation": "QUALITY OF INFORMATION",
-  "annexedQuestionnaire": "Has the annexed questionnaire been fulfilled?",
-
+  "otherOrigin": "Other Specify",
+  "qualityInformation": "Quality of information",
+  "questionnaireFulfilled": "Has the annexed questionnaire been fulfilled?",
+  "evaluationStatus":"Evaluation summary",
+  "pass":"Pass",
+  "fail":"Fail",
   "regionalClimate": "Regional climate interest and commitment",
   "countriesNotInParis": "Some of the involved countries have not joined the Paris Agreement",
   "beneficiaryNDC": "All the involved countries have joined the Paris Agreement, but just the main beneficiary has updated its Nationally Determined Contribution (NDC) since 2015",

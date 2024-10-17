@@ -39,11 +39,10 @@ const menu = {
     { label: labels.memberState, value: "member-state" },
   ],
 
-  pidaPlan : [
+  confirmationChoices: [
     { label: labels.yes, value: "yes" },
     { label: labels.no, value: "no" },
   ],
-
   //Proposed Activity
   proposedActivity: [
     { label: labels.supportPreparationFacility, value: "support-preparation-facility" },
@@ -58,20 +57,15 @@ const menu = {
     { label: labels.projectDiagnostics, value: "project-diagnostics" }
   ],
 
-  // Previous request to SDM
-  sdmRequest: [
-    { label: labels.yes, value: "yes" },
-    { label: labels.no, value: "no" }
-  ],
-
   additionalInformation: [
     { label: labels.evidencePrioritization, value: "evidence-prioritization" },
     { label: labels.mandateApproval, value: "mandate-approval" }
   ],
-  // Internal Eligibility
-  internalEligibility: [
-    { label: labels.yes, value: "yes" },
-    { label: labels.no, value: "no" }
+
+  // Evaluation committee
+  evaluationStatus: [
+  {label: labels.pass, value: "pass"},
+  {label: labels.fail, value: "fail"} 
   ],
   //Regional climate interest and commitment
   regionalClimate: [

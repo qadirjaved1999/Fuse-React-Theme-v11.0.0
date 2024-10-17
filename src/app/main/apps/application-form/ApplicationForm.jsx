@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Typography, Container, TextField, FormLabel } from '@mui/material';
+import { Grid, Typography, Container, TextField } from '@mui/material';
 import { styled } from '@mui/material';
 import menu from 'src/helpers/menu';
 import CustomInput from 'src/helpers/custom-components/CustomInput';
@@ -7,7 +7,6 @@ import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
 import CustomCheckBox from 'src/helpers/custom-components/CustomCheckBox';
 import languages from 'src/labels/index';
 import { useState } from 'react';
-import { FormControl } from '@mui/base';
 import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import CustomButton from 'src/helpers/custom-components/CustomButton';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
@@ -30,27 +29,31 @@ export default function ApplicationForm() {
         sectoral_ict: [],
         sectoral_water: [],
         request_origin: [],
-        other_request: '', // input
-        pida_plan: '', // Radio
+        other_origin: '', // input
+        pida_pap_project: '', // Radio
         pida_project_id: '', // input
         pida_project_name: '', // input
-        pida_regional: '', // Radio
-        pida_country: '', // Radio
+        regional_infrastructure: '', // Radio
+        regional_infrastructure_evidence: '', // documents
+        country_infrastructure: '', // Radio
+        country_infrastructure_evidence: '', // documents
         proposed_activity: '', //Radio
         proposed_other_activity: [],
         priority_action_project: '',
         other_advisory_services: [],
-        proposed_project_description: '', //textarea
-        key_objectives_desc: '', //textarea
-        sdm_request: '', //Radio
-        sdm_reference: '', // input
-        sdm_responsible: '',
+        project_description: '', //textarea
+        key_objectives: '', //textarea
+        previous_sdm_request: '', //Radio
+        previous_sdm_code: '', // input
+        sdm_responsible_person: '',
         sdm_organization: '',
         sdm_position: '',
         sdm_telephone: '',
         sdm_email: '',
         implementation_schedule: '',
-        additional_information: []
+        additional_information: [],
+        evidence_rec: '', // documents
+        evidence_country_rec: '' // documents
     }
     const initialError = {
         organisation_name: false,
@@ -59,8 +62,10 @@ export default function ApplicationForm() {
     const [data, setData] = useState(initialState);
     const [error, setError] = useState(initialError);
 
-    const [pidaPlan, setPidaPlan] = useState(data.pida_plan);
-    const [sdmRequest, setSdmRequest] = useState(data.sdm_request);
+    const [pidaPlan, setPidaPlan] = useState(data.pida_pap_project);
+    const [sdmRequest, setSdmRequest] = useState(data.previous_sdm_request);
+    const [regionalEvidence, setregionalEvidence] = useState(data.regional_infrastructure);
+    const [countryEvidence, setCountryEvidence] = useState(data.country_infrastructure);
 
 
     // Form Handler Function handleInput
@@ -81,11 +86,18 @@ export default function ApplicationForm() {
             setError({ ...error, [name]: !value });
             console.log("input and radio values => " + "Name = " + name + ", " + "value = " + value)
         }
-        if (name === 'pida_plan') {
+        if (name === 'pida_pap_project') {
             setPidaPlan(value);
         }
-        if (name === 'sdm_request') {
+        if (name === 'previous_sdm_request') {
             setSdmRequest(value);
+        }
+
+        if (name === 'regional_infrastructure') {
+            setregionalEvidence(value);
+        }
+        if (name === 'country_infrastructure') {
+            setCountryEvidence(value);
         }
     }
     return (
@@ -97,7 +109,6 @@ export default function ApplicationForm() {
                     display="block"
                     textAlign="center"
                     width="auto"
-                    // margin="20px 0"
                     padding="0px 0px 20px 0px"
                     fontWeight="bold"
                     fontSize="18px"
@@ -276,9 +287,9 @@ export default function ApplicationForm() {
                             row={true}
                         />
                         <CustomInput
-                            name="other_request"
-                            value={data.other_request}
-                            label={label.otherSpecify}
+                            name="other_origin"
+                            value={data.other_origin}
+                            label={label.otherOrigin}
                             onChange={handleInput}
                             marginTop="10px"
                         />
@@ -288,10 +299,10 @@ export default function ApplicationForm() {
                     {/* PIDA Priority Action Plan */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomRadioButton
-                            name="pida_plan"
-                            value={data.pida_plan}
-                            label={label.pidaPlan}
-                            options={menu.pidaPlan}
+                            name="pida_pap_project"
+                            value={data.pida_pap_project}
+                            label={label.pidaPapProject}
+                            options={menu.confirmationChoices}
                             onChange={handleInput}
                             row={true}
                             labelStyle={{ fontWeight: "bold", color: "black" }}
@@ -320,27 +331,62 @@ export default function ApplicationForm() {
                     {pidaPlan === 'no' && (
                         <Grid item xs={12} sm={12} md={6} lg={6}>
                             <CustomRadioButton
-                                name="pida_regional"
-                                value={data.pida_regional}
-                                label={label.pidaRegional}
-                                options={menu.pidaPlan}
+                                name="regional_infrastructure"
+                                value={data.regional_infrastructure}
+                                label={label.regionalnfrastructure}
+                                options={menu.confirmationChoices}
                                 onChange={handleInput}
                                 row={true}
                                 labelStyle={{ fontWeight: "700", color: "#3D3935", fontSize: "12px" }}
                             />
+                            {regionalEvidence === 'yes' && (
+                                <Grid item sx={{ paddingTop: "10px" }} xs={12} sm={12} md={6} lg={6}>
+                                    <CustomButton
+                                        variant="contained"
+                                        text="Upload Evidence"
+                                        textColor="white"
+                                        bgColor="black"
+                                        padding='8px 16px'
+                                        fontSize='16px'
+                                        minWidth='120px'
+                                        height='40px'
+                                        btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
+                                        borderRadius='20px'
+                                        onClick={() => alert('Button Clicked!')}
+                                    />
+                                </Grid>
+                            )}
                         </Grid>
                     )}
+
                     {pidaPlan === 'no' && (
                         <Grid item xs={12} sm={12} md={6} lg={6}>
                             <CustomRadioButton
-                                name="pida_country"
-                                value={data.pida_country}
-                                label={label.pidaCountry}
-                                options={menu.pidaPlan}
+                                name="country_infrastructure"
+                                value={data.country_infrastructure}
+                                label={label.countryInfrastructure}
+                                options={menu.confirmationChoices}
                                 onChange={handleInput}
                                 row={true}
                                 labelStyle={{ fontWeight: "700", color: "#3D3935", fontSize: "12px" }}
                             />
+                            {countryEvidence === 'yes' && (
+                                <Grid item sx={{ paddingTop: "10px" }} xs={12} sm={12} md={6} lg={6}>
+                                    <CustomButton
+                                        variant="contained"
+                                        text="Upload Evidence"
+                                        textColor="white"
+                                        bgColor="black"
+                                        padding='8px 16px'
+                                        fontSize='16px'
+                                        minWidth='120px'
+                                        height='40px'
+                                        btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
+                                        borderRadius='50px'
+                                        onClick={() => alert('Button Clicked!')}
+                                    />
+                                </Grid>
+                            )}
                         </Grid>
                     )}
                     {/* Proposed Activity */}
@@ -367,51 +413,30 @@ export default function ApplicationForm() {
                     </Grid>
                     {/* DETAILS OF THE PROPOSED ACTIVITY */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <CustomTypography
-                            text={label.detailsProposedActivity}
-                            variant="h2"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
-                            fontWeight="700"
-                            textTransform="capitalize"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
                         <TextField
-                            name="proposed_project_description"
-                            value={data.proposed_project_description}
-                            label={label.projectDescription}
+                            name="project_description"
+                            value={data.project_description}
+                            placeholder={label.projectDescription}
+                            label={label.detailsProposedActivity}
                             onChange={handleInput}
                             multiline
-                            rows={1}
+                            rows={2}
                             variant="outlined"
                             fullWidth
                         />
                     </Grid>
                     <br />
                     <br />
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <CustomTypography
-                            text={label.keyObjectives}
-                            variant="h2"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
-                            fontWeight="700"
-                            textTransform="capitalize"
-                        />
-                    </Grid>
+
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <TextField
-                            name="key_objectives_desc"
-                            value={data.key_objectives_desc}
-                            label={label.describeKeyObjective}
+                            name="key_objectives"
+                            value={data.key_objectives}
+                            placeholder={label.describeKeyObjective}
+                            label={label.keyObjectives}
                             onChange={handleInput}
                             multiline
-                            rows={1}
+                            rows={2}
                             variant="outlined"
                             fullWidth
                         />
@@ -431,10 +456,10 @@ export default function ApplicationForm() {
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomRadioButton
-                            name="sdm_request"
-                            value={data.sdm_request}
-                            label={label.sdmRequest}
-                            options={menu.sdmRequest}
+                            name="previous_sdm_request"
+                            value={data.previous_sdm_request}
+                            label={label.previousSdmRSequest}
+                            options={menu.confirmationChoices}
                             onChange={handleInput}
                             row={true}
                             labelStyle={{ fontWeight: "bold", color: "black" }}
@@ -443,9 +468,9 @@ export default function ApplicationForm() {
                     {sdmRequest === 'no' && (
                         <Grid item xs={12} md={12} lg={12}>
                             <CustomInput
-                                name="sdm_reference"
-                                value={data.sdm_reference}
-                                label={label.sdmReference}
+                                name="previous_sdm_code"
+                                value={data.previous_sdm_code}
+                                label={label.previousSdmCode}
                                 onChange={handleInput}
                             />
                         </Grid>
@@ -466,9 +491,9 @@ export default function ApplicationForm() {
                     </Grid>
                     <Grid item lg={6} md={6} sm={6} xs={6}>
                         <CustomInput
-                            name="sdm_responsible"
-                            value={data.sdm_responsible}
-                            label={label.sdmResponsible}
+                            name="sdm_responsible_person"
+                            value={data.sdm_responsible_person}
+                            label={label.sdmResponsiblePerson}
                             onChange={handleInput}
                         />
                     </Grid>
@@ -525,7 +550,7 @@ export default function ApplicationForm() {
                             label={label.anticipatedDuration}
                             onChange={handleInput}
                             multiline
-                            rows={1}
+                            rows={2}
                             variant="outlined"
                             fullWidth
                         />
@@ -565,11 +590,10 @@ export default function ApplicationForm() {
                             minWidth='120px'
                             height='40px'
                             btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
-                            borderRadius='20px'
+                            borderRadius='50px'
                             onClick={() => alert('Button Clicked!')}
                         />
                     </Grid>
-                    <br />
                     <br />
                     <br />
                     <br />
@@ -595,7 +619,7 @@ export default function ApplicationForm() {
                             minWidth='120px'
                             height='40px'
                             btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
-                            borderRadius='20px'
+                            borderRadius='50px'
                             onClick={() => alert('Button Clicked!')}
                         />
                     </Grid>

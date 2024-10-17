@@ -12,15 +12,17 @@ const Root = styled(FusePageCarded)({
 });
 const InternalEvaluationPage = () => {
     return (
-        <Root
-            header={
-                <Typography style={{ padding: "20px 0px", fontWeight: "bold", fontSize: "15px" }}>Internal Evaluation Form</Typography>
-            }
+        <Root sx={{ marginTop: "50px" }}
+            // header={
+            //     <Typography style={{ padding: "20px 0px", fontWeight: "bold", fontSize: "15px" }}>Internal Evaluation Form</Typography>
+            // }
             contentToolbar={
                 <Typography>Internal Evaluation Form</Typography>
             }
             content={
-                <InternalEvaluationPageForm />
+                <div className="p-20">
+                    <InternalEvaluationPageForm />
+                </div>
             }
         />
     )
