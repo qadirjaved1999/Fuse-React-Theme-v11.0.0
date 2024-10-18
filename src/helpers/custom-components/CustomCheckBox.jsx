@@ -14,7 +14,7 @@ const CustomCheckBox = ({ name, options, label, value = [], onChange, row }) => 
                                     name={name}
                                     value={option.value}
                                     checked={value.includes(option.value)}
-                                    onChange={onChange}
+                                    onChange={e => onChange(e)}
                                     size='small'
                                     sx={{
                                         color: 'black',

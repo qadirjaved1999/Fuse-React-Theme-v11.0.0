@@ -10,6 +10,7 @@ const menu = {
     { label: labels.southernAfrica, value: "southern-africa" }
   ],
   //Sectoral Focus of Proposed Activity
+  // Transport
   transportActivity: [
     { label: labels.roads, value: "roads" },
     { label: labels.aviation, value: "aviation" },
@@ -17,18 +18,18 @@ const menu = {
     { label: labels.railways, value: "railways" },
     { label: labels.multiModal, value: "multi-modal" },
   ],
-
+  // Energy
   energyActivity: [
     { label: labels.powerGeneration, value: "power-generation" },
     { label: labels.powerTransmission, value: "power-transmission" },
     { label: labels.oilGas, value: "oil-gas" },
   ],
-
+  // ICT
   ictActivity: [
     { label: labels.telecommunications, value: "telecommunications" },
     { label: labels.iT, value: "it" }
   ],
-
+  // Water
   waterActivity: [
     { label: labels.resourceManagement, value: "resource-management" }
   ],
@@ -38,7 +39,7 @@ const menu = {
     { label: labels.specializedRegional, value: "specialized-regional" },
     { label: labels.memberState, value: "member-state" },
   ],
-
+  // Yes & No
   confirmationChoices: [
     { label: labels.yes, value: "yes" },
     { label: labels.no, value: "no" },
@@ -56,12 +57,11 @@ const menu = {
     { label: labels.ongoingProjectManagement, value: "ongoing-project-management" },
     { label: labels.projectDiagnostics, value: "project-diagnostics" }
   ],
-
+  // Additional Information
   additionalInformation: [
     { label: labels.evidencePrioritization, value: "evidence-prioritization" },
     { label: labels.mandateApproval, value: "mandate-approval" }
   ],
-
   // Evaluation committee
   evaluationStatus: [
   {label: labels.pass, value: "pass"},
@@ -69,11 +69,11 @@ const menu = {
   ],
   //Regional climate interest and commitment
   regionalClimate: [
-    { label: labels.countriesNotInParis, value: "countries-not-in-paris" },
-    { label: labels.beneficiaryNDC, value: "beneficiary-ndc" },
-    { label: labels.alignedNDC, value: "aligned-ndc" },
-    { label: labels.notAligned, value: "not-aligned" },
-    { label: labels.allAligned, value: "all-aligned" }
+    { label: labels.countriesNotInParis, value: "0" },
+    { label: labels.beneficiaryNDC, value: "2.5" },
+    { label: labels.alignedNDC, value: "5" },
+    { label: labels.notAligned, value: "7.5" },
+    { label: labels.allAligned, value: "10" }
 
   ],
   //Governance framework for climate change

@@ -4,12 +4,15 @@ import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton'
 import menu from 'src/helpers/menu'
 import styled from 'styled-components'
 import languages from 'src/labels/index'
+import CustomTypography from 'src/helpers/custom-components/CustomTypography'
 
 const ClimatePoliceGds = () => {
 
     const label = languages.en;
+
     const initialState = {
-        regional_climate: "",
+        regional_climate: '',
+        regional_evidence: '',
         governance_climate: "",
         ownership_climate: "",
         harmonization_climate: "",
@@ -31,17 +34,25 @@ const ClimatePoliceGds = () => {
     const [data, setData] = useState(initialState);
     console.log("======>>>>>>>>", data)
 
-    const handleChange = event => {
-        const { name, value } = event.target;
-        setData(prevData => ({
-            ...prevData,
-            [name]: value
-        }));
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setData({ ...data, [name]: value });
         console.log("Name => ", name + "Value => ", value)
     }
     return (
-        <Grid container spacing={2} justifyContent="center" padding="50px">
-            <StyledHeading fontSize="18px" textAlign="center" fontWeight="normal" margin="30px 0px 0px 0px">CLIMATE POLICIES MAINSTREAMING</StyledHeading>
+        <Grid container spacing={2} justifyContent="center" padding="30px">
+            <Grid item lg={12} md={12} sm={12} xs={12}>
+                <CustomTypography
+                    text={label.climatePolicies}
+                    variant="h3"
+                    display="block"
+                    textAlign="center"
+                    width="auto"
+                    fontWeight="bold"
+                    fontSize="18px"
+                    color="primary"
+                />
+            </Grid>
             <Grid item lg={12}>
                 <CustomRadioButton
                     name="regional_climate"
@@ -49,6 +60,7 @@ const ClimatePoliceGds = () => {
                     options={menu.regionalClimate}
                     label={label.regionalClimate}
                     onChange={handleChange}
+                    labelStyle={{ fontWeight: "bold", color: "black" }}
                 />
             </Grid>
             <Grid item lg={12}>
@@ -58,6 +70,7 @@ const ClimatePoliceGds = () => {
                     options={menu.governanceClimate}
                     label={label.governanceClimate}
                     onChange={handleChange}
+                    labelStyle={{ fontWeight: "bold", color: "black" }}
                 />
             </Grid>
             <Grid item lg={12}>
@@ -201,13 +214,13 @@ const ClimatePoliceGds = () => {
 
 export default ClimatePoliceGds;
 
-// HEADINGS STYLE
-const StyledHeading = styled(Typography)(({ fontSize, padding, textAlign, margin }) => ({
-    fontSize: fontSize || '32px',
-    width: "100%",
-    fontWeight: '700',
-    fontFamily: 'Roboto, Arial, sans-serif',
-    margin: margin || '20px 0 0 0',
-    padding: padding || '10px',
-    textAlign: textAlign || 'center',
-}));
+// // HEADINGS STYLE
+// const StyledHeading = styled(Typography)(({ fontSize, padding, textAlign, margin }) => ({
+//     fontSize: fontSize || '32px',
+//     width: "100%",
+//     fontWeight: '700',
+//     fontFamily: 'Roboto, Arial, sans-serif',
+//     margin: margin || '20px 0 0 0',
+//     padding: padding || '10px',
+//     textAlign: textAlign || 'center',
+// }));

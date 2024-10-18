@@ -68,24 +68,13 @@ export default function ApplicationForm() {
     const [countryEvidence, setCountryEvidence] = useState(data.country_infrastructure);
 
 
-    // Form Handler Function handleInput
-    const handleInput = e => {
-        const { name, value, type, checked } = e.target;
-        if (type === 'checkbox') {
-            const updatedValues = checked
-                ? [...data[name], value]  // Add the checked value to the array
-                : data[name].filter((v) => v !== value);
+    // Form Handler Function
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setData({ ...data, [name]: value });
+        setError({ ...error, [name]: !value });
+        console.log("Name => ", name + "Value => ", value);
 
-            setData({
-                ...data,
-                [name]: updatedValues
-            });
-            console.log("Checkboxes Values => ", checked)
-        } else {
-            setData({ ...data, [name]: value });
-            setError({ ...error, [name]: !value });
-            console.log("input and radio values => " + "Name = " + name + ", " + "value = " + value)
-        }
         if (name === 'pida_pap_project') {
             setPidaPlan(value);
         }
@@ -99,7 +88,44 @@ export default function ApplicationForm() {
         if (name === 'country_infrastructure') {
             setCountryEvidence(value);
         }
-    }
+    };
+    // Form Handler function for checkboxes
+    const handleCheckbox = category => e => {
+        const { name, checked } = e.target;
+        setData({ ...data, [category]: checked ? [...data[category], name] : data[category].filter((item) => item !== name), });
+        console.log("Name => ", name + " =====>>>>> " + "Value => ", checked);
+    };
+    // const handleChange = e => {
+    //     const { name, value, type, checked } = e.target;
+    //     if (type === 'checkbox') {
+    //         const updatedValues = checked
+    //             ? [...data[name], value]  // Add the checked value to the array
+    //             : data[name].filter((v) => v !== value);
+
+    //         setData({
+    //             ...data,
+    //             [name]: updatedValues
+    //         });
+    //         console.log("Checkboxes Values => ", checked)
+    //     } else {
+    //         setData({ ...data, [name]: value });
+    //         setError({ ...error, [name]: !value });
+    //         console.log("input and radio values => " + "Name = " + name + ", " + "value = " + value)
+    //     }
+    //     if (name === 'pida_pap_project') {
+    //         setPidaPlan(value);
+    //     }
+    //     if (name === 'previous_sdm_request') {
+    //         setSdmRequest(value);
+    //     }
+
+    //     if (name === 'regional_infrastructure') {
+    //         setregionalEvidence(value);
+    //     }
+    //     if (name === 'country_infrastructure') {
+    //         setCountryEvidence(value);
+    //     }
+    // }
     return (
         <>
             <Container maxWidth="1240px">
@@ -135,7 +161,7 @@ export default function ApplicationForm() {
                             value={data.organisation_name}
                             name="organisation_name"
                             type="text"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -143,7 +169,7 @@ export default function ApplicationForm() {
                             label={label.contactPerson}
                             value={data.contact_person}
                             name="contact_person"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -151,7 +177,7 @@ export default function ApplicationForm() {
                             label={label.position}
                             value={data.position}
                             name="position"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -160,7 +186,7 @@ export default function ApplicationForm() {
                             value={data.telephone}
                             name="telephone"
                             type="tel"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item xs={3} md={3} lg={3}>
@@ -169,7 +195,7 @@ export default function ApplicationForm() {
                             value={data.fax}
                             name="fax"
                             type="number"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item xs={3} md={3} lg={3}>
@@ -178,7 +204,7 @@ export default function ApplicationForm() {
                             value={data.email}
                             name="email"
                             type="email"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item xs={6} md={6} lg={6}>
@@ -186,7 +212,7 @@ export default function ApplicationForm() {
                             label={label.address}
                             value={data.address}
                             name="address"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <br />
@@ -199,7 +225,7 @@ export default function ApplicationForm() {
                             value={data.geographic_area}
                             label={label.geographicArea}
                             options={menu.geographicArea}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             row={true}
                             labelStyle={{ fontWeight: "bold", color: "black" }}
                         />
@@ -226,7 +252,7 @@ export default function ApplicationForm() {
                             value={data.sectoral_transport}
                             options={menu.transportActivity}
                             label={label.transport}
-                            onChange={handleInput}
+                            onChange={handleCheckbox('sectoral_transport')}
                         />
                     </Grid>
 
@@ -237,7 +263,7 @@ export default function ApplicationForm() {
                             value={data.sectoral_energy}
                             options={menu.energyActivity}
                             label={label.energy}
-                            onChange={handleInput}
+                            onChange={handleCheckbox('sectoral_energy')}
                         />
                     </Grid>
 
@@ -248,7 +274,7 @@ export default function ApplicationForm() {
                             value={data.sectoral_ict}
                             options={menu.ictActivity}
                             label={label.ict}
-                            onChange={handleInput}
+                            onChange={handleCheckbox('sectoral_ict')}
                         />
                     </Grid>
 
@@ -259,7 +285,7 @@ export default function ApplicationForm() {
                             value={data.sectoral_water}
                             options={menu.waterActivity}
                             label={label.water}
-                            onChange={handleInput}
+                            onChange={handleCheckbox('sectoral_water')}
                         />
                     </Grid>
                     <br />
@@ -283,14 +309,14 @@ export default function ApplicationForm() {
                             value={data.request_origin}
                             options={menu.requestOrigin}
                             label={label.specifyRequest}
-                            onChange={handleInput}
+                            onChange={handleCheckbox('request_origin')}
                             row={true}
                         />
                         <CustomInput
                             name="other_origin"
                             value={data.other_origin}
                             label={label.otherOrigin}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             marginTop="10px"
                         />
                     </Grid>
@@ -303,7 +329,7 @@ export default function ApplicationForm() {
                             value={data.pida_pap_project}
                             label={label.pidaPapProject}
                             options={menu.confirmationChoices}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             row={true}
                             labelStyle={{ fontWeight: "bold", color: "black" }}
                         />
@@ -314,7 +340,7 @@ export default function ApplicationForm() {
                                 name="pida_project_id"
                                 value={data.pida_project_id}
                                 label={label.pidaProjectId}
-                                onChange={handleInput}
+                                onChange={handleChange}
                             />
                         </Grid>
                     )}
@@ -324,7 +350,7 @@ export default function ApplicationForm() {
                                 name="pida_project_name"
                                 value={data.pida_project_name}
                                 label={label.pidaProjectName}
-                                onChange={handleInput}
+                                onChange={handleChange}
                             />
                         </Grid>
                     )}
@@ -335,7 +361,7 @@ export default function ApplicationForm() {
                                 value={data.regional_infrastructure}
                                 label={label.regionalnfrastructure}
                                 options={menu.confirmationChoices}
-                                onChange={handleInput}
+                                onChange={handleChange}
                                 row={true}
                                 labelStyle={{ fontWeight: "700", color: "#3D3935", fontSize: "12px" }}
                             />
@@ -366,7 +392,7 @@ export default function ApplicationForm() {
                                 value={data.country_infrastructure}
                                 label={label.countryInfrastructure}
                                 options={menu.confirmationChoices}
-                                onChange={handleInput}
+                                onChange={handleChange}
                                 row={true}
                                 labelStyle={{ fontWeight: "700", color: "#3D3935", fontSize: "12px" }}
                             />
@@ -396,7 +422,7 @@ export default function ApplicationForm() {
                             value={data.proposed_activity}
                             label={label.proposedActivity}
                             options={menu.proposedActivity}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             row={true}
                             labelStyle={{ fontWeight: "bold", color: "black" }}
                         />
@@ -407,7 +433,7 @@ export default function ApplicationForm() {
                                 name="proposed_other_activity"
                                 value={data.proposed_other_activity}
                                 options={menu.proposedOtherActivity}
-                                onChange={handleInput}
+                                onChange={handleCheckbox('proposed_other_activity')}
                             />
                         )}
                     </Grid>
@@ -418,7 +444,7 @@ export default function ApplicationForm() {
                             value={data.project_description}
                             placeholder={label.projectDescription}
                             label={label.detailsProposedActivity}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             multiline
                             rows={2}
                             variant="outlined"
@@ -434,7 +460,7 @@ export default function ApplicationForm() {
                             value={data.key_objectives}
                             placeholder={label.describeKeyObjective}
                             label={label.keyObjectives}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             multiline
                             rows={2}
                             variant="outlined"
@@ -460,7 +486,7 @@ export default function ApplicationForm() {
                             value={data.previous_sdm_request}
                             label={label.previousSdmRSequest}
                             options={menu.confirmationChoices}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             row={true}
                             labelStyle={{ fontWeight: "bold", color: "black" }}
                         />
@@ -471,7 +497,7 @@ export default function ApplicationForm() {
                                 name="previous_sdm_code"
                                 value={data.previous_sdm_code}
                                 label={label.previousSdmCode}
-                                onChange={handleInput}
+                                onChange={handleChange}
                             />
                         </Grid>
                     )}
@@ -494,7 +520,7 @@ export default function ApplicationForm() {
                             name="sdm_responsible_person"
                             value={data.sdm_responsible_person}
                             label={label.sdmResponsiblePerson}
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item lg={6} md={6} sm={6} xs={6}>
@@ -502,7 +528,7 @@ export default function ApplicationForm() {
                             name="sdm_organization"
                             value={data.sdm_organization}
                             label={label.sdmOrganization}
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item lg={4} md={4} sm={4} xs={4}>
@@ -510,7 +536,7 @@ export default function ApplicationForm() {
                             name="sdm_position"
                             value={data.sdm_position}
                             label={label.sdmPosition}
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item lg={4} md={4} sm={4} xs={4}>
@@ -519,7 +545,7 @@ export default function ApplicationForm() {
                             value={data.sdm_telephone}
                             label={label.sdmTelephone}
                             type="tel"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item lg={4} md={4} sm={4} xs={4}>
@@ -528,7 +554,7 @@ export default function ApplicationForm() {
                             value={data.sdm_email}
                             label={label.sdmEmail}
                             type="email"
-                            onChange={handleInput}
+                            onChange={handleChange}
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -548,7 +574,7 @@ export default function ApplicationForm() {
                             name="implementation_schedule"
                             value={data.implementation_schedule}
                             label={label.anticipatedDuration}
-                            onChange={handleInput}
+                            onChange={handleChange}
                             multiline
                             rows={2}
                             variant="outlined"

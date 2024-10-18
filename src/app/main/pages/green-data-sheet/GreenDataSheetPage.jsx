@@ -14,7 +14,7 @@ const Root = styled(FusePageCarded)({
 
 const GreenDataSheetPage = () => {
     return (
-        <Root sx={{ marginTop: "50px" }}
+        <Root sx={{ marginTop: "30px" }}
             // header={
             // 	<div className="p-24">
             // 		<h4>GIZ SDM Project</h4>
@@ -27,7 +27,7 @@ const GreenDataSheetPage = () => {
 
             }
             content={
-                <div className="p-24">
+                <div className="p-5">
                     <ClimatePoliceGds />
                 </div>
             }
