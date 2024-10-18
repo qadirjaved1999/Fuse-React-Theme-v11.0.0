@@ -78,132 +78,132 @@ const menu = {
   ],
   //Governance framework for climate change
   governanceClimate: [
-    { label: labels.notAdoptingPolicy, value: "not-adopting-policy" },
-    { label: labels.frameworkPolicy, value: "framework-policy" },
-    { label: labels.developmentPolicy, value: "development-policy" },
-    { label: labels.planningPolicy, value: "planning-policy" },
-    { label: labels.financePolicy, value: "finance-policy" },
+    { label: labels.notAdoptingPolicy, value: "0" },
+    { label: labels.frameworkPolicy, value: "2.5" },
+    { label: labels.developmentPolicy, value: "5" },
+    { label: labels.planningPolicy, value: "7.5" },
+    { label: labels.financePolicy, value: "10" },
   ],
   // Country ownership climate narrative
   ownershipClimate: [
-    { label: labels.someCountriesNoNDE, value: "some-countries-no-nde" },
-    { label: labels.establishedNDE, value: "established-nde" },
-    { label: labels.ProcessesNDE, value: "Processes-nde" },
-    { label: labels.ExperienceNDE, value: "Experience-nde" },
-    { label: labels.technicalAssistance, value: "technical-assistance" }
+    { label: labels.someCountriesNoNDE, value: "0" },
+    { label: labels.establishedNDE, value: "2.5" },
+    { label: labels.ProcessesNDE, value: "5" },
+    { label: labels.ExperienceNDE, value: "7.5" },
+    { label: labels.technicalAssistance, value: "10" }
   ],
   // Climate investment landscape harmonization
   harmonizationClimate: [
-    { label: labels.noPlansNCCF, value: "no-plans-nccf" },
-    { label: labels.planningNCCF, value: "planning-nccf" },
-    { label: labels.govtNCCF, value: "govt-nccf" },
-    { label: labels.notOperativeNCCF, value: "notOperative-nccf" },
-    { label: labels.operativeNCCF, value: "operative-nccf" },
+    { label: labels.noPlansNCCF, value: "0" },
+    { label: labels.planningNCCF, value: "2.5" },
+    { label: labels.govtNCCF, value: "5" },
+    { label: labels.notOperativeNCCF, value: "7.5" },
+    { label: labels.operativeNCCF, value: "10" },
   ],
   // Access to climate finance
   financeClimate: [
-    { label: labels.noFinanceProjects, value: "no-finance-projects" },
-    { label: labels.onlySomeCountries, value: "only-some-countries" },
-    { label: labels.localSupportCountries, value: "local-support-countries" },
-    { label: labels.countrySupport, value: "local-support-main-country" },
-    { label: labels.localMainCountry, value: "local-main-country" }
+    { label: labels.noFinanceProjects, value: "0" },
+    { label: labels.onlySomeCountries, value: "2.5" },
+    { label: labels.localSupportCountries, value: "5" },
+    { label: labels.countrySupport, value: "7.5" },
+    { label: labels.localMainCountry, value: "10" }
   ],
   // Volume of green funds received by hosting countries
   hostingCountries: [
-    { label: labels.noFundsReceived, value: "no-funds-received" },
-    { label: labels.fundsReceived, value: "funds-received" },
-    { label: labels.twoInfrastructure, value: "two-infrastructure" },
-    { label: labels.threeInfrastructure, value: "three-infrastructure" },
-    { label: labels.fourInfrastructure, value: "four-infrastructure" },
+    { label: labels.noFundsReceived, value: "0" },
+    { label: labels.fundsReceived, value: "2.5" },
+    { label: labels.twoInfrastructure, value: "5" },
+    { label: labels.threeInfrastructure, value: "7.5" },
+    { label: labels.fourInfrastructure, value: "10" },
   ],
   // National performance on sustainability issues
-  nationalSustainability: [
-    { label: labels.noEPIabove30, value: "no-epi-above-30" },
-    { label: labels.EPIabove30Restbelow30, value: "epi-above-30-rest-below-30" },
-    { label: labels.allEPIabove30, value: "all-epi-above-30" },
-    { label: labels.EPIabove35Restbelow35, value: "epi-above-35-rest-below-35" },
-    { label: labels.allEPIabove35, value: "all-epi-above-35" },
+  nationalPerformance: [
+    { label: labels.noEPIabove30, value: "0" },
+    { label: labels.EPIabove30Restbelow30, value: "2.5" },
+    { label: labels.allEPIabove30, value: "5" },
+    { label: labels.EPIabove35Restbelow35, value: "7.5" },
+    { label: labels.allEPIabove35, value: "10" },
   ],
   // Access to green energy
   greenEnergy: [
-    { label: labels.below15ShareTPES, value: "below-15-share-tpes" },
-    { label: labels.above15ShareTPES, value: "above-15-share-tpes" },
-    { label: labels.above25ShareTPES, value: "above-25-share-tpes" },
-    { label: labels.above35ShareTPES, value: "below-35-share-tpes" },
-    { label: labels.above50ShareTPES, value: "below-50-share-tpes" }
+    { label: labels.below15ShareTPES, value: "0" },
+    { label: labels.above15ShareTPES, value: "2.5" },
+    { label: labels.above25ShareTPES, value: "5" },
+    { label: labels.above35ShareTPES, value: "7.5" },
+    { label: labels.above50ShareTPES, value: "10" }
   ],
   // Carbon footprint absolute estimation
   absoluteFootprint: [
-    { label: labels.absoluteFootprintAbove100k, value: "absolute-footprintAbove100k" },
-    { label: labels.absoluteFootprint60kTo100k, value: "absolute-footprint-60k-to-100k" },
-    { label: labels.absoluteFootprint20kTo60k, value: "absolute-footprint-20k-to-60k" },
-    { label: labels.absoluteFootprintBelow20k, value: "absolute-footprint-below-20k" },
-    { label: labels.absoluteNoFootprintAssessment, value: "absolute-no-footprint-assessment" },
+    { label: labels.absoluteFootprintAbove100k, value: "0" },
+    { label: labels.absoluteFootprint60kTo100k, value: "2.5" },
+    { label: labels.absoluteFootprint20kTo60k, value: "5" },
+    { label: labels.absoluteFootprintBelow20k, value: "7.5" },
+    { label: labels.absoluteNoFootprintAssessment, value: "10" },
   ],
 
   // Carbon footprint relative estimation
   relativeFootprint: [
-    { label: labels.relativeFootprintAbove100k, value: "relative-footprintAbove100k" },
-    { label: labels.relativeFootprint60kTo100k, value: "relative-footprint-60k-to-100k" },
-    { label: labels.relativeFootprint20kTo60k, value: "relative-footprint-20k-to-60k" },
-    { label: labels.relativeFootprintBelow20k, value: "relative-footprint-below-20k" },
-    { label: labels.relativeNoFootprintAssessment, value: "relative-no-footprint-assessment" },
+    { label: labels.relativeFootprintAbove100k, value: "0" },
+    { label: labels.relativeFootprint60kTo100k, value: "2.5" },
+    { label: labels.relativeFootprint20kTo60k, value: "5" },
+    { label: labels.relativeFootprintBelow20k, value: "7.5" },
+    { label: labels.relativeNoFootprintAssessment, value: "10" },
   ],
   // Sustainable infrastructure operation potential
   sustainablePotential: [
-    { label: labels.noClimatePositive, value: "no-climate-positive" },
-    { label: labels.climatePositive, value: "climate-positive" },
-    { label: labels.noFullyBasedRenewable, value: "no-fully-based-renewable" },
-    { label: labels.supplied50Renewable, value: "supplied-50-renewable" },
-    { label: labels.supplied75Renewable, value: "supplied-75-renewable" },
+    { label: labels.noClimatePositive, value: "0" },
+    { label: labels.climatePositive, value: "2.5" },
+    { label: labels.noFullyBasedRenewable, value: "5" },
+    { label: labels.supplied50Renewable, value: "7.5" },
+    { label: labels.supplied75Renewable, value: "10" },
   ],
   // vulnerability Assessment
   vulnerabilityAssessment: [
-    { label: labels.noInitialScreening, value: "no-initial-screening" },
-    { label: labels.initialScreening, value: "initial-screening" },
-    { label: labels.bothProjectType, value: "both-project-type" },
-    { label: labels.oneAnalysisCategorized, value: "one-analysis-categorized" },
-    { label: labels.bothAnalysisCategorized, value: "both-analysis-categorized" },
+    { label: labels.noInitialScreening, value: "0" },
+    { label: labels.initialScreening, value: "2.5" },
+    { label: labels.bothProjectType, value: "5" },
+    { label: labels.oneAnalysisCategorized, value: "7.5" },
+    { label: labels.bothAnalysisCategorized, value: "10" },
   ],
   // Climate risk assessment
   riskClimate: [
-    { label: labels.noLikelihoodAnalysis, value: "no-like-lihood-analysis" },
-    { label: labels.likeLihoodAnalysis, value: "like-lihood-analysis" },
-    { label: labels.includedAppraising, value: "included-appraising" },
-    { label: labels.identifiedRespondingRisk, value: "identified-responding-risk" },
-    { label: labels.integratedAdaptationPlan, value: "integrated-adaptation-plan" },
+    { label: labels.noLikelihoodAnalysis, value: "0" },
+    { label: labels.likeLihoodAnalysis, value: "2.5" },
+    { label: labels.includedAppraising, value: "5" },
+    { label: labels.identifiedRespondingRisk, value: "7.5" },
+    { label: labels.integratedAdaptationPlan, value: "10" },
   ],
   // Alignment with climate international goals and principles
-  internationalGoalsClimate: [
-    { label: labels.descriptionNotAligned, value: "description-not-aligned" },
-    { label: labels.descriptionAligned, value: "description-aligned" },
-    { label: labels.addressClimateChange, value: "address-climate-change" },
-    { label: labels.eitherMitigationMeasures, value: "either-mitigation-measures" },
-    { label: labels.bothMitigationMeasures, value: "both-mitigation-measures" }
+  climatePrinciple: [
+    { label: labels.descriptionNotAligned, value: "0" },
+    { label: labels.descriptionAligned, value: "2.5" },
+    { label: labels.addressClimateChange, value: "5" },
+    { label: labels.eitherMitigationMeasures, value: "7.5" },
+    { label: labels.bothMitigationMeasures, value: "10" }
   ],
   // Main issues to be addressed in the environmental assessment according to the Equator Principles
-  equatorPrinciples: [
-    { label: labels.below4Favorable, value: "below-4-favorable" },
-    { label: labels.btw4And5Favorable, value: "btw-4-And-5-favorable" },
-    { label: labels.btw6And7Favorable, value: "btw-6-And-7-favorable" },
-    { label: labels.btw8And9Favorable, value: "btw-8-And-9-favorable" },
-    { label: labels.btw10And11Favorable, value: "btw-10-And-11-favorable" }
+  equatorPrinciple: [
+    { label: labels.below4Favorable, value: "0" },
+    { label: labels.btw4And5Favorable, value: "2.5" },
+    { label: labels.btw6And7Favorable, value: "5" },
+    { label: labels.btw8And9Favorable, value: "7.5" },
+    { label: labels.btw10And11Favorable, value: "10" }
   ],
   // Employment creation.
   employmentCreation: [
-    { label: labels.notEstimated, value: "not-estimated" },
-    { label: labels.initialEstimation, value: "initial-estimation" },
-    { label: labels.directIndirect, value: "direct-indirect" },
-    { label: labels.eitherWomenYouth, value: "either-women-youth" },
-    { label: labels.bothWomenYouth, value: "both-women-youth" }
+    { label: labels.notEstimated, value: "0" },
+    { label: labels.initialEstimation, value: "2.5" },
+    { label: labels.directIndirect, value: "5" },
+    { label: labels.eitherWomenYouth, value: "7.5" },
+    { label: labels.bothWomenYouth, value: "10" }
   ],
   // Intra African trade and industrialization impact
   africanTrade: [
-    { label: labels.descriptionNotInclude, value: "description-not-include" },
-    { label: labels.descriptionInclude, value: "description-include" },
-    { label: labels.bothIntraAfricanTrade, value: "both-intra-african-trade" },
-    { label: labels.ocioEconomicEitherAfricanTrade, value: "ocio-economic-either-african-trade" },
-    { label: labels.ocioEconomicBothAfricanTrade, value: "ocio-economic-both-african-trade" }
+    { label: labels.descriptionNotInclude, value: "0" },
+    { label: labels.descriptionInclude, value: "2.5" },
+    { label: labels.bothIntraAfricanTrade, value: "5" },
+    { label: labels.ocioEconomicEitherAfricanTrade, value: "7.5" },
+    { label: labels.ocioEconomicBothAfricanTrade, value: "10" }
   ],
 
   // Project Data Sheet Form

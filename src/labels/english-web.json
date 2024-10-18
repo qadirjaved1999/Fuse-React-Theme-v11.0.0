@@ -141,7 +141,7 @@
   "twoInfrastructure": "The main beneficiary country has received financing from green funds institutions for at least 2 infrastructure projects ",
   "threeInfrastructure": "The main beneficiary country has received between US$ 100 to 200 million from green funds institutions to finance at least 3 infrastructure projects",
   "fourInfrastructure": "The main beneficiary country has received more than US$ 200 million from green funds institutions to finance at least 4 infrastructure projects",
-  "nationalSustainability": "National performance on sustainability issues",
+  "nationalPerformance": "National performance on sustainability issues",
   "noEPIabove30": "None of the involved countries has an EPI Score greater than 30",
   "EPIabove30Restbelow30": "The main beneficiary country has an EPI Score greater than 30, but the rest of involved countries have an EPI Score lower than 30",
   "allEPIabove30": "All countries involved have an EPI Score greater than 30",
@@ -183,14 +183,14 @@
   "includedAppraising": "A likelihood analysis project has been developed, estimating the occurrence of essential climate variables and hazards, and an impact analysis is included appraising the sensitivity of the hazards, both according to international standards",
   "identifiedRespondingRisk": "A likelihood and an impact analysis of the project have been developed, and adaptation opportunities have been identified responding to the risks ",
   "integratedAdaptationPlan": "A likelihood and an impact analysis of the project have been developed, and adaptation opportunities have been integrated an adaptation plan",
-  "internationalGoalsClimate": "Alignment with climate international goals and principles",
+  "climatePrinciple": "Alignment with climate international goals and principles",
   "descriptionNotAligned": "The project description is not aligned with the national strategy on climate change, and does not address climate change mitigation or adaptation measures",
   "descriptionAligned": "The project description is aligned with the national strategy on climate change, but does not address climate change mitigation or adaptation measures ",
   "addressClimateChange": "The project description is aligned with the national strategy on climate change, and addresses climate change mitigation or adaptation measures",
   "eitherMitigationMeasures": "The project description is aligned with the national strategy on climate change, and includes either specific mitigation measures for emission reductions or adaptation measures that enhance resilience against climate impacts",
   "bothMitigationMeasures": "The project description is aligned with the national strategy on climate change, and includes both specific mitigation measures for emission reductions and adaptation measures that enhance resilience against climate impacts",
 
-  "equatorPrinciples": "Main issues to be addressed in the environmental assessment according to the Equator Principles",
+  "equatorPrinciple": "Main issues to be addressed in the environmental assessment according to the Equator Principles",
   "below4Favorable": "Less than 4 positive favorable responses",
   "btw4And5Favorable": "Between 4 and 5 positive favorable responses",
   "btw6And7Favorable": "Between 6 and 7 positive favorable responses",
@@ -210,6 +210,8 @@
   "bothIntraAfricanTrade": "The project description does include improvements in both intra African trade and industrialization, in the main beneficiary country",
   "ocioEconomicEitherAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in either intra African trade or industrialization, in the main beneficiary country",
   "ocioEconomicBothAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in both intra African trade and industrialization, in the main beneficiary country",
+
+  "requirementChecklist":"Requirement Checklist",
 
   "applicantInformation": "APPLICANT INFORMATION",
 

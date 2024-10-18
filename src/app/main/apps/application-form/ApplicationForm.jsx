@@ -95,37 +95,6 @@ export default function ApplicationForm() {
         setData({ ...data, [category]: checked ? [...data[category], name] : data[category].filter((item) => item !== name), });
         console.log("Name => ", name + " =====>>>>> " + "Value => ", checked);
     };
-    // const handleChange = e => {
-    //     const { name, value, type, checked } = e.target;
-    //     if (type === 'checkbox') {
-    //         const updatedValues = checked
-    //             ? [...data[name], value]  // Add the checked value to the array
-    //             : data[name].filter((v) => v !== value);
-
-    //         setData({
-    //             ...data,
-    //             [name]: updatedValues
-    //         });
-    //         console.log("Checkboxes Values => ", checked)
-    //     } else {
-    //         setData({ ...data, [name]: value });
-    //         setError({ ...error, [name]: !value });
-    //         console.log("input and radio values => " + "Name = " + name + ", " + "value = " + value)
-    //     }
-    //     if (name === 'pida_pap_project') {
-    //         setPidaPlan(value);
-    //     }
-    //     if (name === 'previous_sdm_request') {
-    //         setSdmRequest(value);
-    //     }
-
-    //     if (name === 'regional_infrastructure') {
-    //         setregionalEvidence(value);
-    //     }
-    //     if (name === 'country_infrastructure') {
-    //         setCountryEvidence(value);
-    //     }
-    // }
     return (
         <>
             <Container maxWidth="1240px">

@@ -1,7 +1,7 @@
 
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from '@mui/material'
 
-const CustomCheckBox = ({ options, label, value = [], onChange }) => {
+const CustomCheckBox = ({ options, label, value, onChange }) => {
     /**
      * CustomCheckBox Component
      * This component renders a group of checkboxes based on provided options.
