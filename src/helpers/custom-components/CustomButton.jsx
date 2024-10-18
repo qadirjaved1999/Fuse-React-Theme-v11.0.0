@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 const CustomButton = ({ textColor, bgColor, onClick, disabled, btnIcon, text, variant, minWidth, maxHeight, padding, borderRadius, iconPosition = "start" }) => {
   return (
     <Button
-      disabled={disabled || false}
+      disabled={disabled}
       variant={variant || "contained"}
       onClick={onClick}
       startIcon={iconPosition === "start" ? btnIcon : null}

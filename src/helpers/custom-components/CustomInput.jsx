@@ -1,6 +1,5 @@
 import { TextField } from "@mui/material";
 
-
 const CustomInput = ({ label, value, name, type, onChange, error, required, disabled, placeholder, helperText, multiline, maxLength, textAlign, marginTop }) => {
   return (
     <TextField
@@ -18,11 +17,11 @@ const CustomInput = ({ label, value, name, type, onChange, error, required, disa
       size="small"
       minRows={3}
       maxRows={1000}
-      disabled={disabled || disabled === "true"}
-      multiline={multiline || multiline === "true"}
+      disabled={disabled}
+      multiline={multiline}
       inputProps={{
         maxLength: maxLength,
-        style: { textAlign: textAlign || "left" },
+        style: { textAlign: textAlign },
       }}
       sx={{
         marginTop: marginTop
