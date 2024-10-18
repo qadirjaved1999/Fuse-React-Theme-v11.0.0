@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 import { useState } from 'react'
 import CustomInput from 'src/helpers/custom-components/CustomInput';
 import languages from 'src/labels/index';
@@ -19,10 +19,14 @@ const InternalEvaluationPageForm = () => {
         regional_infrastructure: '',
         sponsor_identified: '',
         questionnaire_fulfilled: '',
-        evaluation_status: ''
+        evaluation_status: '',
+        project_code: '',
+        additional_comments: '',
+        rejection_reason: ''
     }
     const [data, setData] = useState(intialState);
-    const [otherSpecify, setOtherSpecify] = useState(data.request_origin)
+    const [otherSpecify, setOtherSpecify] = useState(data.request_origin);
+    const [evaluationStatusPass, setevaluationStatusPass] = useState(data.evaluation_status)
 
     const handleInput = e => {
         const { name, value } = e.target;
@@ -30,6 +34,9 @@ const InternalEvaluationPageForm = () => {
         console.log("Name is => ", name + "And the Value is => ", value);
         if (name === 'request_origin') {
             setOtherSpecify(value)
+        }
+        if (name === 'evaluation_status') {
+            setevaluationStatusPass(value)
         }
     }
 
@@ -159,28 +166,56 @@ const InternalEvaluationPageForm = () => {
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomTypography
-                    text={label.qualityInformation}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
-                    fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomRadioButton
-                    name="questionnaire_fulfilled"
-                    value={data.questionnaire_fulfilled}
-                    label={label.questionnaireFulfilled}
-                    options={menu.confirmationChoices}
+                    name="evaluation_status"
+                    value={data.evaluation_status}
+                    label={label.evaluationStatus}
+                    options={menu.evaluationStatus}
                     onChange={handleInput}
                     row={true}
                     labelStyle={{ fontWeight: "bold", color: "black" }}
                 />
             </Grid>
+            {evaluationStatusPass === 'pass' && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <CustomInput
+                        name="project_code"
+                        value={data.project_code}
+                        label={label.projectCode}
+                        onChange={handleInput}
+                    />
+
+                </Grid>
+            )}
+            {evaluationStatusPass === 'pass' && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <TextField
+                        name="additional_comments"
+                        value={data.additional_comments}
+                        label={label.additionalComments}
+                        onChange={handleInput}
+                        multiline
+                        rows={2}
+                        variant="outlined"
+                        fullWidth
+                    />
+                </Grid>
+            )}
+            {evaluationStatusPass === 'fail' && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <TextField
+                        name="rejection_reason"
+                        value={data.rejection_reason}
+                        label={label.rejectionReason}
+                        onChange={handleInput}
+                        multiline
+                        rows={2}
+                        variant="outlined"
+                        fullWidth
+                    />
+                </Grid>
+            )}
+
         </Grid>
     )
 }
