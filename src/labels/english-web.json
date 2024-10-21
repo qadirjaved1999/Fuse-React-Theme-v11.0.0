@@ -212,6 +212,12 @@
   "ocioEconomicBothAfricanTrade": "The project has estimated, through a socio-economic impact study, the improvements in both intra African trade and industrialization, in the main beneficiary country",
 
   "requirementChecklist":"Requirement Checklist",
+  "req_1":"R1: Has the project assessed comprehensively the baseline environmental conditions?",
+  "reqJustify":"Write Justification",
+  "req_2":"R2: Has the project considered feasible environmentally preferable alternatives?",
+  "req_3":"R3: Has the project considered the requirements under host country laws and regulations, applicable international treaties and agreements (including the 2015 Paris Climate Change Agreement)?",
+  "req_4":"R4: Has the project considered the identification of legally protected areas?",
+
 
   "applicantInformation": "APPLICANT INFORMATION",
 

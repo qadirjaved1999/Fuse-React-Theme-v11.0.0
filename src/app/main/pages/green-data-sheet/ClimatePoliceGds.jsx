@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Grid, TextField } from '@mui/material'
 import { useState } from 'react'
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton'
 import menu from 'src/helpers/menu'
@@ -6,6 +6,7 @@ import languages from 'src/labels/index'
 import CustomTypography from 'src/helpers/custom-components/CustomTypography'
 import CustomButton from 'src/helpers/custom-components/CustomButton'
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import CustomInput from 'src/helpers/custom-components/CustomInput'
 
 
 const ClimatePoliceGds = () => {
@@ -49,7 +50,13 @@ const ClimatePoliceGds = () => {
         trade_evidence: '',
         req_1: '',
         req_1_evidence: '',
-        req_1_justification: ''
+        req_1_justification: '',
+        req_2: '',
+        req_2_evidence: '',
+        req_2_justification: '',
+        req_3: '',
+        req_3_evidence: '',
+        req_3_justification: ''
     };
 
     const [data, setData] = useState(initialState);
@@ -71,6 +78,12 @@ const ClimatePoliceGds = () => {
     const [equatorPrincipleEvidance, setEquatorPrincipleEvidance] = useState(data.equator_principle);
     const [employmentCreationEvidance, setEmploymentCreationEvidance] = useState(data.employment_creation);
     const [africanTradeEvidance, setAfricanTradeEvidance] = useState(data.african_trade);
+    const [req_1Evidance, setReq_1Evidance] = useState(data.req_1);
+    const [req_2Evidance, setReq_2Evidance] = useState(data.req_2);
+    const [req_3Evidance, setReq_3Evidance] = useState(data.req_3);
+
+
+
 
 
 
@@ -132,6 +145,15 @@ const ClimatePoliceGds = () => {
         }
         if (name === 'african_trade') {
             setAfricanTradeEvidance(value)
+        }
+        if (name === 'req_1') {
+            setReq_1Evidance(value)
+        }
+        if (name === 'req_2') {
+            setReq_2Evidance(value)
+        }
+        if (name === 'req_3') {
+            setReq_3Evidance(value)
         }
     }
     return (
@@ -604,6 +626,131 @@ const ClimatePoliceGds = () => {
                     margin="10px 0px 0px 0px"
                 />
             </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomRadioButton
+                    name="req_1"
+                    value={data.req_1}
+                    options={menu.confirmationChoices}
+                    label={label.req_1}
+                    onChange={handleChange}
+                    row={true}
+                    labelStyle={{ fontWeight: "bold", color: "black" }}
+                />
+            </Grid>
+            {req_1Evidance === "yes" && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <CustomButton
+                        variant="contained"
+                        text="Upload Evidence"
+                        textColor="white"
+                        bgColor="black"
+                        padding='8px 16px'
+                        fontSize='16px'
+                        minWidth='120px'
+                        height='40px'
+                        btnIcon={<FileUploadOutlinedIcon />}
+                        borderRadius='20px'
+                    />
+                </Grid>
+            )}
+            {req_1Evidance === "no" && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <TextField
+                            name="req_1_justification"
+                            value={data.req_1_justification}
+                            label={label.reqJustify}
+                            onChange={handleChange}
+                            multiline
+                            rows={2}
+                            variant="outlined"
+                            fullWidth
+                        />
+                    </Grid>
+                </Grid>
+            )}
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomRadioButton
+                    name="req_2"
+                    value={data.req_2}
+                    options={menu.confirmationChoices}
+                    label={label.req_2}
+                    onChange={handleChange}
+                    row={true}
+                    labelStyle={{ fontWeight: "bold", color: "black" }}
+                />
+            </Grid>
+            {req_2Evidance === "yes" && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <CustomButton
+                        variant="contained"
+                        text="Upload Evidence"
+                        textColor="white"
+                        bgColor="black"
+                        padding='8px 16px'
+                        fontSize='16px'
+                        minWidth='120px'
+                        height='40px'
+                        btnIcon={<FileUploadOutlinedIcon />}
+                        borderRadius='20px'
+                    />
+                </Grid>
+            )}
+            {req_2Evidance === "no" && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <TextField
+                            name="req_2_justification"
+                            value={data.req_2_justification}
+                            label={label.reqJustify}
+                            onChange={handleChange}
+                            multiline
+                            rows={2}
+                            variant="outlined"
+                            fullWidth
+                        />
+                </Grid>
+            )}
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomRadioButton
+                    name="req_3"
+                    value={data.req_3}
+                    options={menu.confirmationChoices}
+                    label={label.req_3}
+                    onChange={handleChange}
+                    row={true}
+                    labelStyle={{ fontWeight: "bold", color: "black" }}
+                />
+            </Grid>
+            {req_3Evidance === "yes" && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <CustomButton
+                        variant="contained"
+                        text="Upload Evidence"
+                        textColor="white"
+                        bgColor="black"
+                        padding='8px 16px'
+                        fontSize='16px'
+                        minWidth='120px'
+                        height='40px'
+                        btnIcon={<FileUploadOutlinedIcon />}
+                        borderRadius='20px'
+                    />
+                </Grid>
+            )}
+            {req_3Evidance === "no" && (
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <TextField
+                            name="req_2_justification"
+                            value={data.req_2_justification}
+                            label={label.reqJustify}
+                            onChange={handleChange}
+                            multiline
+                            rows={2}
+                            variant="outlined"
+                            fullWidth
+                        />
+                </Grid>
+            )}
         </Grid>
     )
 }

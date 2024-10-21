@@ -1,7 +1,7 @@
 
 import { Typography } from "@mui/material";
 
-const CustomTypography = ({ text, variant, display, textAlign, width, margin, padding, fontWeight, fontSize, color, textTransform, lineHeight, margin }) => {
+const CustomTypography = ({ text, variant, display, textAlign, width, margin, padding, fontWeight, fontSize, color, textTransform, lineHeight }) => {
   return (
     <Typography
       variant={variant || "subtitle1"}
