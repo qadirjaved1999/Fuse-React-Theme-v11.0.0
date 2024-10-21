@@ -337,17 +337,12 @@ export default function ApplicationForm() {
                             {regionalEvidence === 'yes' && (
                                 <Grid item sx={{ paddingTop: "10px" }} xs={12} sm={12} md={6} lg={6}>
                                     <CustomButton
-                                        variant="contained"
                                         text="Upload Evidence"
                                         textColor="white"
                                         bgColor="black"
-                                        padding='8px 16px'
-                                        fontSize='16px'
-                                        minWidth='120px'
-                                        height='40px'
                                         btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
                                         borderRadius='20px'
-                                        onClick={() => alert('Button Clicked!')}
+
                                     />
                                 </Grid>
                             )}

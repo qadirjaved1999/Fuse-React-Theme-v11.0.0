@@ -219,60 +219,127 @@ const menu = {
   ],
   // Level of regional interest and political commitment
   politicalCommitment: [
-    { label: labels.noRegionalImpact, score: 0, value: "no-regional-impact" },
-    { label: labels.noNationalLevelCommitment, score: 2.5, value: "no-national-level-commitment" },
-    { label: labels.nationalLevelCommitment, score: 5, value: "national-level-commitment" },
-    { label: labels.notIncludedPIDAProgramme, score: 7.5, value: "not-included-pida-programme" },
-    { label: labels.includedPIDAProgramme, score: 10, value: "included-pida-programme" }
+    { label: labels.noRegionalImpact, value: "0",},
+    { label: labels.noNationalLevelCommitment, value: "2.5" },
+    { label: labels.nationalLevelCommitment, value: "5" },
+    { label: labels.notIncludedPIDAProgramme, value: "7.5" },
+    { label: labels.includedPIDAProgramme, value: "10" }
   ],
   // Promotion of intra-regional trade and investment
-  intraRegionalTrade: [
-    { label: labels.notAddressImprovements, score: 0, value: "not-address-improvements" },
-    { label: labels.addressImprovements, score: 2.5, value: "address-improvements" },
-    { label: labels.landLocked, score: 5, value: "land-locked" },
-    { label: labels.socioEconomicImpact, score: 7.5, value: "socio-economic-impact" },
-    { label: labels.oneLandLockedSocioEconomic, score: 10, value: "one-land-locked-socio-economic" }
+  regionalTrade: [
+    { label: labels.notAddressImprovements, value: "0"},
+    { label: labels.addressImprovements, value: "2.5"},
+    { label: labels.landLocked, value: "5" },
+    { label: labels.socioEconomicImpact, value: "7.5" },
+    { label: labels.oneLandLockedSocioEconomic, value: "10"}
   ],
   // Poverty reduction
   povertyReduction: [
-    { label: labels.lowRange, score: 0, value: "low-range" },
-    { label: labels.mediumRange, score: 2.5, value: "medium-range" },
-    { label: labels.highRange, score: 5, value: "high-range" },
-    { label: labels.oneCountryVeryHighRange, score: 7.5, value: "one-country-very-high-range" },
-    { label: labels.OneAboveCountryVeryHighRange, score: 10, value: "one-above-country-very-high-range" },
+    { label: labels.lowRange, value: "0" },
+    { label: labels.mediumRange, value: "2.5" },
+    { label: labels.highRange, value: "5" },
+    { label: labels.oneCountryVeryHighRange, value: "7.5" },
+    { label: labels.OneAboveCountryVeryHighRange, value: "10" },
   ],
   // Alignment with the socioeconomic and environmental sustainability goals for Africa
   sustainabilityGoals: [
-    { label: labels.notAddressAfrican, score: 0, value: "not-address-african" },
-    { label: labels.twoGoals, score: 2.5, value: "two-goals" },
-    { label: labels.fourGoals, score: 5, value: "four-goals" },
-    { label: labels.sixGoals, score: 7.5, value: "six-goals" },
-    { label: labels.aboveSixGoals, score: 10, value: "above-six-goals" }
+    { label: labels.notAddressAfrican, value: "0" },
+    { label: labels.twoGoals, value: "2.5" },
+    { label: labels.fourGoals, value: "5" },
+    { label: labels.sixGoals, value: "7.5" },
+    { label: labels.aboveSixGoals, value: "10" }
   ],
   // Legal and regulatory framework of the sector
   regulatoryFramework: [
-    {label: labels.noLegalFramework, score: 0, value: "no-legal-framework"},
-    {label: labels.someLegalFramework, score: 2.5, value: "some-legal-framework"},
-    {label: labels.allDraftLegalFramework, score: 5, value: "all-draft-legal-framework"},
-    {label: labels.allLegalFramework, score: 7.5, value: "all-legal-framework"},
-    {label: labels.regionalHarmonizationProgram, score: 10, value: "regional-harmonization-program"}
+    {label: labels.noLegalFramework, value: "0" },
+    {label: labels.someLegalFramework, value: "2.5" },
+    {label: labels.allDraftLegalFramework, value: "5"},
+    {label: labels.allLegalFramework, value: "7.5" },
+    {label: labels.regionalHarmonizationProgram, value: "10" }
   ],
   // Sector organization 
   sectorOrganization: [
-   {label: labels.notAllCountriesRegulating, score: 0, value: "not-all-countries-regulating"},
-   {label: labels.allCountriesRegulating, score: 2.5, value: "all-countries-regulating"},
-   {label: labels.responsibilitiesAgencies, score: 5, value: "responsibilities-agencies"},
-   {label: labels.credibleRegulatory, score: 7.5, value: "credible-regulatory"},
-   {label: labels.alignedRegionalPolicies, score: 10, value: "aligned-regional-policies"},
+   {label: labels.notAllCountriesRegulating, value: "0"},
+   {label: labels.allCountriesRegulating, value: "2.5"},
+   {label: labels.responsibilitiesAgencies, value: "5"},
+   {label: labels.credibleRegulatory, value: "7.5"},
+   {label: labels.alignedRegionalPolicies, value: "10"},
   ],
   // Sector maturity 
   sectorMaturity: [
-    {label: labels.noSimilarProjects, score: 0, value: "no-similar-projects"},
-    {label: labels.infrastructureDevelopments, score: 2.5, value: "infrastructure-developments"},
-    {label: labels.degreeOfImplication, score: 5, value: "degree-of-implication"},
-    {label: labels.originOfMainMaterials, score: 7.5, value: "origin-of-main-materials"},
-    {label: labels.nameOfLocalCompanies, score: 10, value: "name-of-local-companies"},
-  ]
+    {label: labels.noSimilarProjects, value: "0"},
+    {label: labels.infrastructureDevelopments, value: "2.5"},
+    {label: labels.degreeOfImplication, value: "5"},
+    {label: labels.originOfMainMaterials, value: "7.5"},
+    {label: labels.nameOfLocalCompanies, value: "10"},
+  ],
+
+  // PRIVATE SECTOR INTEREST
+  // Private investors’ appetite
+  privateInvestors : [
+    {label: labels.affectedCountries, value: "0"},
+    {label: labels.someAffectedCountries, value: "2.5"},
+    {label: labels.allAffectedCountries, value: "5"},
+    {label: labels.allSomeAffectedCountries, value: "7.5"},
+    {label: labels.moreThanPrivateSector, value: "10"},
+  ],
+  // Country risks
+  countryRisk : [
+    {label: labels.highRisk, value: "0"},
+    {label: labels.sensitiveRisk, value: "2.5"},
+    {label: labels.sensitiveShortRatingRisk, value: "5"},
+    {label: labels.mediumCRisk, value: "7.5"},
+    {label: labels.mediumBRisk, value: "10"},
+  ],
+  // Access to financing
+  accessFinancing : [
+    {label: labels.noFinance, value: "0"},
+    {label: labels.haveFinance, value: "2.5"},
+    {label: labels.supportAllInternationalFinancial, value: "5"},
+    {label: labels.supportAllInternationalFinancial, value: "7.5"},
+    {label: labels.haveAlreadyFinance, value: "10"},
+  ],
+  // PROJECT READINESS
+  // Technical viability
+  technicalViability : [
+    {label: labels.noTechnical, value: "0"},
+    {label: labels.noPrefeasibility, value: "2.5"},
+    {label: labels.havePrefeasibility, value: "5"},
+    {label: labels.onePrefeasibility, value: "7.5"},
+    {label: labels.allPrefeasibility, value: "10"},
+  ],
+  // Financial viability governance
+  financialViability : [
+    {label: labels.noInitialAssessment, value: "0"},
+    {label: labels.initialAssessment, value: "2.5"},
+    {label: labels.oneCountryEconomicModel, value: "5"},
+    {label: labels.allCountryEconomicModel, value: "7.5"},
+    {label: labels.initialRealisticAssessment, value: "10"},
+  ],
+  // governance readline_risk
+  governance : [
+    {label: labels.noGovtPlans, value: "0"},
+    {label: labels.noGovtRegionalAgency, value: "2.5"},
+    {label: labels.someGovtAgency, value: "5"},
+    {label: labels.allGovtAgency, value: "7.5"},
+    {label: labels.regionalImplementingAuthority, value: "10"},
+  ],
+  // Risk es_viability
+  readlineRisk : [
+    {label: labels.noAllocationSpecified, value: "0"},
+    {label: labels.noAllocationAnalyzed, value: "2.5"},
+    {label: labels.adequatelyPrioritized, value: "5"},
+    {label: labels.clearlyAllocated, value: "7.5"},
+    {label: labels.noUnmanageableRedFlags, value: "10"},
+  ],
+  // E & S Viability
+  esViability : [
+    {label: labels.noStudiesStarted, value: "0"},
+    {label: labels.govtStartedStudies, value: "2.5"},
+    {label: labels.govtCompletedStudies, value: "5"},
+    {label: labels.involvedAnyIFIsCountries, value: "7.5"},
+    {label: labels.involvedAllIFIsCountries, value: "10"},
+  ],
 }
 
 export default menu;

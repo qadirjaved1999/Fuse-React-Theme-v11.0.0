@@ -217,7 +217,13 @@
   "req_2":"R2: Has the project considered feasible environmentally preferable alternatives?",
   "req_3":"R3: Has the project considered the requirements under host country laws and regulations, applicable international treaties and agreements (including the 2015 Paris Climate Change Agreement)?",
   "req_4":"R4: Has the project considered the identification of legally protected areas?",
-
+  "req_5":"R5: Has the project measured the sustainable management and use of renewable natural resources?",
+  "req_6":"R6: Has the project identified and assessed major climate hazards, and proposed management planning?",
+  "req_7":"R7: Has the project considered the pollution prevention and waste minimization and management?",
+  "req_8":"R8: Has the project measured the GHG emissions levels and emissions intensity?",
+  "req_9":"R9: Have considerations of physical climate risks and adaptation opportunities, and of viability of Project operations under changing weather patterns/climatic conditions been assessed?",
+  "req_10":"R10: Has the project evaluated the potential land acquisition and involuntary resettlement? ",
+  "req_11":"R11: Has the project integrated the outcomes of the environmental assessment on the one hand and risk assessment on the other? ",
 
   "applicantInformation": "APPLICANT INFORMATION",
 
@@ -244,7 +250,7 @@
   "notIncludedPIDAProgramme":"The project has evidence of regional-level commitment, but is not included in the PIDA PAP programme. (Please, attach documentary evidence). ",
   "includedPIDAProgramme":"The project enjoys regional-level commitment and it is included in the PIDA PAP programme. (Please, attach documentary evidence).",
 
-  "intraRegionalTrade":"Promotion of intra-regional trade and investment",
+  "regionalTrade":"Promotion of intra-regional trade and investment",
   "notAddressImprovements":"The project description does not address improvements in economic output, trade or connectivity at a regional level.",
   "addressImprovements":"The project description addresses improvements in economic output, trade or connectivity between two countries. ",
   "landLocked":"The project description addresses improvements in economic output, trade or connectivity between two countries, including a landlocked one.",
@@ -285,7 +291,66 @@
   "infrastructureDevelopments":"There is evidence of infrastructure developments such as the ones proposed in the countries involved (please, write down the three last similar experiences). (Please, include written evidence).",
   "degreeOfImplication":"There is evidence of infrastructure developments such as the ones proposed in the countries involved, and local companies have delivered similar infrastructure projects successfully (please, detail the degree of implication of the local companies in the three last similar experiences). (Please, include written evidence)",
   "originOfMainMaterials":"There is evidence of infrastructure developments such as the ones proposed in the participating countries. Local companies have delivered similar infrastructure projects successfully, and the supplying of material is local or regional (please, provide details of the degree of implication of the local companies in the three last similar experiences, as well as the origin of their main materials). (Please, include written evidence)",
-  "nameOfLocalCompanies":"There is evidence of infrastructure developments such as the ones proposed in the participating countries. Local companies have delivered similar infrastructure projects successfully, and the supplying of material is local or regional (please, detail the degree of implication of the local companies in the last three similar experiences, as well as the origin of their main materials and the name of the local companies that provide their services). (Please, include written evidence)."
+  "nameOfLocalCompanies":"There is evidence of infrastructure developments such as the ones proposed in the participating countries. Local companies have delivered similar infrastructure projects successfully, and the supplying of material is local or regional (please, detail the degree of implication of the local companies in the last three similar experiences, as well as the origin of their main materials and the name of the local companies that provide their services). (Please, include written evidence).",
+
+  "privateSector":"Private sector investor",
+  "privateInvestors":"Private investors’ appetite",
+  "affectedCountries":"No other similar projects involving the private sector investment have been implemented in the affected countries.",
+  "someAffectedCountries":"At least one similar project in the sector involving private sector investment has been implemented in some of the affected countries. (Please, include written evidence).",
+  "allAffectedCountries":"At least one similar project in the sector involving the private sector investment has been implemented in all of the affected countries. (Please, include written evidence).",
+  "allSomeAffectedCountries":"At least one similar project in the sector involving private sector investment has been successfully implemented in all of the affected countries, and some countries have implemented more than one. (Please, include written evidence).",
+  "moreThanPrivateSector":"More than one similar project in the sector involving private sector investment has been successfully implemented in all the affected countries. (Please, include written evidence).",
+
+  "countryRisk":"Country risks",
+  "highRisk":"All the countries involved are rated either as high risk (short-term rating, country risk level) or as D risk (medium-term rating, country grade).",
+  "sensitiveRisk":"At least one of the countries involved is rated as sensitive risk or better (short-term rating, country risk level) and as C risk or better (medium-term rating, country grade).",
+  "sensitiveShortRatingRisk":"All of the countries involved are rated as sensitive risk or better (short-term rating, country risk level) and as C risk or better (medium-term rating, bcountry grade).",
+  "mediumCRisk":"All of the countries involved are rated as medium risk or better (short-term rating, country risk level) and as C risk or better (medium-term rating, country grade).",
+  "mediumBRisk":"All of the countries involved are rated as medium risk or better (short-term rating country risk level) and as B risk or better (medium-term rating country grade).",
+
+  "accessFinancing":"Access to financing",
+  "noFinance":"Financial institutions have not financed similar projects in the sector in anyof the countries involved. ",
+  "haveFinance":"Only international financial institutions have financed similar projects in the sector in some of the countries involved (please, indicate two recent cases). (Please, include written evidence).",
+  "supportInternationalFinancial":"Local financial institutions —with support of international financial institutions— have already financed similar projects in the sector in some of the countries involved (please, indicate two recent cases). (Please, include written evidence).",
+  "supportAllInternationalFinancial":"Local financial institutions —with support of international financial institutions— have already financed similar projects in the sector in all the countries involved (please, indicate two recent cases per country). (Please, include written evidence)",
+  "haveAlreadyFinance":"Local financial institutions have already financed similar projects in the sector in all the countries involved (please, indicate two recent cases per country). (Please, include written evidence).",
+
+  "projectReadiness":"Project readiness",
+  "technicalViability":"Technical viability",
+  "noTechnical":"No technical definition of the project is available (it is only an idea). ",
+  "noPrefeasibility":"Pre-feasibility studies have not started yet, but the performance is independent from other projects and the project implementation is based on low-medium tech / proven technology already used in the country (please, indicate three recent examples). (Please, include written evidence).",
+  "havePrefeasibility":"Pre-feasibility studies have started, the performance is independent from other projects and the project implementation is based on low-medium tech / proven technology that has been already employed in the country. (Please, attach documentary evidence).",
+  "onePrefeasibility":"Pre- feasibility studies are completed in at least one of the countries involved and there is a risk matrix with no unmanageable red flags identified. (Please, attach documentary evidence).",
+  "allPrefeasibility":"Pre- feasibility studies are completed in all the countries involved and there is a risk matrix with no unmanageable red flags identified. (Please, attach documentary evidence).",
+
+  "financialViability":"Financial viability",
+  "noInitialAssessment":"There is no initial assessment of the project's financial feasibility.",
+  "initialAssessment":"There is an initial assessment of the project's financial feasibility but it will have to be verified as it may be outdated or the quality of data is still poor. (Please, attach documentary evidence). ",
+  "oneCountryEconomicModel":"There is evidence, at least in one country, of a consistent economic model for the project factoring demand and revenue, investment costs and operation and maintenance costs, and a sound realistic preliminary assessment of the project's financial feasibility. (Please, attach documentary evidence).",
+  "allCountryEconomicModel":"There is evidence, in all the countries involved, of a consistent economic model for the project factoring demand and revenue, investment costs and operation and maintenance costs, and a sound realistic preliminary assessment of the project's financial feasibility. (Please, attach documentary evidence).",
+  "initialRealisticAssessment":"There is an initial realistic assessment of the project's commercial financing with a minimum of 15.0% shareholder IRR and a realistic preliminary state backing strategy of the project's viability gap, and a risk matrix exists with no unmanageable red flags identified. (Please, attach documentary evidence).",
+
+  "governance":"Governance",
+  "noGovtPlans":"There are no plans to formulate government decisions in support of the project implementation. ",
+  "noGovtRegionalAgency":"Supporting government decisions towards the implementation of the project have been taken but there is not any government or regional agency with the mandate to undertake this project yet. (Please, include written evidence).",
+  "someGovtAgency":"Some of the countries involved have a governmental agency with the mandate to undertake this project (please provide the name and the contact details). (Please, include written evidence).",
+  "allGovtAgency":"All the countries involved have a governmental agency with the mandate to undertake this project. (Please, include written evidence). ",
+  "regionalImplementingAuthority":"A Regional Implementing Authority with the mandate to undertake this project has already been set up. (Please, include documentary evidence).",
+
+  "readlineRisk":"Risk",
+  "noAllocationSpecified":"The specific project risks and their allocation cannot be specified.",
+  "noAllocationAnalyzed":"The specific project risks have been identified but their allocation has not been analyzed (Please, attach documentary evidence). ",
+  "adequatelyPrioritized":"There is a first draft of project risk allocation, but hazards have not yet been adequately prioritized or ranked. (Please, attach documentary evidence).",
+  "clearlyAllocated":"There is a risk assessment based on international best practices and project risks are clearly allocated. (Please, attach documentary evidence)",
+  "noUnmanageableRedFlags":"There is a risk assessment based on international best practices and project risks are clearly allocated with no unmanageable red flags identified. (Please, attach documentary evidence).",
+
+  "esViability":"E&S viability",
+  "noStudiesStarted":"No studies have been started and/or issues relating to environment, health & safety, land clearance or resettlement, gender or other vulnerable person issues might be unmanageable and would impact adversely on project delivery and cost during construction or operations.",
+  "govtStartedStudies":"Government has started studies relating to environment, health & safety, land clearance or resettlement, gender or other vulnerable person issues and the preliminary results show that those issues should not impact adversely the project delivery and cost during construction or operations. (Please, attach documentary evidence).",
+  "govtCompletedStudies":"Government has completed studies relating to environment, health & safety, land clearance or resettlement, gender or other vulnerable person issues and the preliminary results show that those issues should not impact adversely the project delivery and cost during construction or operations. (Please, attach documentary evidence).",
+  "involvedAnyIFIsCountries":"The project already includes environmental and social aspects at a strategic level (ESIA or equivalent) using recognized methodologies by IFIs in any of the countries involved. The risks matrix has no unmanageable red flags identified. (Please, attach documentary evidence).",
+  "involvedAllIFIsCountries":"The project already includes environmental and social aspects at a strategic level (ESIA or equivalent) using recognized methodologies by IFIs in all the countries involved. The risks matrix has no unmanageable red flags identified. (Please, attach documentary evidence)."
+  
 
 
 

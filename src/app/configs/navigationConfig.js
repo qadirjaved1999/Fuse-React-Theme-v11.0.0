@@ -165,6 +165,13 @@ const navigationConfig = [
             type: 'item',
             icon: 'heroicons-outline:star',
             url: '/internal-evaluation-form',
+      },
+      {
+        id: 'qcm',
+            title: 'QCM',
+            type: 'item',
+            icon: 'heroicons-outline:star',
+            url: '/qcm',
       }
     ]
   }
