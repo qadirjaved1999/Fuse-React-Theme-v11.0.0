@@ -99,7 +99,7 @@ export default function ApplicationForm() {
         <>
             <Container maxWidth="1240px">
                 <CustomTypography
-                    text={label.annexForm}
+                    text={label.applicationForm}
                     variant="h3"
                     display="block"
                     textAlign="center"
@@ -338,11 +338,8 @@ export default function ApplicationForm() {
                                 <Grid item sx={{ paddingTop: "10px" }} xs={12} sm={12} md={6} lg={6}>
                                     <CustomButton
                                         text="Upload Evidence"
-                                        textColor="white"
-                                        bgColor="black"
                                         btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
-                                        borderRadius='20px'
-
+                                        onClick={() => alert('Button Clicked!')}
                                     />
                                 </Grid>
                             )}
@@ -363,16 +360,8 @@ export default function ApplicationForm() {
                             {countryEvidence === 'yes' && (
                                 <Grid item sx={{ paddingTop: "10px" }} xs={12} sm={12} md={6} lg={6}>
                                     <CustomButton
-                                        variant="contained"
                                         text="Upload Evidence"
-                                        textColor="white"
-                                        bgColor="black"
-                                        padding='8px 16px'
-                                        fontSize='16px'
-                                        minWidth='120px'
-                                        height='40px'
                                         btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
-                                        borderRadius='50px'
                                         onClick={() => alert('Button Clicked!')}
                                     />
                                 </Grid>
@@ -571,16 +560,8 @@ export default function ApplicationForm() {
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomButton
-                            variant="contained"
                             text="Upload Evidence"
-                            textColor="white"
-                            bgColor="black"
-                            padding='8px 16px'
-                            fontSize='16px'
-                            minWidth='120px'
-                            height='40px'
                             btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
-                            borderRadius='50px'
                             onClick={() => alert('Button Clicked!')}
                         />
                     </Grid>
@@ -600,16 +581,8 @@ export default function ApplicationForm() {
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomButton
-                            variant="contained"
                             text="Upload Evidence"
-                            textColor="white"
-                            bgColor="black"
-                            padding='8px 16px'
-                            fontSize='16px'
-                            minWidth='120px'
-                            height='40px'
                             btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
-                            borderRadius='50px'
                             onClick={() => alert('Button Clicked!')}
                         />
                     </Grid>
