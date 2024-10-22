@@ -108,7 +108,7 @@ function SignUpPage() {
 
 			<Box
 				className="relative hidden h-full flex-auto items-center justify-center overflow-hidden p-64 md:flex lg:px-112"
-				sx={{ backgroundColor: 'primary.dark', color: 'primary.contrastText' }}
+				sx={{ backgroundColor: 'red', color: 'white' }}
 			>
 				<svg
 					className="pointer-events-none absolute inset-0"

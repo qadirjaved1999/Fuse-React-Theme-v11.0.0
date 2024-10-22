@@ -1,11 +1,16 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { FormControlLabel, Grid, IconButton, Paper, Radio, RadioGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import CustomTypography from 'src/helpers/custom-components/CustomTypography'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineSharpIcon from '@mui/icons-material/RemoveCircleOutlineSharp';
 import Collapse from '@mui/material/Collapse';
-import { useState } from 'react';
+import languages from 'src/labels/index';
+import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
+
+// All Labls
+const label = languages.en;
 
 function createData(name, userValue, sdmValue) {
     return {
@@ -19,9 +24,19 @@ function Row(props) {
     const { row } = props;
     const [open, setOpen] = useState(false)
 
+    const initialState = {
+        user_score: '',
+        sdm_score: ''
+    }
+    const [data, setData] = useState(initialState)
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setData({ ...data, [name]: value });
+        console.log("Name => ", name + "Value => ", value);
+    }
     return (
         <React.Fragment>
-            <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+            <TableRow sx={{ '& > *': { border: "unset" }, backgroundColor: "#c0ddf6" }}>
                 <TableCell>
                     <IconButton
                         aria-label="expand row"
@@ -31,22 +46,69 @@ function Row(props) {
                         {open ? <RemoveCircleOutlineSharpIcon /> : <ControlPointIcon />}
                     </IconButton>
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" sx={{ width: "76%" }}>
                     {row.name}
                 </TableCell>
-                <TableCell></TableCell>
                 <TableCell sx={{ width: "12%", textAlign: 'center' }}>{row.userValue}</TableCell>
                 <TableCell sx={{ width: "12%", textAlign: 'center' }}>{row.sdmValue}</TableCell>
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                <TableCell style={{ padding: "0px 0px 0px 20px", backgroundColor: "#e4f0f9" }} colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box sx={{ margin: 1 }}>
-                            <Table size="small" aria-label="purchases">
+                        <Box>
+                            <Table size="small">
                                 <TableBody>
-                                    <TableCell align="right">Salman</TableCell>
-                                    <TableCell sx={{ width: "12%", textAlign: 'center' }}>Qadir javed</TableCell>
-                                    <TableCell sx={{ width: "12%", textAlign: 'center' }}>Qadir javed</TableCell>
+                                    <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}><Radio /></TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center' }}><Radio /></TableCell>
+                                </TableBody>
+                            </Table>
+                        </Box>
+                        <Box>
+                            <Table size="small">
+                                <TableBody>
+                                    <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}><Radio /></TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center' }}><Radio /></TableCell>
+                                </TableBody>
+                            </Table>
+                        </Box>
+                        <Box>
+                            <Table size="small">
+                                <TableBody>
+                                    <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}><Radio /></TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center' }}><Radio /></TableCell>
+                                </TableBody>
+                            </Table>
+                        </Box>
+                        <Box>
+                            <Table size="small">
+                                <TableBody>
+                                    <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}><Radio /></TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center' }}><Radio /></TableCell>
+                                </TableBody>
+                            </Table>
+                        </Box>
+                        <Box>
+                            <Table size="small">
+                                <TableBody>
+                                    <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}>
+                                        <Radio
+                                            name='sdm_score'
+                                            value={data.sdm_score}
+                                            onChange={handleChange}
+                                        />
+                                    </TableCell>
+                                    <TableCell sx={{ width: "12%", textAlign: 'center' }}>
+                                        <Radio
+                                            name='user_score'
+                                            value={data.user_score}
+                                            onChange={handleChange}
+                                        />
+                                    </TableCell>
                                 </TableBody>
                             </Table>
                         </Box>
@@ -64,6 +126,13 @@ const rows = [
     createData('Alignment with the socioeconomic and environmental sustainability goals for Africa', 6, 8),
 ];
 
+const score = [
+    { value: 0 },
+    { value: 2.5 },
+    { value: 5 },
+    { value: 7.5 },
+    { value: 10 }
+]
 
 const QuickCheckMethodologyPageTable = () => {
     return (
@@ -89,12 +158,11 @@ const QuickCheckMethodologyPageTable = () => {
                 </TableRow>
                 <Table aria-label="collapsible table">
                     <TableHead>
-                        <TableRow>
+                        <TableRow sx={{ backgroundColor: "#2f2f2f" }}>
                             <TableCell></TableCell>
-                            <TableCell>Dimension 1: Regional priority</TableCell>
-                            <TableCell></TableCell>
-                            <TableCell align="center" sx={{ width: "12%" }}>7.5</TableCell>
-                            <TableCell align="center" sx={{ width: "12%" }}>5 &nbsp;</TableCell>
+                            <TableCell sx={{ color: "white" }}>Dimension 1: Regional priority</TableCell>
+                            <TableCell align="center" sx={{ width: "12%", backgroundColor: "#969696", color: "white" }}>7.5</TableCell>
+                            <TableCell align="center" sx={{ width: "12%", color: "white" }}>5 &nbsp;</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
