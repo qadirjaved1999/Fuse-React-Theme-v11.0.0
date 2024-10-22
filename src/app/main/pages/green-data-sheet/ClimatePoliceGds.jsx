@@ -234,7 +234,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -260,7 +260,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -286,7 +286,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -312,7 +312,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -338,7 +338,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -364,7 +364,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -390,7 +390,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -416,7 +416,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -442,7 +442,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -468,7 +468,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -494,7 +494,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -520,7 +520,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -546,7 +546,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -572,7 +572,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -598,7 +598,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -624,7 +624,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -650,7 +650,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -691,7 +691,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -734,7 +734,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -775,7 +775,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -816,7 +816,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -857,7 +857,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -898,7 +898,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -939,7 +939,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -980,7 +980,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -1021,7 +1021,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -1062,7 +1062,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'
@@ -1103,7 +1103,7 @@ const ClimatePoliceGds = () => {
                         variant="contained"
                         text="Upload Evidence"
                         textColor="white"
-                        bgColor="black"
+                        backgroundColor="black"
                         padding='8px 16px'
                         fontSize='16px'
                         minWidth='120px'

@@ -44,7 +44,7 @@ const InternalEvaluationPageForm = () => {
         <Grid container spacing={2} sx={{ padding: "5px 10px 5px 10px" }}>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
-                    text="Internal evaluation Form"
+                    text="Internal Evaluation"
                     variant="h3"
                     display="block"
                     textAlign="center"
@@ -55,19 +55,7 @@ const InternalEvaluationPageForm = () => {
                     color="primary"
                 />
             </Grid>
-            <Grid item lg={12} md={12} sm={12} xs={12}>
-                <CustomTypography
-                    text={label.internalEvaluation}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
-                    fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
                 <CustomInput
                     name="reference_code"
                     value={data.reference_code}
@@ -95,11 +83,10 @@ const InternalEvaluationPageForm = () => {
                     options={menu.confirmationChoices}
                     onChange={handleInput}
                     row={true}
-                    labelStyle={{ fontWeight: "bold", color: "black" }}
                 />
             </Grid>
             {otherSpecify === 'no' && (
-                <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid item xs={12} sm={12} md={4} lg={4}>
                     <CustomInput
                         name="other_origin"
                         value={data.other_origin}
@@ -117,7 +104,6 @@ const InternalEvaluationPageForm = () => {
                     options={menu.confirmationChoices}
                     onChange={handleInput}
                     row={true}
-                    labelStyle={{ fontWeight: "bold", color: "black" }}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -128,7 +114,6 @@ const InternalEvaluationPageForm = () => {
                     options={menu.confirmationChoices}
                     onChange={handleInput}
                     row={true}
-                    labelStyle={{ fontWeight: "bold", color: "black" }}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -139,19 +124,13 @@ const InternalEvaluationPageForm = () => {
                     options={menu.confirmationChoices}
                     onChange={handleInput}
                     row={true}
-                    labelStyle={{ fontWeight: "bold", color: "black" }}
                 />
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid style={{ marginTop: "20px" }} item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.qualityInformation}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
+                    fontSize="14px"
                     fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -162,7 +141,7 @@ const InternalEvaluationPageForm = () => {
                     options={menu.confirmationChoices}
                     onChange={handleInput}
                     row={true}
-                    labelStyle={{ fontWeight: "bold", color: "black" }}
+
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -173,7 +152,7 @@ const InternalEvaluationPageForm = () => {
                     options={menu.evaluationStatus}
                     onChange={handleInput}
                     row={true}
-                    labelStyle={{ fontWeight: "bold", color: "black" }}
+
                 />
             </Grid>
             {evaluationStatusPass === 'pass' && (
