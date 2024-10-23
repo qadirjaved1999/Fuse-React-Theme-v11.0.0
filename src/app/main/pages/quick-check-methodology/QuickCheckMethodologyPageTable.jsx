@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { IconButton, Grid, Paper, Radio, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Collapse } from '@mui/material';
-import { Box, textAlign } from '@mui/system';
+import { Box } from '@mui/system';
 import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineSharpIcon from '@mui/icons-material/RemoveCircleOutlineSharp';
 import languages from 'src/labels/index';
-import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
+import menu from 'src/helpers/menu';
 
 const label = languages.en;
 
@@ -14,34 +14,34 @@ const QuickCheckMethodologyPageTable = () => {
     const [openRowIndex, setOpenRowIndex] = useState(null); // To control which row is open
 
     const initialState = {
-        user_score: '',
-        sdm_score: ''
+        sdm_score: '',
+        user_score: ''
     };
     const [data, setData] = useState(initialState);
+    const [sdmValue, setSdmValue] = useState(0)
+    const [userValue, setUserValue] = useState(0);
 
     const handleChange = e => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
+        console.log("Name => ", name + " " + "Value => ", value);
+        if (name === 'sdm_score') {
+            setSdmValue(parseFloat(value));
+        } else if (name === 'user_score') {
+            setUserValue(parseFloat(value));
+        }
+        console.log(`Updated ${type}:`, value);
     };
 
     const rows = [
-        { name: 'Level of regional interest and political commitment', userValue: 5, sdmValue: 10 },
-        { name: 'Promotion of employment, intra-regional trade and investment', userValue: 4, sdmValue: 7.5 },
-        { name: 'Poverty reduction', userValue: 3, sdmValue: 5 },
-        { name: 'Alignment with the socioeconomic and environmental sustainability goals for Africa', userValue: 6, sdmValue: 8 }
-    ];
-
-    const radioOptions = [
-        { label: "The project enjoys political commitment at national level, but there is no  evidence of its regional impact.", value: 0 },
-        { label: "The project is included in the PIDA PAP programme, but there is no  evidence of national-level commitment.", value: 2.5 },
-        { label: "The project is included in the PIDA PAP programme, and there is a  national-level commitment.", value: 5 },
-        { label: "The project has evidence of regional-level commitment, but is not included  in the PIDA PAP programme.", value: 7.5 },
-        { label: "The project enjoys regional-level commitment and it is included in the PIDA  PAP programme.", value: 10 }
-
+        { name: 'Level of regional interest and political commitment', userValue, sdmValue },
+        { name: 'Promotion of employment, intra-regional trade and investment', userValue, sdmValue },
+        { name: 'Poverty reduction', userValue, sdmValue },
+        { name: 'Alignment with the socioeconomic and environmental sustainability goals for Africa', userValue, sdmValue }
     ];
 
     const handleRowClick = (index) => {
-        setOpenRowIndex(openRowIndex === index ? null : index); // Toggle open state for a specific row
+        setOpenRowIndex(openRowIndex === index ? null : index);
     };
 
     return (
@@ -93,63 +93,31 @@ const QuickCheckMethodologyPageTable = () => {
                                         <Collapse in={openRowIndex === index} timeout="auto" unmountOnExit>
                                             <Box>
                                                 <Table size="small">
-                                                {radioOptions.map((option, i) => (
+                                                    <TableBody>
+                                                        {menu.politicalCommitment.map((option, i) => (
                                                             <TableRow key={i}>
                                                                 <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>
                                                                     {option.label}
                                                                 </TableCell>
                                                                 <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}>
-                                                                    <CustomRadioButton
+                                                                    <Radio
                                                                         name="sdm_score"
-                                                                        value={data.sdm_score}
-                                                                        options={[
-                                                                            { value: '1' },
-                                                                        ]}
+                                                                        value={option.value}
+                                                                        checked={data.sdm_score === option.value}
                                                                         onChange={handleChange}
                                                                     />
                                                                 </TableCell>
                                                                 <TableCell sx={{ width: "12%", textAlign: 'center' }}>
-                                                                    <CustomRadioButton
+                                                                    <Radio
                                                                         name="user_score"
-                                                                        value={data.user_score}
-                                                                        options={[
-                                                                            { value: '1'},
-                                                                        ]}
+                                                                        value={option.value}
+                                                                        checked={data.user_score === option.value}
                                                                         onChange={handleChange}
                                                                     />
                                                                 </TableCell>
                                                             </TableRow>
                                                         ))}
-
-                                                    {/* <TableBody>
-                                                        <TableRow>
-                                                            <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
-                                                            <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}><Radio /></TableCell>
-                                                            <TableCell sx={{ width: "12%", textAlign: 'center' }}><Radio /></TableCell>
-                                                        </TableRow>
-                                                        <TableRow>
-                                                            <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
-                                                            <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}><Radio /></TableCell>
-                                                            <TableCell sx={{ width: "12%", textAlign: 'center' }}><Radio /></TableCell>
-                                                        </TableRow>
-                                                        <TableRow>
-                                                            <TableCell sx={{ padding: "6px 0px", width: "76%", textAlign: "start" }}>{label.noRegionalImpact}</TableCell>
-                                                            <TableCell sx={{ width: "12%", textAlign: 'center', backgroundColor: "white" }}>
-                                                                <Radio
-                                                                    name='sdm_score'
-                                                                    value={data.sdm_score}
-                                                                    onChange={handleChange}
-                                                                />
-                                                            </TableCell>
-                                                            <TableCell sx={{ width: "12%", textAlign: 'center' }}>
-                                                                <Radio
-                                                                    name='user_score'
-                                                                    value={data.user_score}
-                                                                    onChange={handleChange}
-                                                                />
-                                                            </TableCell>
-                                                        </TableRow>
-                                                    </TableBody> */}
+                                                    </TableBody>
                                                 </Table>
                                             </Box>
                                         </Collapse>
