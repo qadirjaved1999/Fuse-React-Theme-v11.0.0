@@ -49,14 +49,8 @@ const QuickCheckMethodologyPageTable = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text="Quick Check Methodology"
-                    variant="h3"
-                    display="block"
-                    textAlign="center"
-                    width="auto"
-                    padding="0px 0px 50px 0px"
-                    fontWeight="bold"
-                    fontSize="18px"
-                    color="primary"
+                    fontSize="14px"
+                    fontWeight="700"
                 />
             </Grid>
             <TableContainer component={Paper}>

@@ -5,17 +5,17 @@ const CustomTypography = ({ text, variant, display, textAlign, width, margin, pa
   return (
     <Typography
       variant={variant || "subtitle1"}
-      display={display || "block"}
+      display={display}
       style={{
-        textAlign: textAlign || "left",
-        width: width || "100%",
-        margin: margin || 0,
-        padding: padding || "0",
-        fontWeight: fontWeight || "normal",
+        textAlign: textAlign,
+        width: width,
+        margin: margin,
+        padding: padding,
+        fontWeight: fontWeight,
         fontSize: fontSize || "14px",
-        color: color || "inherit",
-        lineHeight: lineHeight || "0rem",
-        textTransform: textTransform || "none",
+        color: color,
+        lineHeight: lineHeight,
+        textTransform: textTransform,
       }}
     >
       {text}

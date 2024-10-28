@@ -209,13 +209,8 @@ const ClimatePoliceGds = () => {
             <Grid item lg={12} md={12} sm={12} xs={12}>
                 <CustomTypography
                     text={label.climatePolicies}
-                    variant="h3"
-                    display="block"
-                    textAlign="center"
-                    width="auto"
-                    fontWeight="bold"
-                    fontSize="18px"
-                    color="primary"
+                    fontSize="14px"
+                    fontWeight="700"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -663,15 +658,8 @@ const ClimatePoliceGds = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.requirementChecklist}
-                    variant="h3"
-                    display="block"
-                    textAlign="center"
-                    width="auto"
-                    padding="0px 0px 20px 0px"
-                    fontWeight="bold"
-                    fontSize="18px"
-                    color="primary"
-                    margin="10px 0px 0px 0px"
+                    fontSize="14px"
+                    fontWeight="700"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>

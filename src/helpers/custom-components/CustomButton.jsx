@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 
-const CustomButton = ({ color, backgroundColor, onClick, disabled, btnIcon, text, marginLeft, marginRight, variant, minWidth, maxHeight, marginTop, marginBottom, paddingInline, borderRadius, iconPosition = "start" }) => {
+const CustomButton = ({ color, backgroundColor, onClick, disabled, btnIcon, text, marginLeft, marginRight, variant, minWidth, maxHeight, marginTop, marginBottom, paddingInline, borderRadius }) => {
   /**
    * color: Specifies the color of the button text
    * backgroundColor: Specifies the background color of the button
@@ -24,7 +24,7 @@ const CustomButton = ({ color, backgroundColor, onClick, disabled, btnIcon, text
         borderRadius: borderRadius, // Radius of the borders of the button
         marginBottom: marginBottom, // Bottom margin of the button
         paddingInline: paddingInline, // Padding on the left and right of the button text
-        backgroundColor: backgroundColor || "primary", // Background color of the button
+        backgroundColor: backgroundColor || "black", // Background color of the button
       }}
     >
       {/* Display button text */}

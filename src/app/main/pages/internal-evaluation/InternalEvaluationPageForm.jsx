@@ -45,14 +45,8 @@ const InternalEvaluationPageForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text="Internal Evaluation"
-                    variant="h3"
-                    display="block"
-                    textAlign="center"
-                    width="auto"
-                    padding="0px 0px 20px 0px"
-                    fontWeight="bold"
-                    fontSize="18px"
-                    color="primary"
+                    fontSize="14px"
+                    fontWeight="700"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -66,13 +60,8 @@ const InternalEvaluationPageForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.internalEligibility}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
+                    fontSize="14px"
                     fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>

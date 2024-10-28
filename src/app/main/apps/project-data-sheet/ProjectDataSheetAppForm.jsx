@@ -131,26 +131,15 @@ const ProjectDataSheetAppForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text='Green Data Sheet'
-                    variant="h3"
-                    display="block"
-                    textAlign="center"
-                    width="auto"
-                    padding="0px 0px 20px 0px"
-                    fontWeight="bold"
-                    fontSize="18px"
-                    color="primary"
+                    fontSize="14px"
+                    fontWeight="700"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.applicantInformation}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
+                    fontSize="14px"
                     fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
                 />
             </Grid>
             <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -226,13 +215,8 @@ const ProjectDataSheetAppForm = () => {
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <CustomTypography
                             text={label.pdsInstructions}
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
+                            fontSize="14px"
                             fontWeight="700"
-                            color="black"
-                            lineHeight="1.4375em"
                         />
                     </AccordionSummary>
                     <AccordionDetails>
@@ -245,13 +229,8 @@ const ProjectDataSheetAppForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.regionalPriority}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
+                    fontSize="14px"
                     fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -422,13 +401,8 @@ const ProjectDataSheetAppForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.sectorReadiness}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
+                    fontSize="14px"
                     fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -626,13 +600,8 @@ const ProjectDataSheetAppForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.privateSector}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
+                    fontSize="14px"
                     fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -778,13 +747,8 @@ const ProjectDataSheetAppForm = () => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={label.technicalViability}
-                    display="block"
-                    width="auto"
-                    fontSize="1.3rem"
-                    fontFamily="Arial, sans-serif"
+                    fontSize="14px"
                     fontWeight="700"
-                    color="black"
-                    lineHeight="1.4375em"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>

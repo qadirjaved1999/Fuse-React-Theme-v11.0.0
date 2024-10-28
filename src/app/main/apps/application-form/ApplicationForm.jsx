@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Grid, Typography, Container, TextField } from '@mui/material';
-import { styled } from '@mui/material';
+import { Grid, Container, TextField } from '@mui/material';
 import menu from 'src/helpers/menu';
 import CustomInput from 'src/helpers/custom-components/CustomInput';
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
@@ -100,28 +99,15 @@ export default function ApplicationForm() {
             <Container maxWidth="1240px">
                 <CustomTypography
                     text={label.applicationForm}
-                    variant="h3"
-                    display="block"
-                    textAlign="center"
-                    width="auto"
-                    padding="0px 0px 20px 0px"
-                    fontWeight="bold"
-                    fontSize="18px"
-                    color="primary"
+                    fontWeight="700"
+                    fontSize="14px"
                 />
-
-                {/* Application Form */}
                 <Grid container spacing={2}>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <CustomTypography
                             text={label.applicationForm}
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
                             fontWeight="700"
-                            color="black"
-                            lineHeight="1.4375em"
+                            fontSize="14px"
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -206,13 +192,8 @@ export default function ApplicationForm() {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.sectoralFocus}
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
+                            fontSize="14px"
                             fontWeight="700"
-                            color="black"
-                            lineHeight="1.4375em"
                         />
                     </Grid>
                     <Grid item xs={6} sm={6} md={3} lg={3}>
@@ -263,13 +244,8 @@ export default function ApplicationForm() {
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <CustomTypography
                             text={label.projectEligibility}
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
+                            fontSize="14px"
                             fontWeight="700"
-                            color="black"
-                            lineHeight="1.4375em"
                         />
                     </Grid>
                     <Grid item xs={6} sm={6} md={6} lg={6}>
@@ -338,7 +314,8 @@ export default function ApplicationForm() {
                                 <Grid item sx={{ paddingTop: "10px" }} xs={12} sm={12} md={6} lg={6}>
                                     <CustomButton
                                         text="Upload Evidence"
-                                        btnIcon={<FileUploadOutlinedIcon sx={{ colo: "red" }} />}
+                                        btnIcon={<FileUploadOutlinedIcon />}
+                                        backgroundColor="black"
                                         onClick={() => alert('Button Clicked!')}
                                     />
                                 </Grid>
@@ -424,13 +401,8 @@ export default function ApplicationForm() {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.previousRequestSDM}
-                            variant="h2"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
+                            fontSize="14px"
                             fontWeight="700"
-                            textTransform="capitalize"
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -459,13 +431,8 @@ export default function ApplicationForm() {
                     <Grid item xs={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.authorityAgency}
-                            variant="h2"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
+                            fontSize="14px"
                             fontWeight="700"
-                            textTransform="capitalize"
                         />
                     </Grid>
                     <Grid item lg={6} md={6} sm={6} xs={6}>
@@ -513,13 +480,8 @@ export default function ApplicationForm() {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.implementationSchedule}
-                            variant="h2"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
+                            fontSize="14px"
                             fontWeight="700"
-                            textTransform="capitalize"
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -538,24 +500,15 @@ export default function ApplicationForm() {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.additionalInformation}
-                            variant="h2"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
+                            fontSize="14px"
                             fontWeight="700"
-                            textTransform="capitalize"
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.evidencePrioritization}
-                            variant="h3"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
-                            fontWeight="500"
+                            fontSize="14px"
+                            fontWeight="700"
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -571,12 +524,8 @@ export default function ApplicationForm() {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.mandateApproval}
-                            variant="h3"
-                            display="block"
-                            width="auto"
-                            fontSize="1.3rem"
-                            fontFamily="Arial, sans-serif"
-                            fontWeight="500"
+                            fontSize="14px"
+                            fontWeight="700"
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -592,13 +541,3 @@ export default function ApplicationForm() {
 
     );
 }
-
-// HEADINGS STYLE
-const StyledHeading = styled(Typography)(({ fontSize, padding, textAlign, margin }) => ({
-    fontSize: fontSize || '32px',
-    fontWeight: '700',
-    fontFamily: 'Roboto, Arial, sans-serif',
-    margin: margin || '20px 0 0 0',
-    padding: padding || '0px',
-    textAlign: textAlign || 'center',
-}));
