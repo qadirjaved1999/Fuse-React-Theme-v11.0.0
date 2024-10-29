@@ -170,8 +170,15 @@ const navigationConfig = [
         id: 'qcm',
             title: 'QCM',
             type: 'item',
-            icon: 'heroicons-outline:star',
+            icon: 'heroicons-outline:briefcase',
             url: '/qcm',
+      },
+      {
+        id: 'project-notification-report',
+            title: 'Project Notification Report',
+            type: 'item',
+            icon: 'heroicons-outline:document',
+            url: '/project-notification-report',
       }
     ]
   }
