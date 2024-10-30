@@ -46,13 +46,16 @@ const QuickCheckMethodologyPageTable = () => {
 
     return (
         <Grid container spacing={2}>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid item xs={12} sm={12} md={12} lg={12} textAlign="center">
                 <CustomTypography
                     text="Quick Check Methodology"
                     fontSize="14px"
                     fontWeight="700"
                 />
             </Grid>
+            <Grid item sx={{ width: "75%" }}></Grid>
+            <Grid item sx={{ width: "12%", textAlign: "center" }}>Project Owner Score</Grid>
+            <Grid item sx={{ width: "12%", textAlign: "center" }}>Current Score (By SDM)</Grid>
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>
