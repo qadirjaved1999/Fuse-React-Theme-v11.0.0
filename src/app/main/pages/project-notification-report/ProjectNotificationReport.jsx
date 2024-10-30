@@ -50,14 +50,41 @@ const ProjectNotificationReport = () => {
 
             let position = 0;
 
-            // Add project name and ID to the PDF
-            pdf.text(`Project ID: ${data.project_id}`, 10, 10);
-            pdf.text(`Project Name: ${data.project_name}`, 10, 20);
-            pdf.text(`Notification Status: ${data.Information_completeness}`, 10, 30);
-            pdf.text(`Notification Status: ${data.final_notification_report}`, 10, 40);
-            pdf.text(`Project Update: ${data.project_updates}`, 10, 50);
+            // Add project Form to the PDF
+            pdf.setFont("helvetica", "bold"); 
+            pdf.setFontSize(12); 
+            pdf.text(`Project ID:`, 10, 10); 
+            pdf.setFont("helvetica", "normal"); 
+            pdf.text(`${data.project_id}`, 35, 10);
 
-            pdf.addImage(imgData, 'PNG', 10, 60, imgWidth, imgHeight); // Offset by 30 for text height
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(12);
+            pdf.text(`Project Name:`, 10, 20);
+            pdf.setFont("helvetica", "normal");
+            pdf.text(`${data.project_name}`, 40, 20);
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(12);
+            pdf.text(`Notification Status:`, 10, 30);
+            pdf.setFont("helvetica", "normal");
+            pdf.text(`${data.Information_completeness}`, 50, 30);
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(12);
+            pdf.text(`Final Notification Report:`, 10, 40);
+            pdf.setFont("helvetica", "normal");
+            pdf.text(`${data.final_notification_report}`, 65, 40);
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(12);
+            pdf.text(`Project Update:`, 10, 50);
+            pdf.setFont("helvetica", "normal");
+            pdf.text(`${data.project_updates}`, 45, 50);
+
+            pdf.setFontSize(20);
+            pdf.text("Project Information", 10, 60);
+
+            pdf.addImage(imgData, 'PNG', 10, 65, imgWidth, imgHeight); // Offset by 30 for text height
             heightLeft -= pageHeight;
 
             while (heightLeft >= 0) {
@@ -161,6 +188,38 @@ const ProjectNotificationReport = () => {
                             <TableRow>
                                 <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Forms provided by the
                                     Project Owner</TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Project Description</TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row">CAPEX</TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Economic and Financial Analysis </TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Infrastructure</TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Rationale</TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Objective</TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Project Status</TableCell>
+                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Preliminary Project Insights</TableCell>
                                 <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
                             </TableRow>
                         </TableBody>
