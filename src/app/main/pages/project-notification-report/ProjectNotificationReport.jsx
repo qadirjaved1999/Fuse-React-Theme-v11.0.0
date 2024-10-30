@@ -4,11 +4,11 @@ import {
     TableBody,
     TableCell,
     TableContainer,
-    TableHead,
     TableRow,
     Button,
     Paper,
     Grid,
+    TableHead,
 } from '@mui/material';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -22,80 +22,75 @@ const ProjectNotificationReport = () => {
         Information_completeness: '',
         final_notification_report: '',
         project_updates: ''
-    }
+    };
 
-    // State to hold project name and project ID
     const [data, setData] = useState(initialState);
 
-    const handleChange = e => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
-        console.log("Name => ", name + "Value => ", value);
-    }
-    const tableData = [
-        { id: 1, name: 'John Doe', age: 28 },
-        { id: 2, name: 'Jane Smith', age: 34 },
-        { id: 3, name: 'Mike Johnson', age: 45 },
-    ];
-    const downloadPDF = () => {
-        const input = document.getElementById('table-to-pdf');
+    };
 
-        html2canvas(input).then((canvas) => {
+    const downloadPDF = async () => {
+        const pdf = new jsPDF();
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(12);
+
+        // Add project form data
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(12);
+        pdf.text(`Project ID:`, 10, 10);
+        pdf.setFont("helvetica", "normal");
+        pdf.text(`${data.project_id}`, 35, 10);
+
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(12);
+        pdf.text(`Project Name:`, 10, 20);
+        pdf.setFont("helvetica", "normal");
+        pdf.text(`${data.project_name}`, 40, 20);
+
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(12);
+        pdf.text(`Notification Status:`, 10, 30);
+        pdf.setFont("helvetica", "normal");
+        pdf.text(`${data.Information_completeness}`, 50, 30);
+
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(12);
+        pdf.text(`Final Notification Report:`, 10, 40);
+        pdf.setFont("helvetica", "normal");
+        pdf.text(`${data.final_notification_report}`, 65, 40);
+
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(12);
+        pdf.text(`Project Update:`, 10, 50);
+        pdf.setFont("helvetica", "normal");
+        pdf.text(`${data.project_updates}`, 45, 50);
+
+        pdf.setFontSize(18);
+        pdf.text("Project Information", 10, 58);
+
+        // Generate and add each table to the PDF
+        const tableIds = ['table-1', 'table-2', 'table-3']; // IDs for each table container
+        let yOffset = 60;
+
+        for (let i = 0; i < tableIds.length; i++) {
+            const tableElement = document.getElementById(tableIds[i]);
+            const canvas = await html2canvas(tableElement);
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
             const imgWidth = 190;
-            const pageHeight = pdf.internal.pageSize.height;
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
 
-            let position = 0;
-
-            // Add project Form to the PDF
-            pdf.setFont("helvetica", "bold"); 
-            pdf.setFontSize(12); 
-            pdf.text(`Project ID:`, 10, 10); 
-            pdf.setFont("helvetica", "normal"); 
-            pdf.text(`${data.project_id}`, 35, 10);
-
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(12);
-            pdf.text(`Project Name:`, 10, 20);
-            pdf.setFont("helvetica", "normal");
-            pdf.text(`${data.project_name}`, 40, 20);
-
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(12);
-            pdf.text(`Notification Status:`, 10, 30);
-            pdf.setFont("helvetica", "normal");
-            pdf.text(`${data.Information_completeness}`, 50, 30);
-
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(12);
-            pdf.text(`Final Notification Report:`, 10, 40);
-            pdf.setFont("helvetica", "normal");
-            pdf.text(`${data.final_notification_report}`, 65, 40);
-
-            pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(12);
-            pdf.text(`Project Update:`, 10, 50);
-            pdf.setFont("helvetica", "normal");
-            pdf.text(`${data.project_updates}`, 45, 50);
-
-            pdf.setFontSize(20);
-            pdf.text("Project Information", 10, 60);
-
-            pdf.addImage(imgData, 'PNG', 10, 65, imgWidth, imgHeight); // Offset by 30 for text height
-            heightLeft -= pageHeight;
-
-            while (heightLeft >= 0) {
-                position = heightLeft - imgHeight;
+            if (yOffset + imgHeight > pdf.internal.pageSize.height) {
                 pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
+                yOffset = 10;
             }
 
-            pdf.save('table.pdf');
-        });
+            pdf.addImage(imgData, 'PNG', 10, yOffset, imgWidth, imgHeight);
+            yOffset += imgHeight + 10;
+        }
+
+        pdf.save('project_report.pdf');
     };
 
     return (
@@ -155,14 +150,9 @@ const ProjectNotificationReport = () => {
                     onChange={handleChange}
                 />
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomTypography
-                    text="Project information"
-                    fontWeight="700"
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <TableContainer component={Paper} id="table-to-pdf">
+            {/* Table 1 */}
+            <Grid item xs={12} sm={12} md={12} lg={12} id="table-1">
+                <TableContainer component={Paper}>
                     <Table>
                         <TableBody>
                             <TableRow>
@@ -195,7 +185,7 @@ const ProjectNotificationReport = () => {
                                 <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell component="th" scope="row">CAPEX</TableCell>
+                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>CAPEX</TableCell>
                                 <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
                             </TableRow>
                             <TableRow>
@@ -227,6 +217,41 @@ const ProjectNotificationReport = () => {
                 </TableContainer>
             </Grid>
 
+            {/* Table 2 */}
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomTypography
+                    text="Project Technical Feasibility Appraisal (QCM)"
+                    fontWeight="700"
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12} id="table-2">
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow sx={{ backgroundColor: "#0A3160" }}>
+                                <TableCell sx={{ width: '80%', fontWeight: 'bold', color: "white" }}>Component</TableCell>
+                                <TableCell sx={{ width: '10%', fontWeight: 'bold', color: "white" }}>SDM Score</TableCell>
+                                <TableCell sx={{ width: '10%', fontWeight: 'bold', color: "white" }}>User Score</TableCell>
+                            </TableRow>
+                        </TableHead>
+                    </Table>
+                </TableContainer>
+            </Grid>
+
+            {/* Table 3 */}
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomTypography
+                    text="Green Appraisal (GCM)"
+                    fontWeight="700"
+                />
+            </Grid>
+            <Grid item xs={12} id="table-3">
+                <TableContainer component={Paper}>
+                    <Table>
+
+                    </Table>
+                </TableContainer>
+            </Grid>
         </Grid>
     );
 };

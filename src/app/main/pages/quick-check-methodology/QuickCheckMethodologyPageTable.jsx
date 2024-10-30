@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { IconButton, Grid, Paper, Radio, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Collapse } from '@mui/material';
+import { IconButton, Grid, Paper, Radio, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Collapse, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
@@ -56,7 +56,7 @@ const QuickCheckMethodologyPageTable = () => {
             <Grid item sx={{ width: "75%" }}></Grid>
             <Grid item sx={{ width: "12%", textAlign: "center" }}>Project Owner Score</Grid>
             <Grid item sx={{ width: "12%", textAlign: "center" }}>Current Score (By SDM)</Grid>
-            <TableContainer component={Paper}>
+            <TableContainer>
                 <Table aria-label="collapsible table">
                     <TableHead>
                         <TableRow sx={{ backgroundColor: "#2f2f2f" }}>
