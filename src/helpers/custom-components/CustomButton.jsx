@@ -21,7 +21,7 @@ const CustomButton = ({ color, backgroundColor, onClick, disabled, btnIcon, text
         marginTop: marginTop, // Top margin of the button
         marginLeft: marginLeft, // Left margin of the button
         marginRight: marginRight, // Right margin of the button
-        borderRadius: borderRadius, // Radius of the borders of the button
+        borderRadius: borderRadius || '20px', // Radius of the borders of the button
         marginBottom: marginBottom, // Bottom margin of the button
         paddingInline: paddingInline, // Padding on the left and right of the button text
         backgroundColor: backgroundColor || "black", // Background color of the button

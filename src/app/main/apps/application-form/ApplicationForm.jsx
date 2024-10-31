@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { Grid, Container, TextField } from '@mui/material';
+import { Grid, Container, TextField, InputLabel, Select, MenuItem, Autocomplete } from '@mui/material';
 import menu from 'src/helpers/menu';
 import CustomInput from 'src/helpers/custom-components/CustomInput';
 import CustomRadioButton from 'src/helpers/custom-components/CustomRadioButton';
@@ -9,6 +8,8 @@ import { useState } from 'react';
 import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import CustomButton from 'src/helpers/custom-components/CustomButton';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+
+
 export default function ApplicationForm() {
 
     // All Labls
@@ -66,6 +67,8 @@ export default function ApplicationForm() {
     const [regionalEvidence, setregionalEvidence] = useState(data.regional_infrastructure);
     const [countryEvidence, setCountryEvidence] = useState(data.country_infrastructure);
 
+    const [selectedSector, setSelectedSector] = useState([]);
+    const [selectedSubsectors, setSelectedSubsectors] = useState([]);
 
     // Form Handler Function
     const handleChange = e => {
@@ -92,7 +95,52 @@ export default function ApplicationForm() {
     const handleCheckbox = category => e => {
         const { name, checked } = e.target;
         setData({ ...data, [category]: checked ? [...data[category], name] : data[category].filter((item) => item !== name), });
-        console.log("Name => ", name + " =====>>>>> " + "Value => ", checked);
+    };
+
+
+    // Form Handler for Dropdown Changes
+    const handleSectorChange = (event, newValue) => {
+        setSelectedSector(newValue);
+
+        const validSubsectors = newValue.flatMap(sector => subsectors[sector.value] || []);
+        setSelectedSubsectors(prevSelectedSubsectors =>
+            prevSelectedSubsectors.filter(subsector =>
+                validSubsectors.some(validSubsector => validSubsector.value === subsector.value)
+            )
+        );
+    };
+
+    const handleSubsectorChange = (event, newValue) => {
+        setSelectedSubsectors(newValue);
+    };
+
+    const sectors = [
+        { label: "Transport", value: "transport" },
+        { label: "Energy", value: "energy" },
+        { label: "ICT", value: "ict" },
+        { label: "Water", value: "water" },
+    ];
+
+    const subsectors = {
+        transport: [
+            { label: "Roads", value: "roads" },
+            { label: "Aviation", value: "aviation" },
+            { label: "Maritime Ports", value: "maritime-ports" },
+            { label: "Railways", value: "railways" },
+            { label: "Multi-Modal", value: "multi-modal" },
+        ],
+        energy: [
+            { label: "Power Generation", value: "power-generation" },
+            { label: "Power Transmission", value: "power-transmission" },
+            { label: "Oil & Gas", value: "oil-gas" },
+        ],
+        ict: [
+            { label: "Telecommunications", value: "telecommunications" },
+            { label: "IT", value: "it" },
+        ],
+        water: [
+            { label: "Resource Management", value: "resource-management" },
+        ],
     };
     return (
         <>
@@ -172,7 +220,6 @@ export default function ApplicationForm() {
                     </Grid>
                     <br />
                     <br />
-
                     {/* Radio Buttons */}
                     <Grid item xs={12}>
                         <CustomRadioButton
@@ -187,55 +234,38 @@ export default function ApplicationForm() {
                     </Grid>
                     <br />
                     <br />
-
-                    {/* CheckBoxes */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.sectoralFocus}
-                            fontSize="14px"
                             fontWeight="700"
                         />
                     </Grid>
-                    <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <CustomCheckBox
-                            name="sectoral_transport"
-                            value={data.sectoral_transport}
-                            options={menu.transportActivity}
-                            label={label.transport}
-                            onChange={handleCheckbox('sectoral_transport')}
+                    {/* Sector Dropdown */}
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Autocomplete
+                            multiple
+                            id="sector-autocomplete"
+                            options={sectors}
+                            getOptionLabel={(option) => option.label}
+                            value={selectedSector}
+                            onChange={handleSectorChange}
+                            renderInput={(params) => (
+                                <TextField {...params} label="Select Sector" placeholder="Choose sectors" />
+                            )}
                         />
                     </Grid>
-
-                    {/* Energy */}
-                    <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <CustomCheckBox
-                            name="sectoral_energy"
-                            value={data.sectoral_energy}
-                            options={menu.energyActivity}
-                            label={label.energy}
-                            onChange={handleCheckbox('sectoral_energy')}
-                        />
-                    </Grid>
-
-                    {/* ICT */}
-                    <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <CustomCheckBox
-                            name="sectoral_ict"
-                            value={data.sectoral_ict}
-                            options={menu.ictActivity}
-                            label={label.ict}
-                            onChange={handleCheckbox('sectoral_ict')}
-                        />
-                    </Grid>
-
-                    {/* Water */}
-                    <Grid item xs={6} sm={6} md={3} lg={3}>
-                        <CustomCheckBox
-                            name="sectoral_water"
-                            value={data.sectoral_water}
-                            options={menu.waterActivity}
-                            label={label.water}
-                            onChange={handleCheckbox('sectoral_water')}
+                    {/* Subsector Dropdown */}
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Autocomplete
+                            multiple
+                            id="subsector-autocomplete"
+                            options={selectedSector.flatMap(sector => subsectors[sector.value] || [])}
+                            getOptionLabel={(option) => option.label}
+                            value={selectedSubsectors}
+                            onChange={handleSubsectorChange}
+                            renderInput={(params) => (
+                                <TextField {...params} label="Select Subsector" placeholder="Choose subsectors" />
+                            )}
                         />
                     </Grid>
                     <br />

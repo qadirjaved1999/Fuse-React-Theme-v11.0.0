@@ -14,6 +14,10 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import CustomInput from 'src/helpers/custom-components/CustomInput';
+import CustomButton from 'src/helpers/custom-components/CustomButton';
+import { Box } from '@mui/system';
+// import CustomDatePicker from 'src/helpers/custom-components/CustomDatePicker';
+
 
 const ProjectNotificationReport = () => {
     const initialState = {
@@ -21,14 +25,17 @@ const ProjectNotificationReport = () => {
         project_name: '',
         Information_completeness: '',
         final_notification_report: '',
-        project_updates: ''
+        project_updates: '',
+        contact: '',
+        project_owner: ''
     };
 
     const [data, setData] = useState(initialState);
-
+    const [selectedDate, setSelectedDate] = useState(null);
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
+        console.log("name => ", name + " " + "Value => ", value)
     };
 
     const downloadPDF = async () => {
@@ -101,24 +108,14 @@ const ProjectNotificationReport = () => {
                     fontWeight="700"
                 />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}></Grid>
-            <Grid item sx={{ textAlign: "right" }} xs={12} sm={12} md={6} lg={6}>
-                <Button variant="contained" color="primary" onClick={downloadPDF}>
-                    Download PDF
-                </Button>
-                <Button variant="contained" color="primary" sx={{ marginLeft: "8px" }}>
-                    Save
-                </Button>
+            <Grid item xs={12} sm={12} md={12} lg={12} sx={{ textAlign: "right" }}>
+                <Box sx={{ display: "flex", gap: 2, justifyContent: "flex-end" }}>
+                    <CustomButton text="Download PDF" onClick={downloadPDF} />
+                    <CustomButton text="Save As" />
+                </Box>
+                <br />
             </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={4}>
-                <CustomInput
-                    name="project_id"
-                    value={data.project_id}
-                    label="Project Id"
-                    onChange={handleChange}
-                />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={4}>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
                 <CustomInput
                     name="project_name"
                     value={data.project_name}
@@ -126,7 +123,15 @@ const ProjectNotificationReport = () => {
                     onChange={handleChange}
                 />
             </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={4}>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+                <CustomInput
+                    name="project_id"
+                    value={data.project_id}
+                    label="Project id"
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
                 <CustomInput
                     name="Information_completeness"
                     value={data.Information_completeness}
@@ -136,13 +141,63 @@ const ProjectNotificationReport = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={6}>
                 <CustomInput
-                    name="final_notification_report"
-                    value={data.final_notification_report}
-                    label="Notification Status"
+                    name="project_updates"
+                    value={data.project_updates}
+                    label="Project Updates"
                     onChange={handleChange}
                 />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomTypography
+                    text="Project information"
+                    fontWeight="700"
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="contact"
+                    value={data.contact}
+                    label="Contact"
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="project_owner"
+                    value={data.project_owner}
+                    label="Project owner/REC"
+                    onChange={handleChange}
+                />
+            </Grid>
+            {/* <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomDatePicker
+                    label="Appointment Date"
+                    value={selectedDate}
+                    onChange={(newDate) => setSelectedDate(newDate)}
+                    disablePast={true}
+                    minDate="2023-01-01"
+                    maxDate="2023-12-31"
+                    views={['year', 'month', 'day']}
+                    openTo="month"
+                />
+            </Grid> */}
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="project_updates"
+                    value={data.project_updates}
+                    label="Project Updates"
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="project_updates"
+                    value={data.project_updates}
+                    label="Project Updates"
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
                 <CustomInput
                     name="project_updates"
                     value={data.project_updates}
