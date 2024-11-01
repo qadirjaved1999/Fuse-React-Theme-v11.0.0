@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-const CustomInput = ({ label, value, name, type, onChange, error, required, disabled, placeholder, helperText, multiline, maxLength, textAlign, marginTop }) => {
+const CustomInput = ({ label, value, name, type, onChange, error, required, disabled, placeholder, helperText, multiline, maxLength, textAlign, size }) => {
   return (
     <TextField
       label={label} // Label for the input field
@@ -10,7 +10,7 @@ const CustomInput = ({ label, value, name, type, onChange, error, required, disa
       fullWidth // Make the input field take up the full width of its container
       type={type || "text"} // Input type (e.g., text, password)
       variant="outlined" // Outlined style for the input field
-      size="small" // Size of the input field
+      size={multiline ? "medium" : "small"} // Size of the input field
       minRows={3} // Minimum number of rows for multiline input
       maxRows={1000} // Maximum number of rows for multiline input
       name={name} // Name attribute of the input field
@@ -23,6 +23,11 @@ const CustomInput = ({ label, value, name, type, onChange, error, required, disa
       }}
       onChange={onChange} // Function to handle changes in input value
       required={required} // Whether an input is required
+      InputProps={{
+        ...(multiline && {
+          sx: { paddingLeft: "0px", paddingTop: "4px" }, // Custom padding for multiline fields
+        }),
+      }}
     />
   );
 };

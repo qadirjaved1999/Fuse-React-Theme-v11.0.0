@@ -5,10 +5,11 @@ import {
     TableCell,
     TableContainer,
     TableRow,
-    Button,
-    Paper,
     Grid,
     TableHead,
+    Autocomplete,
+    TextField,
+    Typography
 } from '@mui/material';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -16,6 +17,7 @@ import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import CustomInput from 'src/helpers/custom-components/CustomInput';
 import CustomButton from 'src/helpers/custom-components/CustomButton';
 import { Box } from '@mui/system';
+import menu from 'src/helpers/menu';
 // import CustomDatePicker from 'src/helpers/custom-components/CustomDatePicker';
 
 
@@ -27,16 +29,76 @@ const ProjectNotificationReport = () => {
         final_notification_report: '',
         project_updates: '',
         contact: '',
-        project_owner: ''
+        project_owner: '',
+        project_description: '',
+        cost_eur: '',
+        cost_usd: '',
+        persentage: '',
+        bridge_length: '',
+        roadway_length: '',
+        span_details: '',
+        rationale: '',
+        objective: '',
+        preliminary_project: '',
+        project_status: '',
+        regional_priority: '',
+        sector_readiness: '',
+        project_readiness: '',
+        private_sector_interest: '',
+        ppp_attractiveness: '',
+        climate_policies_mainstreaming: '',
+        green_funds_interest: '',
+        climate_mitigation: '',
+        climate_adaptation: '',
+        green_funds_attractiveness: '',
+        economic_contribution: '',
+        conclusion: '',
+        identified_needs_sdm: '',
+        identified_needs_owner: '',
+        potential_services_sdm: '',
+        next_sections_recommendations: ''
     };
 
     const [data, setData] = useState(initialState);
-    const [selectedDate, setSelectedDate] = useState(null);
+    // const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedSector, setSelectedSector] = useState([]);
+    const [selectedSubsectors, setSelectedSubsectors] = useState([]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
         console.log("name => ", name + " " + "Value => ", value)
     };
+
+    // Build the Sectors Array
+    const sectors = [
+        { label: "Transport", value: "transport" },
+        { label: "Energy", value: "energy" },
+        { label: "ICT", value: "ict" },
+        { label: "Water", value: "water" },
+    ];
+    // Build the subsectors Array using the imported menu data
+    const subsectors = [
+        { sector: 'transport', activities: menu.transportActivity },
+        { sector: 'energy', activities: menu.energyActivity },
+        { sector: 'ict', activities: menu.ictActivity },
+        { sector: 'water', activities: menu.waterActivity }
+    ];
+
+    const handleSectorChange = (_, newSectors) => {
+        setSelectedSector(newSectors);
+
+        // Find valid subsectors based on selected sectors
+        const allowedValues = subsectors
+            .filter(sub => newSectors.some(sector => sector.value === sub.sector))
+            .flatMap(sub => sub.activities.map(activity => activity.value));
+
+        setSelectedSubsectors(currentSubsectors =>
+            currentSubsectors.filter(subsector => allowedValues.includes(subsector.value))
+        );
+    };
+
+    const handleSubsectorChange = (_, newSubsectors) => setSelectedSubsectors(newSubsectors);
 
     const downloadPDF = async () => {
         const pdf = new jsPDF();
@@ -169,8 +231,13 @@ const ProjectNotificationReport = () => {
                     onChange={handleChange}
                 />
             </Grid>
-            {/* <Grid item xs={12} sm={12} md={4} lg={4}>
-                <CustomDatePicker
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="data_picker"
+                    label="Date submission"
+                    onChange={handleChange}
+                />
+                {/* <CustomDatePicker
                     label="Appointment Date"
                     value={selectedDate}
                     onChange={(newDate) => setSelectedDate(newDate)}
@@ -179,14 +246,34 @@ const ProjectNotificationReport = () => {
                     maxDate="2023-12-31"
                     views={['year', 'month', 'day']}
                     openTo="month"
-                />
-            </Grid> */}
+                /> */}
+            </Grid>
             <Grid item xs={12} sm={12} md={4} lg={4}>
-                <CustomInput
-                    name="project_updates"
-                    value={data.project_updates}
-                    label="Project Updates"
-                    onChange={handleChange}
+                <Autocomplete
+                    multiple
+                    options={sectors}
+                    getOptionLabel={(option) => option.label}
+                    value={selectedSector}
+                    onChange={handleSectorChange}
+                    renderInput={(params) => (
+                        <TextField {...params} label="Select Sector" placeholder="Choose sectors" />
+                    )}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <Autocomplete
+                    multiple
+                    options={
+                        subsectors
+                            .filter(sub => selectedSector.some(sector => sector.value === sub.sector))
+                            .flatMap(sub => sub.activities)
+                    }
+                    getOptionLabel={(option) => option.label}
+                    value={selectedSubsectors}
+                    onChange={handleSubsectorChange}
+                    renderInput={(params) => (
+                        <TextField {...params} label="Select Subsector" placeholder="Choose subsectors" />
+                    )}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -197,115 +284,604 @@ const ProjectNotificationReport = () => {
                     onChange={handleChange}
                 />
             </Grid>
-            <Grid item xs={12} sm={12} md={4} lg={4}>
-                <CustomInput
-                    name="project_updates"
-                    value={data.project_updates}
-                    label="Project Updates"
-                    onChange={handleChange}
-                />
-            </Grid>
-            {/* Table 1 */}
             <Grid item xs={12} sm={12} md={12} lg={12} id="table-1">
-                <TableContainer component={Paper}>
+                <TableContainer>
                     <Table>
+                        <TableHead>
+                            <TableRow sx={{ backgroundColor: "#E8E8E8" }}>
+                                <TableCell sx={{ width: "90%", fontWeight: "bold" }}>Forms provided by the Project Owner</TableCell>
+                                <TableCell sx={{ width: "10%", fontWeight: "bold", textAlign: "center" }}>Results</TableCell>
+                            </TableRow>
+                        </TableHead>
                         <TableBody>
                             <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Contact</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                                <TableCell sx={{ width: "90%" }}>{"Project Stage Screening Questionnaire"}</TableCell>
+                                <TableCell sx={{ width: "10%", textAlign: "center" }}>Yes</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Project Owner/REC</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                                <TableCell sx={{ width: "90%" }}>{"PIDA SDM Application Form"}</TableCell>
+                                <TableCell sx={{ width: "10%", textAlign: "center" }}>No</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Sector</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                                <TableCell sx={{ width: "90%" }}>{"PIDA SDM Appendix to Application Form Project Data Sheet (PDS)"}</TableCell>
+                                <TableCell sx={{ width: "10%", textAlign: "center" }}>Yes</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Countries</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>PIDA Project</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Forms provided by the
-                                    Project Owner</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Project Description</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>CAPEX</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Economic and Financial Analysis </TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Infrastructure</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Rationale</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Objective</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Project Status</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell component="th" scope="row" sx={{ fontWeight: 'bold' }}>Preliminary Project Insights</TableCell>
-                                <TableCell>Qadir Javed, React JS Developer, Technology Wisdom</TableCell>
+                                <TableCell sx={{ width: "90%" }}>{"Project’s Green Track Questionnaire"}</TableCell>
+                                <TableCell sx={{ width: "10%", textAlign: "center" }}>No</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
                 </TableContainer>
             </Grid>
-
-            {/* Table 2 */}
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="project_description"
+                    value={data.project_description}
+                    placeholder={"Type here"}
+                    label={"Project description"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
-                    text="Project Technical Feasibility Appraisal (QCM)"
+                    text={"Financial information"}
+                    fontWeight="700"
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="cost_eur"
+                    value={data.cost_eur}
+                    label={"Cost (EUR)"}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="cost_usd"
+                    value={data.cost_usd}
+                    label={"Cost (USD)"}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="persentage"
+                    value={data.persentage}
+                    label={"Percentage (%)"}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomTypography
+                    text={"Infrastructure and technical specifications"}
+                    fontWeight="700"
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="bridge_length"
+                    value={data.bridge_length}
+                    label={"Bridge Length"}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="roadway_length"
+                    value={data.roadway_length}
+                    label={"Roadway Length"}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <CustomInput
+                    name="span_details"
+                    value={data.span_details}
+                    label={"Span Details"}
+                    onChange={handleChange}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="rationale"
+                    value={data.rationale}
+                    label={"Rationale"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="objective"
+                    value={data.objective}
+                    label={"Objective"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="preliminary_project"
+                    value={data.preliminary_project}
+                    label={"Preliminary project insights"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="project_status"
+                    value={data.project_status}
+                    label={"Project status"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomTypography
+                    text={"Evaluation Summary"}
+                    fontWeight="700"
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Typography>
+                    {"The PIDA Quality Label (PQL) is a tool through which the SDM can evaluate the projects’ adherence to  international best practices, serving as an indicator of the projects’ likelihood of obtaining financing. With the  PQL, SDM is able to provide information for both Project Owners/Sponsors and finance institutions about  specific project gaps and strengths. On its initial phase, the PQL was developed to evaluate the technical aspects of the projects, awarding them  with a “Quick Check Methodology” (QCM) brown label. The PQL v2.0 consists of an updated version, with a  complementary climate appraisal, which follows the same methodological structure of the QCM. With this  approach, the PQL can award the projects also with a “Green Check Methodology” (GCM) green label.  Therefore, each project is analyzed with two appraisals: the Technical feasibility appraisal (through the QCM)  and the Green appraisal (through the GCM)."}
+                </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Box
+                    component="img"
+                    sx={{
+                        height: 300,
+                        width: 500,
+                    }}
+                    alt="Summary image not found"
+                    src="/public/assets/images/pages/image 23.png"
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomTypography
+                    text={"Project technical feasibility appraisal (QCM)"}
                     fontWeight="700"
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} id="table-2">
-                <TableContainer component={Paper}>
+                <TableContainer>
                     <Table>
                         <TableHead>
-                            <TableRow sx={{ backgroundColor: "#0A3160" }}>
-                                <TableCell sx={{ width: '80%', fontWeight: 'bold', color: "white" }}>Component</TableCell>
-                                <TableCell sx={{ width: '10%', fontWeight: 'bold', color: "white" }}>SDM Score</TableCell>
-                                <TableCell sx={{ width: '10%', fontWeight: 'bold', color: "white" }}>User Score</TableCell>
+                            <TableRow sx={{ backgroundColor: "#0A3160", display: 'flex' }}>
+                                <TableCell sx={{ color: "white", fontWeight: "bold", flex: 10 }}>{"Component"}</TableCell>
+                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>{"Project Owner Score"}</TableCell>
+                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>{"Current Score (by SDM)"}</TableCell>
                             </TableRow>
                         </TableHead>
+                        <TableBody>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 1: Regional priority"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{8.3}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"1. Level of regional interest and political commitment"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"2. Promotion of employment, intra-regional trade and investment"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"3. Poverty reduction"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"4. Alignment with the socioeconomic and environmental sustainability goals for Africa"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 2: Sector readiness"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{4.13}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{4.13}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"5. Regulatory framework and harmonization of the sector"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"6. Sector organization"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"7. Sector maturity"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 3: Private sector interest"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{3.13}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{1.88}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"8. Private investors’ appetite"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"9. Country risks"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"10. Access to financing"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 4: Project readiness"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"11. Technical viability"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"12. Financial viability"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"13. E&S viability"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"14. Governance"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"15. Risks"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 5: PPP Attractiveness"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"16. Private sector requirements"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"17. Beneficiary government requirements"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{3.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{3.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"18. PPFs and Financial Institutions requirements"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#0A3160", color: "white" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold", color: "white" }}>{"Project Final score"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5.47}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5}</TableCell>
+                            </TableRow>
+                        </TableBody>
                     </Table>
                 </TableContainer>
             </Grid>
-
-            {/* Table 3 */}
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="regional_priority"
+                    value={data.regional_priority}
+                    label={"Regional priority"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="sector_readiness"
+                    value={data.sector_readiness}
+                    label={"Sector readiness"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="project_readiness"
+                    value={data.project_readiness}
+                    label={"Project readiness"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="private_sector_interest"
+                    value={data.private_sector_interest}
+                    label={"Private sector interest"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="ppp_attractiveness"
+                    value={data.ppp_attractiveness}
+                    label={"PPP attractiveness"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
-                    text="Green Appraisal (GCM)"
+                    text={"Green Appraisal (GCM)"}
                     fontWeight="700"
                 />
             </Grid>
-            <Grid item xs={12} id="table-3">
-                <TableContainer component={Paper}>
+            <Grid item xs={12} sm={12} md={12} lg={12} id="table-3">
+                <TableContainer>
                     <Table>
-
+                        <TableHead>
+                            <TableRow sx={{ backgroundColor: "#0A3160", display: 'flex' }}>
+                                <TableCell sx={{ color: "white", fontWeight: "bold", flex: 10 }}>{"Component"}</TableCell>
+                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>{"Project Owner Score"}</TableCell>
+                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>{"Current Score (by SDM)"}</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 1: Climate policies mainstreaming"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{1.63}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5.63}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"1. Regional climate interest and commitment"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"2. Governance framework for climate change"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"3. Country ownership climate narrative"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 2: Green funds interest"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.38}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.38}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"4. Climate investment landscape harmonization"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"5. Access to climate finance"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"6. Volume of green funds received by hosting countries"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"7. National performance on sustainability issues"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"8. Access to green energy"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 3: Climate mitigation"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{4.48}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{4.48}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"9. Carbon footprint absolute estimation"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"10. Carbon footprint relative estimation"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"11. Sustainable infrastructure operation potential"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 4: Climate adaptation"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"12. Vulnerability assessment"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"13. Climate risk assessment"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 5: Green funds attractiveness"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{1.25}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{1.25}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"14. Alignment with climate international goals and principles"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"15. Main issues to be addressed in the environmental assessment according to the Equator Principles"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6", color: "white" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 6: Economic contribution"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"16. Employment creation"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex' }}>
+                                <TableCell sx={{ flex: 10 }}>{"17. Intra-African trade and industrialization impact"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
+                            </TableRow>
+                            <TableRow sx={{ display: 'flex', backgroundColor: "#0A3160", color: "white" }}>
+                                <TableCell sx={{ flex: 10, fontWeight: "bold", color: "white" }}>{"Project Final score"}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5.6}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5.29}</TableCell>
+                            </TableRow>
+                        </TableBody>
                     </Table>
                 </TableContainer>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="climate_policies_mainstreaming"
+                    value={data.climate_policies_mainstreaming}
+                    label={"Climate policies mainstreaming"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="green_funds_interest"
+                    value={data.green_funds_interest}
+                    label={"Green funds interest"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="green_funds_interest"
+                    value={data.green_funds_interest}
+                    label={"Green funds interest"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="climate_mitigation"
+                    value={data.climate_mitigation}
+                    label={"Climate mitigation"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="climate_adaptation"
+                    value={data.climate_adaptation}
+                    label={"Climate adaptation"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="green_funds_attractiveness"
+                    value={data.green_funds_attractiveness}
+                    label={"Green funds attractiveness"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="economic_contribution"
+                    value={data.economic_contribution}
+                    label={"Economic contribution"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomTypography
+                    text={"Conclusion, next steps and recommendations"}
+                    fontWeight="700"
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="conclusion"
+                    value={data.conclusion}
+                    label={"Conclusion"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="identified_needs_sdm"
+                    value={data.identified_needs_sdm}
+                    label={"Identified needs from SDM"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="identified_needs_owner"
+                    value={data.identified_needs_owner}
+                    label={"Identified needs from Project Owner"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="potential_services_sdm"
+                    value={data.potential_services_sdm}
+                    label={"Potential Services to be provided by SDM"}
+                    onChange={handleChange}
+                    multiline
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <CustomInput
+                    name="next_sections_recommendations"
+                    value={data.next_sections_recommendations}
+                    label={"Next Sections and Recommendations"}
+                    onChange={handleChange}
+                    multiline
+                />
             </Grid>
         </Grid>
     );

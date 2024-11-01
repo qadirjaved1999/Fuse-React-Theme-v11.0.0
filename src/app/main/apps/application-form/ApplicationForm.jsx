@@ -130,17 +130,11 @@ export default function ApplicationForm() {
     return (
         <>
             <Container maxWidth="1240px">
-                <CustomTypography
-                    text={label.applicationForm}
-                    fontWeight="700"
-                    fontSize="14px"
-                />
                 <Grid container spacing={2}>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <CustomTypography
                             text={label.applicationForm}
                             fontWeight="700"
-                            fontSize="14px"
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -203,9 +197,6 @@ export default function ApplicationForm() {
                             onChange={handleChange}
                         />
                     </Grid>
-                    <br />
-                    <br />
-                    {/* Radio Buttons */}
                     <Grid item xs={12}>
                         <CustomRadioButton
                             name="geographic_area"
@@ -217,8 +208,6 @@ export default function ApplicationForm() {
                             labelStyle={{ fontWeight: "bold", color: "black" }}
                         />
                     </Grid>
-                    <br />
-                    <br />
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.sectoralFocus}
@@ -253,13 +242,9 @@ export default function ApplicationForm() {
                             )}
                         />
                     </Grid>
-                    <br />
-                    <br />
-                    {/* Project Eligibility */}
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <CustomTypography
                             text={label.projectEligibility}
-                            fontSize="14px"
                             fontWeight="700"
                         />
                     </Grid>
@@ -280,9 +265,6 @@ export default function ApplicationForm() {
                             marginTop="10px"
                         />
                     </Grid>
-                    <br />
-                    <br />
-                    {/* PIDA Priority Action Plan */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomRadioButton
                             name="pida_pap_project"
@@ -337,7 +319,6 @@ export default function ApplicationForm() {
                             )}
                         </Grid>
                     )}
-
                     {pidaPlan === 'no' && (
                         <Grid item xs={12} sm={12} md={6} lg={6}>
                             <CustomRadioButton
@@ -360,7 +341,6 @@ export default function ApplicationForm() {
                             )}
                         </Grid>
                     )}
-                    {/* Proposed Activity */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomRadioButton
                             name="proposed_activity"
@@ -382,7 +362,6 @@ export default function ApplicationForm() {
                             />
                         )}
                     </Grid>
-                    {/* DETAILS OF THE PROPOSED ACTIVITY */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <TextField
                             name="project_description"
@@ -396,9 +375,6 @@ export default function ApplicationForm() {
                             fullWidth
                         />
                     </Grid>
-                    <br />
-                    <br />
-
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <TextField
                             name="key_objectives"
@@ -412,11 +388,9 @@ export default function ApplicationForm() {
                             fullWidth
                         />
                     </Grid>
-                    {/* Previous request to SDM */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.previousRequestSDM}
-                            fontSize="14px"
                             fontWeight="700"
                         />
                     </Grid>
@@ -441,12 +415,9 @@ export default function ApplicationForm() {
                             />
                         </Grid>
                     )}
-                    <br />
-                    <br />
                     <Grid item xs={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.authorityAgency}
-                            fontSize="14px"
                             fontWeight="700"
                         />
                     </Grid>
@@ -495,7 +466,6 @@ export default function ApplicationForm() {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.implementationSchedule}
-                            fontSize="14px"
                             fontWeight="700"
                         />
                     </Grid>
@@ -511,18 +481,17 @@ export default function ApplicationForm() {
                             fullWidth
                         />
                     </Grid>
-                    {/* ADDITIONAL INFORMATION */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.additionalInformation}
-                            fontSize="14px"
+
                             fontWeight="700"
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.evidencePrioritization}
-                            fontSize="14px"
+
                             fontWeight="700"
                         />
                     </Grid>
@@ -533,13 +502,9 @@ export default function ApplicationForm() {
                             onClick={() => alert('Button Clicked!')}
                         />
                     </Grid>
-                    <br />
-                    <br />
-                    <br />
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CustomTypography
                             text={label.mandateApproval}
-                            fontSize="14px"
                             fontWeight="700"
                         />
                     </Grid>
