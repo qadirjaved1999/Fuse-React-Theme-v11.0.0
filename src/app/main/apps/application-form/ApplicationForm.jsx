@@ -97,51 +97,36 @@ export default function ApplicationForm() {
         setData({ ...data, [category]: checked ? [...data[category], name] : data[category].filter((item) => item !== name), });
     };
 
-
-    // Form Handler for Dropdown Changes
-    const handleSectorChange = (event, newValue) => {
-        setSelectedSector(newValue);
-
-        const validSubsectors = newValue.flatMap(sector => subsectors[sector.value] || []);
-        setSelectedSubsectors(prevSelectedSubsectors =>
-            prevSelectedSubsectors.filter(subsector =>
-                validSubsectors.some(validSubsector => validSubsector.value === subsector.value)
-            )
-        );
-    };
-
-    const handleSubsectorChange = (event, newValue) => {
-        setSelectedSubsectors(newValue);
-    };
-
+    // Build the Sectors Array
     const sectors = [
         { label: "Transport", value: "transport" },
         { label: "Energy", value: "energy" },
         { label: "ICT", value: "ict" },
         { label: "Water", value: "water" },
     ];
+    // Build the subsectors Array using the imported menu data
+    const subsectors = [
+        { sector: 'transport', activities: menu.transportActivity },
+        { sector: 'energy', activities: menu.energyActivity },
+        { sector: 'ict', activities: menu.ictActivity },
+        { sector: 'water', activities: menu.waterActivity }
+    ];
 
-    const subsectors = {
-        transport: [
-            { label: "Roads", value: "roads" },
-            { label: "Aviation", value: "aviation" },
-            { label: "Maritime Ports", value: "maritime-ports" },
-            { label: "Railways", value: "railways" },
-            { label: "Multi-Modal", value: "multi-modal" },
-        ],
-        energy: [
-            { label: "Power Generation", value: "power-generation" },
-            { label: "Power Transmission", value: "power-transmission" },
-            { label: "Oil & Gas", value: "oil-gas" },
-        ],
-        ict: [
-            { label: "Telecommunications", value: "telecommunications" },
-            { label: "IT", value: "it" },
-        ],
-        water: [
-            { label: "Resource Management", value: "resource-management" },
-        ],
+    const handleSectorChange = (_, newSectors) => {
+        setSelectedSector(newSectors);
+
+        // Find valid subsectors based on selected sectors
+        const allowedValues = subsectors
+            .filter(sub => newSectors.some(sector => sector.value === sub.sector))
+            .flatMap(sub => sub.activities.map(activity => activity.value));
+
+        setSelectedSubsectors(currentSubsectors =>
+            currentSubsectors.filter(subsector => allowedValues.includes(subsector.value))
+        );
     };
+
+    const handleSubsectorChange = (_, newSubsectors) => setSelectedSubsectors(newSubsectors);
+
     return (
         <>
             <Container maxWidth="1240px">
@@ -240,11 +225,9 @@ export default function ApplicationForm() {
                             fontWeight="700"
                         />
                     </Grid>
-                    {/* Sector Dropdown */}
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <Autocomplete
                             multiple
-                            id="sector-autocomplete"
                             options={sectors}
                             getOptionLabel={(option) => option.label}
                             value={selectedSector}
@@ -254,12 +237,14 @@ export default function ApplicationForm() {
                             )}
                         />
                     </Grid>
-                    {/* Subsector Dropdown */}
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <Autocomplete
                             multiple
-                            id="subsector-autocomplete"
-                            options={selectedSector.flatMap(sector => subsectors[sector.value] || [])}
+                            options={
+                                subsectors
+                                    .filter(sub => selectedSector.some(sector => sector.value === sub.sector))
+                                    .flatMap(sub => sub.activities)
+                            }
                             getOptionLabel={(option) => option.label}
                             value={selectedSubsectors}
                             onChange={handleSubsectorChange}
