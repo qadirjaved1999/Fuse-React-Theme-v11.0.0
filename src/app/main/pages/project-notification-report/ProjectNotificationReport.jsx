@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
     Table,
     TableBody,
@@ -162,6 +162,123 @@ const ProjectNotificationReport = () => {
         pdf.save('project_report.pdf');
     };
 
+    const formsProvided = [
+        { title: "Project Stage Screening Questionnaire", result: "Yes" },
+        { title: "PIDA SDM Application Form", result: "No" },
+        { title: "PIDA SDM Appendix to Application Form Project Data Sheet (PDS)", result: "Yes" },
+        { title: "Project’s Green Track Questionnaire", result: "No" }
+    ];
+
+
+    const dimensions = [
+        {
+            title: "Dimension 1: Regional priority",
+            scores: { owner: 10, sdm: 8.3 },
+            items: [
+                { label: "1. Level of regional interest and political commitment", ownerScore: 10, sdmScore: 10 },
+                { label: "2. Promotion of employment, intra-regional trade and investment", ownerScore: 10, sdmScore: 7.5 },
+                { label: "3. Poverty reduction", ownerScore: 10, sdmScore: 10 },
+                { label: "4. Alignment with the socioeconomic and environmental sustainability goals for Africa", ownerScore: 10, sdmScore: 5 }
+            ]
+        },
+        {
+            title: "Dimension 2: Sector readiness",
+            scores: { owner: 4.13, sdm: 4.13 },
+            items: [
+                { label: "5. Regulatory framework and harmonization of the sector", ownerScore: 5, sdmScore: 5 },
+                { label: "6. Sector organization", ownerScore: 5, sdmScore: 5 },
+                { label: "7. Sector maturity", ownerScore: 2.5, sdmScore: 2.5 }
+            ]
+        },
+        {
+            title: "Dimension 3: Private sector interest",
+            scores: { owner: 3.13, sdm: 1.88 },
+            items: [
+                { label: "8. Private investors’ appetite", ownerScore: 5, sdmScore: 5 },
+                { label: "9. Country risks", ownerScore: 5, sdmScore: 5 },
+                { label: "10. Access to financing", ownerScore: 2.5, sdmScore: 2.5 }
+            ]
+        },
+        {
+            title: "Dimension 4: Project readiness",
+            scores: { owner: 5.5, sdm: 5.5 },
+            items: [
+                { label: "11. Technical viability", ownerScore: 5, sdmScore: 5 },
+                { label: "12. Financial viability", ownerScore: 2.5, sdmScore: 2.5 },
+                { label: "13. E&S viability", ownerScore: 10, sdmScore: 10 },
+                { label: "14. Governance", ownerScore: 7.5, sdmScore: 7.5 },
+                { label: "15. Risks", ownerScore: 2.5, sdmScore: 2.5 }
+            ]
+        },
+        {
+            title: "Dimension 5: PPP Attractiveness",
+            scores: { owner: 5, sdm: 5 },
+            items: [
+                { label: "16. Private sector requirements", ownerScore: 5, sdmScore: 5 },
+                { label: "17. Beneficiary government requirements", ownerScore: 3.5, sdmScore: 3.5 },
+                { label: "18. PPFs and Financial Institutions requirements", ownerScore: 5, sdmScore: 5 }
+            ]
+        }
+    ];
+
+    const scoreData = [
+        { component: "Dimension 1: Climate policies mainstreaming", projectOwnerScore: 1.63, currentScore: 5.63, isBold: true, backgroundColor: "#C0CCD6" },
+        { component: "1. Regional climate interest and commitment", projectOwnerScore: 2.5, currentScore: 10 },
+        { component: "2. Governance framework for climate change", projectOwnerScore: 0, currentScore: 0 },
+        { component: "3. Country ownership climate narrative", projectOwnerScore: 2.5, currentScore: 2.5 },
+        { component: "Dimension 2: Green funds interest", projectOwnerScore: 7.38, currentScore: 7.38, isBold: true, backgroundColor: "#C0CCD6" },
+        { component: "4. Climate investment landscape harmonization", projectOwnerScore: 7.5, currentScore: 7.5 },
+        { component: "5. Access to climate finance", projectOwnerScore: 0, currentScore: 0 },
+        { component: "6. Volume of green funds received by hosting countries", projectOwnerScore: 5, currentScore: 5 },
+        { component: "7. National performance on sustainability issues", projectOwnerScore: 10, currentScore: 10 },
+        { component: "8. Access to green energy", projectOwnerScore: 10, currentScore: 10 },
+        { component: "Dimension 3: Climate mitigation", projectOwnerScore: 4.48, currentScore: 4.48, isBold: true, backgroundColor: "#C0CCD6" },
+        { component: "9. Carbon footprint absolute estimation", projectOwnerScore: 7.5, currentScore: 7.5 },
+        { component: "10. Carbon footprint relative estimation", projectOwnerScore: 0, currentScore: 0 },
+        { component: "11. Sustainable infrastructure operation potential", projectOwnerScore: 7.5, currentScore: 7.5 },
+        { component: "Dimension 4: Climate adaptation", projectOwnerScore: 10, currentScore: 5, isBold: true, backgroundColor: "#C0CCD6" },
+        { component: "12. Vulnerability assessment", projectOwnerScore: 10, currentScore: 0 },
+        { component: "13. Climate risk assessment", projectOwnerScore: 10, currentScore: 10 },
+        { component: "Dimension 5: Green funds attractiveness", projectOwnerScore: 1.25, currentScore: 1.25, isBold: true, backgroundColor: "#C0CCD6" },
+        { component: "14. Alignment with climate international goals and principles", projectOwnerScore: 2.5, currentScore: 2.5 },
+        { component: "15. Main issues to be addressed in the environmental assessment according to the Equator Principles", projectOwnerScore: 5, currentScore: 5 },
+        { component: "Dimension 6: Economic contribution", projectOwnerScore: 10, currentScore: 10, isBold: true, backgroundColor: "#C0CCD6", color: "white" },
+        { component: "16. Employment creation", projectOwnerScore: 10, currentScore: 10 },
+        { component: "17. Intra-African trade and industrialization impact", projectOwnerScore: 10, currentScore: 10 },
+        { component: "Project Final score", projectOwnerScore: 5.6, currentScore: 5.29, isBold: true, backgroundColor: "#0A3160", color: "white" }
+    ];
+
+    const fields = [
+        { name: "green_funds_interest", label: "Green funds interest" },
+        { name: "climate_mitigation", label: "Climate mitigation" },
+        { name: "climate_adaptation", label: "Climate adaptation" },
+        { name: "green_funds_attractiveness", label: "Green funds attractiveness" },
+        { name: "economic_contribution", label: "Economic contribution" }
+    ];
+
+    const additionalFields = [
+        { name: "conclusion", label: "Conclusion" },
+        { name: "identified_needs_sdm", label: "Identified needs from SDM" },
+        { name: "identified_needs_owner", label: "Identified needs from Project Owner" },
+        { name: "potential_services_sdm", label: "Potential Services to be provided by SDM" },
+        { name: "next_sections_recommendations", label: "Next Sections and Recommendations" }
+    ];
+
+    const readinessFields = [
+        { name: "regional_priority", label: "Regional priority" },
+        { name: "sector_readiness", label: "Sector readiness" },
+        { name: "project_readiness", label: "Project readiness" },
+        { name: "private_sector_interest", label: "Private sector interest" },
+        { name: "ppp_attractiveness", label: "PPP attractiveness" }
+    ];
+
+    const projectFields = [
+        { name: "rationale", label: "Rationale" },
+        { name: "objective", label: "Objective" },
+        { name: "preliminary_project", label: "Preliminary project insights" },
+        { name: "project_status", label: "Project status" }
+    ];
+
     return (
         <Grid container spacing={2}>
             <Grid item sx={{ textAlign: "center" }} xs={12} sm={12} md={12} lg={12}>
@@ -294,25 +411,16 @@ const ProjectNotificationReport = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell sx={{ width: "90%" }}>{"Project Stage Screening Questionnaire"}</TableCell>
-                                <TableCell sx={{ width: "10%", textAlign: "center" }}>Yes</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell sx={{ width: "90%" }}>{"PIDA SDM Application Form"}</TableCell>
-                                <TableCell sx={{ width: "10%", textAlign: "center" }}>No</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell sx={{ width: "90%" }}>{"PIDA SDM Appendix to Application Form Project Data Sheet (PDS)"}</TableCell>
-                                <TableCell sx={{ width: "10%", textAlign: "center" }}>Yes</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell sx={{ width: "90%" }}>{"Project’s Green Track Questionnaire"}</TableCell>
-                                <TableCell sx={{ width: "10%", textAlign: "center" }}>No</TableCell>
-                            </TableRow>
+                            {formsProvided.map((form, index) => (
+                                <TableRow key={index}>
+                                    <TableCell sx={{ width: "90%" }}>{form.title}</TableCell>
+                                    <TableCell sx={{ width: "10%", textAlign: "center" }}>{form.result}</TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
+
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomInput
@@ -384,42 +492,17 @@ const ProjectNotificationReport = () => {
                     onChange={handleChange}
                 />
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="rationale"
-                    value={data.rationale}
-                    label={"Rationale"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="objective"
-                    value={data.objective}
-                    label={"Objective"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="preliminary_project"
-                    value={data.preliminary_project}
-                    label={"Preliminary project insights"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="project_status"
-                    value={data.project_status}
-                    label={"Project status"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
+            {projectFields.map((field) => (
+                <Grid item xs={12} sm={12} md={12} lg={12} key={field.name}>
+                    <CustomInput
+                        name={field.name}
+                        value={data[field.name]}
+                        label={field.label}
+                        onChange={handleChange}
+                        multiline
+                    />
+                </Grid>
+            ))}
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={"Evaluation Summary"}
@@ -459,175 +542,44 @@ const ProjectNotificationReport = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 1: Regional priority"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{8.3}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"1. Level of regional interest and political commitment"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"2. Promotion of employment, intra-regional trade and investment"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"3. Poverty reduction"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"4. Alignment with the socioeconomic and environmental sustainability goals for Africa"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 2: Sector readiness"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{4.13}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{4.13}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"5. Regulatory framework and harmonization of the sector"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"6. Sector organization"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"7. Sector maturity"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 3: Private sector interest"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{3.13}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{1.88}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"8. Private investors’ appetite"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"9. Country risks"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"10. Access to financing"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 4: Project readiness"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"11. Technical viability"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"12. Financial viability"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"13. E&S viability"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"14. Governance"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"15. Risks"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 5: PPP Attractiveness"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"16. Private sector requirements"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"17. Beneficiary government requirements"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{3.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{3.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"18. PPFs and Financial Institutions requirements"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
+                            {dimensions.map((dimension, index) => (
+                                <React.Fragment key={index}>
+                                    <TableRow sx={{ backgroundColor: "#C0CCD6", display: 'flex' }}>
+                                        <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{dimension.title}</TableCell>
+                                        <TableCell align="center" sx={{ flex: 3 }}>{dimension.scores.owner}</TableCell>
+                                        <TableCell align="center" sx={{ flex: 3 }}>{dimension.scores.sdm}</TableCell>
+                                    </TableRow>
+                                    {dimension.items.map((item, itemIndex) => (
+                                        <TableRow sx={{ display: 'flex' }} key={itemIndex}>
+                                            <TableCell sx={{ flex: 10 }}>{item.label}</TableCell>
+                                            <TableCell align="center" sx={{ flex: 3 }}>{item.ownerScore}</TableCell>
+                                            <TableCell align="center" sx={{ flex: 3 }}>{item.sdmScore}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </React.Fragment>
+                            ))}
                             <TableRow sx={{ display: 'flex', backgroundColor: "#0A3160", color: "white" }}>
                                 <TableCell sx={{ flex: 10, fontWeight: "bold", color: "white" }}>{"Project Final score"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5.47}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5}</TableCell>
+                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>5.47</TableCell>
+                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>5</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
                 </TableContainer>
+
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="regional_priority"
-                    value={data.regional_priority}
-                    label={"Regional priority"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="sector_readiness"
-                    value={data.sector_readiness}
-                    label={"Sector readiness"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="project_readiness"
-                    value={data.project_readiness}
-                    label={"Project readiness"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="private_sector_interest"
-                    value={data.private_sector_interest}
-                    label={"Private sector interest"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="ppp_attractiveness"
-                    value={data.ppp_attractiveness}
-                    label={"PPP attractiveness"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
+            {readinessFields.map((field) => (
+                <Grid item xs={12} sm={12} md={12} lg={12} key={field.name}>
+                    <CustomInput
+                        name={field.name}
+                        value={data[field.name]}
+                        label={field.label}
+                        onChange={handleChange}
+                        multiline
+                    />
+                </Grid>
+            ))}
+
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={"Green Appraisal (GCM)"}
@@ -639,250 +591,60 @@ const ProjectNotificationReport = () => {
                     <Table>
                         <TableHead>
                             <TableRow sx={{ backgroundColor: "#0A3160", display: 'flex' }}>
-                                <TableCell sx={{ color: "white", fontWeight: "bold", flex: 10 }}>{"Component"}</TableCell>
-                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>{"Project Owner Score"}</TableCell>
-                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>{"Current Score (by SDM)"}</TableCell>
+                                <TableCell sx={{ color: "white", fontWeight: "bold", flex: 10 }}>Component</TableCell>
+                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>Project Owner Score</TableCell>
+                                <TableCell align="center" sx={{ color: "white", fontWeight: "bold", flex: 3 }}>Current Score (by SDM)</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 1: Climate policies mainstreaming"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{1.63}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5.63}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"1. Regional climate interest and commitment"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"2. Governance framework for climate change"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"3. Country ownership climate narrative"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 2: Green funds interest"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.38}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.38}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"4. Climate investment landscape harmonization"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"5. Access to climate finance"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"6. Volume of green funds received by hosting countries"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"7. National performance on sustainability issues"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"8. Access to green energy"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 3: Climate mitigation"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{4.48}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{4.48}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"9. Carbon footprint absolute estimation"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"10. Carbon footprint relative estimation"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"11. Sustainable infrastructure operation potential"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{7.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 4: Climate adaptation"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"12. Vulnerability assessment"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{0}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"13. Climate risk assessment"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 5: Green funds attractiveness"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{1.25}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{1.25}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"14. Alignment with climate international goals and principles"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{2.5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"15. Main issues to be addressed in the environmental assessment according to the Equator Principles"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{5}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#C0CCD6", color: "white" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{"Dimension 6: Economic contribution"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"16. Employment creation"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex' }}>
-                                <TableCell sx={{ flex: 10 }}>{"17. Intra-African trade and industrialization impact"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3 }}>{10}</TableCell>
-                            </TableRow>
-                            <TableRow sx={{ display: 'flex', backgroundColor: "#0A3160", color: "white" }}>
-                                <TableCell sx={{ flex: 10, fontWeight: "bold", color: "white" }}>{"Project Final score"}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5.6}</TableCell>
-                                <TableCell align="center" sx={{ flex: 3, color: "white" }}>{5.29}</TableCell>
-                            </TableRow>
+                            {scoreData.map((row, index) => (
+                                <TableRow
+                                    key={index}
+                                    sx={{
+                                        display: 'flex',
+                                        backgroundColor: row.backgroundColor || "inherit",
+                                        color: row.color || "inherit"
+                                    }}
+                                >
+                                    <TableCell sx={{ flex: 10, fontWeight: row.isBold ? "bold" : "normal" }}>{row.component}</TableCell>
+                                    <TableCell align="center" sx={{ flex: 3 }}>{row.projectOwnerScore}</TableCell>
+                                    <TableCell align="center" sx={{ flex: 3 }}>{row.currentScore}</TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
+
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="climate_policies_mainstreaming"
-                    value={data.climate_policies_mainstreaming}
-                    label={"Climate policies mainstreaming"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="green_funds_interest"
-                    value={data.green_funds_interest}
-                    label={"Green funds interest"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="green_funds_interest"
-                    value={data.green_funds_interest}
-                    label={"Green funds interest"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="climate_mitigation"
-                    value={data.climate_mitigation}
-                    label={"Climate mitigation"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="climate_adaptation"
-                    value={data.climate_adaptation}
-                    label={"Climate adaptation"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="green_funds_attractiveness"
-                    value={data.green_funds_attractiveness}
-                    label={"Green funds attractiveness"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="economic_contribution"
-                    value={data.economic_contribution}
-                    label={"Economic contribution"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
+            {fields.map((field) => (
+                <Grid item xs={12} sm={12} md={12} lg={12} key={field.name}>
+                    <CustomInput
+                        name={field.name}
+                        value={data[field.name]}
+                        label={field.label}
+                        onChange={handleChange}
+                        multiline
+                    />
+                </Grid>
+            ))}
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomTypography
                     text={"Conclusion, next steps and recommendations"}
                     fontWeight="700"
                 />
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="conclusion"
-                    value={data.conclusion}
-                    label={"Conclusion"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="identified_needs_sdm"
-                    value={data.identified_needs_sdm}
-                    label={"Identified needs from SDM"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="identified_needs_owner"
-                    value={data.identified_needs_owner}
-                    label={"Identified needs from Project Owner"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="potential_services_sdm"
-                    value={data.potential_services_sdm}
-                    label={"Potential Services to be provided by SDM"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CustomInput
-                    name="next_sections_recommendations"
-                    value={data.next_sections_recommendations}
-                    label={"Next Sections and Recommendations"}
-                    onChange={handleChange}
-                    multiline
-                />
-            </Grid>
+            {additionalFields.map((field) => (
+                <Grid item xs={12} sm={12} md={12} lg={12} key={field.name}>
+                    <CustomInput
+                        name={field.name}
+                        value={data[field.name]}
+                        label={field.label}
+                        onChange={handleChange}
+                        multiline
+                    />
+                </Grid>
+            ))}
+
         </Grid>
     );
 };

@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-const CustomInput = ({ label, value, name, type, onChange, error, required, disabled, placeholder, helperText, multiline, maxLength, textAlign, size }) => {
+const CustomInput = ({ label, value, name, type, onChange, error, required, disabled, placeholder, helperText, multiline, maxLength, textAlign, inputProps, InputProps }) => {
   return (
     <TextField
       label={label} // Label for the input field
@@ -18,12 +18,14 @@ const CustomInput = ({ label, value, name, type, onChange, error, required, disa
       multiline={multiline} // Boolean to allow multiline input
       disabled={disabled} // Boolean to disable the input field
       inputProps={{
+        ...inputProps, 
         maxLength: maxLength, // Maximum length of input
         style: { textAlign: textAlign }, // Text alignment in the input field
       }}
       onChange={onChange} // Function to handle changes in input value
       required={required} // Whether an input is required
       InputProps={{
+        ...InputProps, 
         ...(multiline && {
           sx: { paddingLeft: "0px", paddingTop: "4px" }, // Custom padding for multiline fields
         }),
