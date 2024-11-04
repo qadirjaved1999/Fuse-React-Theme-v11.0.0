@@ -18,10 +18,13 @@ import CustomInput from 'src/helpers/custom-components/CustomInput';
 import CustomButton from 'src/helpers/custom-components/CustomButton';
 import { Box } from '@mui/system';
 import menu from 'src/helpers/menu';
+import languages from 'src/labels';
 // import CustomDatePicker from 'src/helpers/custom-components/CustomDatePicker';
 
 
 const ProjectNotificationReport = () => {
+
+    const label = languages.en;
     const initialState = {
         project_id: '',
         project_name: '',
@@ -169,84 +172,114 @@ const ProjectNotificationReport = () => {
         { title: "Project’s Green Track Questionnaire", result: "No" }
     ];
 
-
-    const dimensions = [
+    const createDimensions = [
         {
-            title: "Dimension 1: Regional priority",
+            title: label.regionalPriority,
             scores: { owner: 10, sdm: 8.3 },
             items: [
-                { label: "1. Level of regional interest and political commitment", ownerScore: 10, sdmScore: 10 },
-                { label: "2. Promotion of employment, intra-regional trade and investment", ownerScore: 10, sdmScore: 7.5 },
-                { label: "3. Poverty reduction", ownerScore: 10, sdmScore: 10 },
-                { label: "4. Alignment with the socioeconomic and environmental sustainability goals for Africa", ownerScore: 10, sdmScore: 5 }
+                { label: label.politicalCommitment, ownerScore: 10, sdmScore: 10 },
+                { label: label.regionalTrade, ownerScore: 10, sdmScore: 7.5 },
+                { label: label.povertyReduction, ownerScore: 10, sdmScore: 10 },
+                { label: label.sustainabilityGoals, ownerScore: 10, sdmScore: 5 }
             ]
         },
         {
-            title: "Dimension 2: Sector readiness",
+            title: label.sectorReadiness,
             scores: { owner: 4.13, sdm: 4.13 },
             items: [
-                { label: "5. Regulatory framework and harmonization of the sector", ownerScore: 5, sdmScore: 5 },
-                { label: "6. Sector organization", ownerScore: 5, sdmScore: 5 },
-                { label: "7. Sector maturity", ownerScore: 2.5, sdmScore: 2.5 }
+                { label: label.regulatoryFramework, ownerScore: 5, sdmScore: 5 },
+                { label: label.sectorOrganization, ownerScore: 5, sdmScore: 5 },
+                { label: label.sectorMaturity, ownerScore: 2.5, sdmScore: 2.5 }
             ]
         },
         {
-            title: "Dimension 3: Private sector interest",
-            scores: { owner: 3.13, sdm: 1.88 },
-            items: [
-                { label: "8. Private investors’ appetite", ownerScore: 5, sdmScore: 5 },
-                { label: "9. Country risks", ownerScore: 5, sdmScore: 5 },
-                { label: "10. Access to financing", ownerScore: 2.5, sdmScore: 2.5 }
-            ]
-        },
-        {
-            title: "Dimension 4: Project readiness",
-            scores: { owner: 5.5, sdm: 5.5 },
-            items: [
-                { label: "11. Technical viability", ownerScore: 5, sdmScore: 5 },
-                { label: "12. Financial viability", ownerScore: 2.5, sdmScore: 2.5 },
-                { label: "13. E&S viability", ownerScore: 10, sdmScore: 10 },
-                { label: "14. Governance", ownerScore: 7.5, sdmScore: 7.5 },
-                { label: "15. Risks", ownerScore: 2.5, sdmScore: 2.5 }
-            ]
-        },
-        {
-            title: "Dimension 5: PPP Attractiveness",
+            title: label.privateSector,
             scores: { owner: 5, sdm: 5 },
             items: [
-                { label: "16. Private sector requirements", ownerScore: 5, sdmScore: 5 },
-                { label: "17. Beneficiary government requirements", ownerScore: 3.5, sdmScore: 3.5 },
-                { label: "18. PPFs and Financial Institutions requirements", ownerScore: 5, sdmScore: 5 }
+                { label: label.privateInvestors, ownerScore: 5, sdmScore: 5 },
+                { label: label.countryRisk, ownerScore: 5, sdmScore: 5 },
+                { label: label.accessFinancing, ownerScore: 2.5, sdmScore: 2.5 }
             ]
-        }
+        },
+        {
+            title: label.projectReadiness,
+            scores: { owner: 5, sdm: 5 },
+            items: [
+                { label: label.technicalViability, ownerScore: 5, sdmScore: 5 },
+                { label: label.financialViability, ownerScore: 5, sdmScore: 5 },
+                { label: label.esViability, ownerScore: 2.5, sdmScore: 2.5 },
+                { label: label.governance, ownerScore: 2.5, sdmScore: 2.5 },
+                { label: label.countryRisk, ownerScore: 2.5, sdmScore: 2.5 },
+            ]
+        },
+        {
+            title: label.pppAttractiveness,
+            scores: { owner: 5, sdm: 5 },
+            items: [
+                { label: label.privateSectorRequirements, ownerScore: 5, sdmScore: 5 },
+                { label: label.governmentBeneficiary, ownerScore: 5, sdmScore: 5 },
+                { label: label.ppfsFinancialInstitutions, ownerScore: 2.5, sdmScore: 2.5 },
+            ]
+        },
     ];
 
+    let continuousIndex = 1;
     const scoreData = [
-        { component: "Dimension 1: Climate policies mainstreaming", projectOwnerScore: 1.63, currentScore: 5.63, isBold: true, backgroundColor: "#C0CCD6" },
-        { component: "1. Regional climate interest and commitment", projectOwnerScore: 2.5, currentScore: 10 },
-        { component: "2. Governance framework for climate change", projectOwnerScore: 0, currentScore: 0 },
-        { component: "3. Country ownership climate narrative", projectOwnerScore: 2.5, currentScore: 2.5 },
-        { component: "Dimension 2: Green funds interest", projectOwnerScore: 7.38, currentScore: 7.38, isBold: true, backgroundColor: "#C0CCD6" },
-        { component: "4. Climate investment landscape harmonization", projectOwnerScore: 7.5, currentScore: 7.5 },
-        { component: "5. Access to climate finance", projectOwnerScore: 0, currentScore: 0 },
-        { component: "6. Volume of green funds received by hosting countries", projectOwnerScore: 5, currentScore: 5 },
-        { component: "7. National performance on sustainability issues", projectOwnerScore: 10, currentScore: 10 },
-        { component: "8. Access to green energy", projectOwnerScore: 10, currentScore: 10 },
-        { component: "Dimension 3: Climate mitigation", projectOwnerScore: 4.48, currentScore: 4.48, isBold: true, backgroundColor: "#C0CCD6" },
-        { component: "9. Carbon footprint absolute estimation", projectOwnerScore: 7.5, currentScore: 7.5 },
-        { component: "10. Carbon footprint relative estimation", projectOwnerScore: 0, currentScore: 0 },
-        { component: "11. Sustainable infrastructure operation potential", projectOwnerScore: 7.5, currentScore: 7.5 },
-        { component: "Dimension 4: Climate adaptation", projectOwnerScore: 10, currentScore: 5, isBold: true, backgroundColor: "#C0CCD6" },
-        { component: "12. Vulnerability assessment", projectOwnerScore: 10, currentScore: 0 },
-        { component: "13. Climate risk assessment", projectOwnerScore: 10, currentScore: 10 },
-        { component: "Dimension 5: Green funds attractiveness", projectOwnerScore: 1.25, currentScore: 1.25, isBold: true, backgroundColor: "#C0CCD6" },
-        { component: "14. Alignment with climate international goals and principles", projectOwnerScore: 2.5, currentScore: 2.5 },
-        { component: "15. Main issues to be addressed in the environmental assessment according to the Equator Principles", projectOwnerScore: 5, currentScore: 5 },
-        { component: "Dimension 6: Economic contribution", projectOwnerScore: 10, currentScore: 10, isBold: true, backgroundColor: "#C0CCD6", color: "white" },
-        { component: "16. Employment creation", projectOwnerScore: 10, currentScore: 10 },
-        { component: "17. Intra-African trade and industrialization impact", projectOwnerScore: 10, currentScore: 10 },
-        { component: "Project Final score", projectOwnerScore: 5.6, currentScore: 5.29, isBold: true, backgroundColor: "#0A3160", color: "white" }
-    ];
+        {
+            title: label.climatePolicies,
+            scores: { projectOwnerScore: 10, currentScore: 8.3 },
+            items: [
+                { label: label.regionalClimate, projectOwnerScore: 10, currentScore: 7.5 },
+                { label: label.governanceClimate, projectOwnerScore: 10, currentScore: 10 },
+                { label: label.ownershipClimate, projectOwnerScore: 10, currentScore: 5 }
+            ]
+        },
+
+        {
+            title: label.greenFundsInterest,
+            scores: { projectOwnerScore: 7.38, currentScore: 7.38 },
+            items: [
+                { label: label.harmonizationClimate, projectOwnerScore: 7.5, currentScore: 7.5 },
+                { label: label.financeClimate, projectOwnerScore: 0, currentScore: 0 },
+                { label: label.hostingCountries, projectOwnerScore: 5, currentScore: 5 },
+                { label: label.nationalPerformance, projectOwnerScore: 10, currentScore: 10 },
+                { label: label.greenEnergy, projectOwnerScore: 10, currentScore: 10 },
+            ]
+        },
+        {
+            title: label.climateMitigation,
+            scores: { projectOwnerScore: 4.48, currentScore: 4.48 },
+            items: [
+                { label: label.absoluteFootprint, projectOwnerScore: 7.5, currentScore: 7.5 },
+                { label: label.relativeFootprint, projectOwnerScore: 0, currentScore: 0 },
+                { label: label.sustainablePotential, projectOwnerScore: 7.5, currentScore: 7.5 },
+            ]
+        },
+        {
+            title: label.climateAdaptation,
+            scores: { projectOwnerScore: 10, currentScore: 5 },
+            items: [
+                { label: label.vulnerabilityAssessment, projectOwnerScore: 10, currentScore: 0 },
+                { label: label.riskClimate, projectOwnerScore: 10, currentScore: 10 },
+            ]
+        },
+        {
+            title: label.greenFundsAttractiveness,
+            scores: { projectOwnerScore: 1.25, currentScore: 1.25 },
+            items: [
+                { label: label.climatePrinciple, projectOwnerScore: 2.5, currentScore: 2.5 },
+                { label: label.equatorPrinciple, projectOwnerScore: 5, currentScore: 5 },
+            ]
+        },
+        {
+            title: label.economicContribution,
+            scores: { projectOwnerScore: 10, currentScore: 10 },
+            items: [
+                { label: label.employmentCreation, projectOwnerScore: 10, currentScore: 10 },
+                { label: label.africanTrade, projectOwnerScore: 10, currentScore: 10 },
+            ]
+        },
+    ]
 
     const fields = [
         { name: "green_funds_interest", label: "Green funds interest" },
@@ -420,7 +453,6 @@ const ProjectNotificationReport = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CustomInput
@@ -542,16 +574,18 @@ const ProjectNotificationReport = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {dimensions.map((dimension, index) => (
-                                <React.Fragment key={index}>
+                            {createDimensions.map((dimension, dimensionIndex) => (
+                                <React.Fragment key={dimensionIndex}>
                                     <TableRow sx={{ backgroundColor: "#C0CCD6", display: 'flex' }}>
-                                        <TableCell sx={{ flex: 10, fontWeight: "bold" }}>{dimension.title}</TableCell>
+                                        <TableCell sx={{ flex: 10, fontWeight: "bold" }}>
+                                            {`Dimension ${dimensionIndex + 1}: ${dimension.title}`}
+                                        </TableCell>
                                         <TableCell align="center" sx={{ flex: 3 }}>{dimension.scores.owner}</TableCell>
                                         <TableCell align="center" sx={{ flex: 3 }}>{dimension.scores.sdm}</TableCell>
                                     </TableRow>
                                     {dimension.items.map((item, itemIndex) => (
                                         <TableRow sx={{ display: 'flex' }} key={itemIndex}>
-                                            <TableCell sx={{ flex: 10 }}>{item.label}</TableCell>
+                                            <TableCell sx={{ flex: 10 }}>{`${itemIndex + 1}. ${item.label}`}</TableCell>
                                             <TableCell align="center" sx={{ flex: 3 }}>{item.ownerScore}</TableCell>
                                             <TableCell align="center" sx={{ flex: 3 }}>{item.sdmScore}</TableCell>
                                         </TableRow>
@@ -566,7 +600,6 @@ const ProjectNotificationReport = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-
             </Grid>
             {readinessFields.map((field) => (
                 <Grid item xs={12} sm={12} md={12} lg={12} key={field.name}>
@@ -597,24 +630,27 @@ const ProjectNotificationReport = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {scoreData.map((row, index) => (
-                                <TableRow
-                                    key={index}
-                                    sx={{
-                                        display: 'flex',
-                                        backgroundColor: row.backgroundColor || "inherit",
-                                        color: row.color || "inherit"
-                                    }}
-                                >
-                                    <TableCell sx={{ flex: 10, fontWeight: row.isBold ? "bold" : "normal" }}>{row.component}</TableCell>
-                                    <TableCell align="center" sx={{ flex: 3 }}>{row.projectOwnerScore}</TableCell>
-                                    <TableCell align="center" sx={{ flex: 3 }}>{row.currentScore}</TableCell>
-                                </TableRow>
+                            {scoreData.map((row, rowIndex) => (
+                                <React.Fragment key={rowIndex}>
+                                    <TableRow sx={{ backgroundColor: "#C0CCD6", display: 'flex' }}>
+                                        <TableCell sx={{ flex: 10, fontWeight: "bold" }}>
+                                            {`Dimension ${rowIndex + 1}: ${row.title}`}
+                                        </TableCell>
+                                        <TableCell align="center" sx={{ flex: 3 }}>{row.scores.projectOwnerScore}</TableCell>
+                                        <TableCell align="center" sx={{ flex: 3 }}>{row.scores.currentScore}</TableCell>
+                                    </TableRow>
+                                    {row.items.map((item, itemIndex) => (
+                                        <TableRow sx={{ display: 'flex' }} key={itemIndex}>
+                                            <TableCell sx={{ flex: 10 }}>{`${continuousIndex++}. ${item.label}`}</TableCell>
+                                            <TableCell align="center" sx={{ flex: 3 }}>{item.projectOwnerScore}</TableCell>
+                                            <TableCell align="center" sx={{ flex: 3 }}>{item.currentScore}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </React.Fragment>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-
             </Grid>
             {fields.map((field) => (
                 <Grid item xs={12} sm={12} md={12} lg={12} key={field.name}>
@@ -644,7 +680,6 @@ const ProjectNotificationReport = () => {
                     />
                 </Grid>
             ))}
-
         </Grid>
     );
 };
