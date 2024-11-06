@@ -1,8 +1,7 @@
-import React from 'react'
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import styled from 'styled-components';
 import { Typography } from '@mui/material';
-import ProjectNotificationReport from './ProjectNotificationReport';
+import PCM from './PCM';
 const Root = styled(FusePageCarded)({
     "& .FusePageCarded-contentCard": { marginTop: "185px" },
     "& .FusePageCarded-contentWrapper": { padding: "10px" },
@@ -10,19 +9,20 @@ const Root = styled(FusePageCarded)({
         maxWidth: "100% !important;",
     },
 });
-const ProjectNotificationReportPage = () => {
+
+const PCMPage = () => {
     return (
         <Root sx={{ marginTop: "50px" }}
             contentToolbar={
-                <Typography>Internal Evaluation Form</Typography>
+                <Typography>Project concept memorandum</Typography>
             }
             content={
                 <div className="p-20">
-                    <ProjectNotificationReport />
+                    <PCM />
                 </div>
             }
         />
     )
 }
 
-export default ProjectNotificationReportPage
+export default PCMPage

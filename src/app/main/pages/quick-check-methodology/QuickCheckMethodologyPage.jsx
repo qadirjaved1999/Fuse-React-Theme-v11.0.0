@@ -2,6 +2,7 @@ import QuickCheckMethodologyPageForm from './QuickCheckMethodologyPageTable'
 import styled from 'styled-components';
 import FusePageCarded from '@fuse/core/FusePageCarded';
 import { Typography } from '@mui/material';
+import CreateComments from './CreateComments';
 
 const Root = styled(FusePageCarded)({
     "& .FusePageCarded-contentCard": { marginTop: "185px" },
@@ -19,6 +20,7 @@ const QuickCheckMethodologyPage = () => {
             content={
                 <div className="p-20">
                     <QuickCheckMethodologyPageForm />
+                    <CreateComments />
                 </div>
             }
         />

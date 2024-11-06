@@ -179,6 +179,13 @@ const navigationConfig = [
             type: 'item',
             icon: 'heroicons-outline:document',
             url: '/project-notification-report',
+      },
+      {
+        id: 'pcm',
+            title: 'Project Concept Memorandum',
+            type: 'item',
+            icon: 'heroicons-outline:chart-pie',
+            url: '/pcm',
       }
     ]
   }

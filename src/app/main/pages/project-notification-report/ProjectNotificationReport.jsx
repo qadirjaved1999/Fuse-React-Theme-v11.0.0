@@ -70,7 +70,6 @@ const ProjectNotificationReport = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
-        console.log("name => ", name + " " + "Value => ", value)
     };
 
     // Build the Sectors Array
