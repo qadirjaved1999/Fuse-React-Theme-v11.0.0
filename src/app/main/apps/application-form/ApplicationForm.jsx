@@ -10,6 +10,7 @@ import CustomButton from 'src/helpers/custom-components/CustomButton';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 
 
+
 export default function ApplicationForm() {
 
     // All Labls
@@ -233,7 +234,16 @@ export default function ApplicationForm() {
                             value={selectedSector}
                             onChange={handleSectorChange}
                             renderInput={(params) => (
-                                <TextField {...params} label="Sector" />
+                                <TextField {...params} label="Sector"
+                                    sx={{
+                                        '& .MuiInputBase-root': {
+                                            padding: '2px 8px',
+                                            fontSize: '0.875rem',
+                                        },
+                                        '& .MuiAutocomplete-tag': {
+                                            height: '20px',
+                                        },
+                                    }} />
                             )}
                         />
                     </Grid>
@@ -249,7 +259,17 @@ export default function ApplicationForm() {
                             value={selectedSubsectors}
                             onChange={handleSubsectorChange}
                             renderInput={(params) => (
-                                <TextField {...params} label="Subsector" />
+                                <TextField {...params} label="Subsector"
+                                    sx={{
+                                        '& .MuiInputBase-root': {
+                                            padding: '2px 8px',
+                                            fontSize: '0.875rem',
+                                        },
+                                        '& .MuiAutocomplete-tag': {
+                                            height: '20px',
+                                        },
+                                    }}
+                                />
                             )}
                         />
                     </Grid>
