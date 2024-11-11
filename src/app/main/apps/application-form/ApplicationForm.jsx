@@ -8,6 +8,7 @@ import { useState } from 'react';
 import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import CustomButton from 'src/helpers/custom-components/CustomButton';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import CustomAutocomplete from 'src/helpers/custom-components/CustomMultiSelectedDropDown';
 
 
 
@@ -112,8 +113,8 @@ export default function ApplicationForm() {
         { sector: 'ict', activities: menu.ictActivity },
         { sector: 'water', activities: menu.waterActivity }
     ];
-
     const handleSectorChange = (_, newSectors) => {
+        console.log("newSectors => ", newSectors)
         setSelectedSector(newSectors);
 
         // Find valid subsectors based on selected sectors
@@ -121,13 +122,46 @@ export default function ApplicationForm() {
             .filter(sub => newSectors.some(sector => sector.value === sub.sector))
             .flatMap(sub => sub.activities.map(activity => activity.value));
 
+        console.log('Allowed Subsector Values:', allowedValues);
+
         setSelectedSubsectors(currentSubsectors =>
             currentSubsectors.filter(subsector => allowedValues.includes(subsector.value))
         );
     };
 
-    const handleSubsectorChange = (_, newSubsectors) => setSelectedSubsectors(newSubsectors);
+    const handleSubsectorChange = (_, newSubsectors) => {
+        setSelectedSubsectors(newSubsectors);
+    };
+    const filterSectorOptions = (options) => {
+        console.log("Options before filtering:", options);
+        console.log("Currently selected sectors:", selectedSector);
 
+        // Filter out sectors that are already selected
+        const filteredOptions = options.filter(
+            (option) => !selectedSector.some((selected) => selected.value === option.value)
+        );
+
+        console.log("Filtered sector options:", filteredOptions); // Debugging
+        return filteredOptions;
+    };
+    // Filtering function for subsectors based on selected sectors
+    const filterSubsectorOptions = (options) => {
+        console.log("======>>>>>options ", options)
+        const filteredOptions = options
+            .filter((sub) =>
+                selectedSector.some((sector) => sector.value === sub.sector)
+            )
+            .flatMap((sub) =>
+                sub.activities.filter((activity) =>
+                    !selectedSubsectors.some(
+                        (selected) => selected.value === activity.value
+                    )
+                )
+            );
+
+        console.log("Filtered options:", filteredOptions); // Debugging
+        return filteredOptions;
+    };
     return (
         <>
             <Container maxWidth="1240px">
@@ -227,50 +261,21 @@ export default function ApplicationForm() {
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6}>
-                        <Autocomplete
-                            multiple
+                        <CustomAutocomplete
+                            label="Choose Sector"
                             options={sectors}
-                            getOptionLabel={(option) => option.label}
                             value={selectedSector}
                             onChange={handleSectorChange}
-                            renderInput={(params) => (
-                                <TextField {...params} label="Sector"
-                                    sx={{
-                                        '& .MuiInputBase-root': {
-                                            padding: '2px 8px',
-                                            fontSize: '0.875rem',
-                                        },
-                                        '& .MuiAutocomplete-tag': {
-                                            height: '20px',
-                                        },
-                                    }} />
-                            )}
+                            filterOptions={filterSectorOptions}
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6}>
-                        <Autocomplete
-                            multiple
-                            options={
-                                subsectors
-                                    .filter(sub => selectedSector.some(sector => sector.value === sub.sector))
-                                    .flatMap(sub => sub.activities)
-                            }
-                            getOptionLabel={(option) => option.label}
+                        <CustomAutocomplete
+                            label="Choose Subsector"
+                            options={subsectors}
                             value={selectedSubsectors}
                             onChange={handleSubsectorChange}
-                            renderInput={(params) => (
-                                <TextField {...params} label="Subsector"
-                                    sx={{
-                                        '& .MuiInputBase-root': {
-                                            padding: '2px 8px',
-                                            fontSize: '0.875rem',
-                                        },
-                                        '& .MuiAutocomplete-tag': {
-                                            height: '20px',
-                                        },
-                                    }}
-                                />
-                            )}
+                            filterOptions={filterSubsectorOptions}
                         />
                     </Grid>
                     <br />
