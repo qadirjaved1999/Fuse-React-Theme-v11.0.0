@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 
 const Root = styled('div')(
-    ({ theme }) => `
+  ({ theme }) => `
   color: ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,.85)'};
   font-size: 14px;
 `
@@ -19,7 +19,7 @@ const Label = styled('label')`
 `;
 
 const InputWrapper = styled('div')(
-    ({ theme }) => `
+  ({ theme }) => `
   width: 100%;
   border: 1px solid ${theme.palette.mode === 'dark' ? '#434343' : '#d9d9d9'};
   background-color: ${theme.palette.mode === 'dark' ? '#141414' : '#fff'};
@@ -54,22 +54,22 @@ const InputWrapper = styled('div')(
 );
 
 function Tag(props) {
-    const { label, onDelete, ...other } = props;
-    return (
-        <div {...other}>
-            <span>{label}</span>
-            <CloseIcon onClick={onDelete} />
-        </div>
-    );
+  const { label, onDelete, ...other } = props;
+  return (
+    <div {...other}>
+      <span>{label}</span>
+      <CloseIcon onClick={onDelete} />
+    </div>
+  );
 }
 
 Tag.propTypes = {
-    label: PropTypes.string.isRequired,
-    onDelete: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 const StyledTag = styled(Tag)(
-    ({ theme }) => `
+  ({ theme }) => `
   display: flex;
   align-items: center;
   height: 24px;
@@ -103,7 +103,7 @@ const StyledTag = styled(Tag)(
 );
 
 const Listbox = styled('ul')(
-    ({ theme }) => `
+  ({ theme }) => `
   width: 300px;
   margin: 2px 0 0;
   padding: 0;
@@ -150,56 +150,56 @@ const Listbox = styled('ul')(
 );
 
 const CustomAutocomplete = ({
-    label,
-    options,
-    value,
-    onChange,
-    filterOptions = (options) => options // Default to no filtering
+  label,
+  options,
+  value,
+  onChange,
+  filterOptions = (options) => options // Default to no filtering
 }) => {
-    const {
-        getRootProps,
-        getInputLabelProps,
-        getInputProps,
-        getTagProps,
-        getListboxProps,
-        getOptionProps,
-        groupedOptions
-    } = useAutocomplete({
-        id: 'customized-hook-demo',
-        multiple: true,
-        options: filterOptions(options),
-        getOptionLabel: (option) => option.label,
-        value,
-        onChange
-    });
+  const {
+    getRootProps,
+    getInputLabelProps,
+    getInputProps,
+    getTagProps,
+    getListboxProps,
+    getOptionProps,
+    groupedOptions
+  } = useAutocomplete({
+    id: 'customized-hook-demo',
+    multiple: true,
+    options: filterOptions(options),
+    getOptionLabel: (option) => option.label,
+    value,
+    onChange
+  });
 
-    return (
-        <Root>
-            <div {...getRootProps()}>
-                <Label {...getInputLabelProps()}>{label}</Label>
-                <InputWrapper>
-                    {value.map((option, index) => {
-                        const { key, ...tagProps } = getTagProps({ index });
-                        return <StyledTag key={key} {...tagProps} label={option.label} />;
-                    })}
-                    <input {...getInputProps()} />
-                </InputWrapper>
-            </div>
-            {groupedOptions.length > 0 && (
-                <Listbox {...getListboxProps()}>
-                    {groupedOptions.map((option, index) => {
-                        const { key, ...optionProps } = getOptionProps({ option, index });
-                        return (
-                            <li key={key} {...optionProps}>
-                                <span>{option.label}</span>
-                                <CheckIcon fontSize="small" />
-                            </li>
-                        );
-                    })}
-                </Listbox>
-            )}
-        </Root>
-    );
+  return (
+    <Root>
+      <div {...getRootProps()}>
+        <Label {...getInputLabelProps()}>{label}</Label>
+        <InputWrapper>
+          {value.map((option, index) => {
+            const { key, ...tagProps } = getTagProps({ index });
+            return <StyledTag key={key} {...tagProps} label={option.label} />;
+          })}
+          <input {...getInputProps()} />
+        </InputWrapper>
+      </div>
+      {groupedOptions.length > 0 && (
+        <Listbox {...getListboxProps()}>
+          {groupedOptions.map((option, index) => {
+            const { key, ...optionProps } = getOptionProps({ option, index });
+            return (
+              <li key={key} {...optionProps}>
+                <span>{option.label}</span>
+                <CheckIcon fontSize="small" />
+              </li>
+            );
+          })}
+        </Listbox>
+      )}
+    </Root>
+  );
 };
 
 export default CustomAutocomplete;

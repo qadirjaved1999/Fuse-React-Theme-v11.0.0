@@ -8,7 +8,7 @@ import { useState } from 'react';
 import CustomTypography from 'src/helpers/custom-components/CustomTypography';
 import CustomButton from 'src/helpers/custom-components/CustomButton';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
-import CustomAutocomplete from 'src/helpers/custom-components/CustomMultiSelectedDropDown';
+import CustomAutocomplete from 'src/helpers/custom-components/CustomAutocomplete';
 
 
 
